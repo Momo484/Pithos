@@ -3,10 +3,7 @@
 
 using namespace std;
 
-// The constructor. Notice how we call the Piece(white, symbol) constructor here!
-Pawn::Pawn(bool white, Square position) : Piece(white, 'P', position) {
-    // The base class handles saving the color and the 'P' symbol.
-    // Nothing else needs to go in these brackets right now.
+Pawn::Pawn(bool white, Square position) : Piece(white, (white ? 'P' : 'p'), position) {
 }
 
 Pawn::~Pawn() {
