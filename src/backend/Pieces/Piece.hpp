@@ -14,6 +14,7 @@ protected:
     char symbol; // e.g., 'P' for Pawn, 'R' for Rook, uppercase for white peices.
     Square position;
 
+    std::vector<Move> getSlidingMoves(const Board& board, const std::vector<std::pair<int,int>>& dirs) const;
 public:
     // Constructor
     Piece(bool white, char sym, Square startPos);
