@@ -3,12 +3,19 @@
 using namespace std;
 
 
-// h for horsey!!
-Knight::Knight(bool white, Square position) : Piece(white, (white ? 'H' : 'h'), position) {}
+// h for horsey!! :(( no allowed -> n for knight?
+Knight::Knight(bool white, Square position) : Piece(white, (white ? 'N' : 'n'), position) {}
 
 Knight::~Knight() {
     // idk what a destructor is meant to look like yet.
 }
+
+const std::vector<std::pair<int,int>> Knight::moveOffsets = {
+    {2, 1}, {2, -1},
+    {-2, 1}, {-2, -1},
+    {1, 2}, {1, -2},
+    {-1, 2}, {-1, -2}
+};
 
 // remember this detects pseudo legal moves, larger scales checks, like checking pins, and checks
 // are determined by the board. 

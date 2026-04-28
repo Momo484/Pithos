@@ -5,11 +5,7 @@
 
 class Knight : public Piece {
 private:
-    std::vector<std::pair<int,int>> moveOffsets 
-        = {{2, 1}, {2, -1},
-            {-2, 1}, {-2, 1}, 
-            {1, 2}, {1, -2},
-            {-1, 2}, {-1, -2}};
+    static const std::vector<std::pair<int,int>> moveOffsets;
 
 public:
     Knight(bool white, Square position);
