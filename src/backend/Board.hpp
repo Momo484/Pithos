@@ -19,4 +19,5 @@ public:
     Square getEpTarget() const; 
     void clearEpTarget();
     void setEpTarget(Square sq);
+    const static bool onBoard(Square sq);
 };

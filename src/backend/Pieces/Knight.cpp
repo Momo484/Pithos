@@ -26,7 +26,7 @@ vector<Move> Knight::getLegalMoves(const Board& board) {
         // we check every move offset using L rule from the starting square 
         Square moveTo = {position.x + offset.first, position.y + offset.second};
         // first we check if it is bounds 
-        if (moveTo.x < 0 || moveTo.x > 7 || moveTo.y < 0 || moveTo.y > 7) {
+        if (!board.onBoard(moveTo)) {
             // just skip this possibility.
             continue;
         }

@@ -15,3 +15,7 @@ Piece* Board::getPieceAt(Square sq) const {
 void Board::setupStartingPosition() {
     // TODO
 }
+
+const bool Board::onBoard(Square sq) {
+    return (sq.x >= 0 && sq.x <= 7 && sq.y >= 0 && sq.y <= 7);
+}

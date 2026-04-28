@@ -23,21 +23,21 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
     bool canMoveForward = false;
     
     // Bounds check to ensure we don't march off the board
-    if (forward.y >= 0 && forward.y <= 7 && board.getPieceAt(forward) == nullptr) {
+    if (board.onBoard(forward) && board.getPieceAt(forward) == nullptr) {
         moves.push_back(Move(position, forward, MoveType::Normal));
         canMoveForward = true;
     }
 
     // --- DOUBLE PUSH (LEAP) ---
     Square leap = {position.x, position.y + (2 * dir)};
-    if (canMoveForward && position.y == leapRank && leap.y >= 0 && leap.y <= 7 && board.getPieceAt(leap) == nullptr) {
+    if (canMoveForward && position.y == leapRank && board.onBoard(leap) && board.getPieceAt(leap) == nullptr) {
         moves.push_back(Move(position, leap, MoveType::DoublePawnPush));
     }
 
     // --- DIAGONAL CAPTURES ---
     // Left Diagonal
     Square leftDiag = {position.x - 1, position.y + dir};
-    if (leftDiag.x >= 0 && leftDiag.y >= 0 && leftDiag.y <= 7) {
+    if (board.onBoard(leftDiag)) {
         Piece* target = board.getPieceAt(leftDiag);
         // Ensure there is a piece AND it belongs to the enemy
         if (target != nullptr && target->getIsWhite() != this->isWhite) {
@@ -47,7 +47,7 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
 
     // Right Diagonal
     Square rightDiag = {position.x + 1, position.y + dir};
-    if (rightDiag.x <= 7 && rightDiag.y >= 0 && rightDiag.y <= 7) {
+    if (board.onBoard(rightDiag)) {
         Piece* target = board.getPieceAt(rightDiag);
         if (target != nullptr && target->getIsWhite() != this->isWhite) {
             moves.push_back(Move(position, rightDiag, MoveType::Capture, target->getSymbol()));
