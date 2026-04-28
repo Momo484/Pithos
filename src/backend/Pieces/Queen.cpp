@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Queen::Queen(bool isWhite, Square position) : Piece(isWhite, (isWhite ? 'B' : 'b'), position) {}
+Queen::Queen(bool isWhite, Square position) : Piece(isWhite, (isWhite ? 'Q' : 'q'), position) {}
 
 Queen::~Queen() {}
 
