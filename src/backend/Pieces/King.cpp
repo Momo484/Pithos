@@ -35,7 +35,6 @@ vector<Move> King::getLegalMoves(const Board& board) {
     }
     
     // now lets check if we may castle
-    // ... end of your 1-stepper loop ...
 
     // --- CASTLING ---
     // First, check if the King has moved. If he has, we don't even need to look at the Rooks.
