@@ -14,5 +14,4 @@ public:
 
     // pseudo legal move generation.
     std::vector<Move> getLegalMoves(const Board& board) override; 
-
 };

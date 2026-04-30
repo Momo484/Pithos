@@ -2,7 +2,9 @@
 
 using namespace std;
 
-Rook::Rook(bool isWhite, Square position) : Piece(isWhite, (isWhite ? 'R' : 'r'), position) {}
+Rook::Rook(bool isWhite, Square position) : Piece(isWhite, (isWhite ? 'R' : 'r'), position) {
+    mayCastle = true;
+}
 
 Rook::~Rook() {}
 
@@ -15,5 +17,13 @@ vector<Move> Rook::getLegalMoves(const Board& board) {
     // is not legal, we leave castelling logic to the king. 
 
     return getSlidingMoves(board, dirs);
+}
+
+void Rook::setCannotCastle() {
+    mayCastle = false;
+}
+
+bool Rook::canCastle() {
+    return mayCastle;
 }
 
