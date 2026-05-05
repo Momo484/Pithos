@@ -4,7 +4,6 @@
 class Rook: public Piece {
 private:
     static const std::vector<std::pair<int,int>> dirs;
-    bool mayCastle;
 
 public:
     Rook(bool isWhite, Square position);
@@ -12,8 +11,4 @@ public:
     ~Rook() override;
 
     std::vector<Move> getLegalMoves(const Board& board) override; 
-
-    void setCannotCastle();
-
-    bool canCastle();
 };

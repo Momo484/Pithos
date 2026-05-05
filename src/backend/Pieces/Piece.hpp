@@ -27,5 +27,5 @@ public:
     // these are pseudo legal moves, they do not account for checks.
     virtual std::vector<Move> getLegalMoves(const Board& board) = 0;
 
-    // remember to deal with checks in this class.
+    void setPosition(Square newSquare);
 };

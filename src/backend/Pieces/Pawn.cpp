@@ -24,14 +24,14 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
     
     // Bounds check to ensure we don't march off the board
     if (board.onBoard(forward) && board.getPieceAt(forward) == nullptr) {
-        moves.push_back(Move(position, forward, MoveType::Normal));
+        moves.push_back(Move(position, forward, MoveType::Normal, isWhite));
         canMoveForward = true;
     }
 
     // --- DOUBLE PUSH (LEAP) ---
     Square leap = {position.x, position.y + (2 * dir)};
     if (canMoveForward && position.y == leapRank && board.onBoard(leap) && board.getPieceAt(leap) == nullptr) {
-        moves.push_back(Move(position, leap, MoveType::DoublePawnPush));
+        moves.push_back(Move(position, leap, MoveType::DoublePawnPush, isWhite));
     }
 
     // --- DIAGONAL CAPTURES ---
@@ -41,7 +41,7 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
         Piece* target = board.getPieceAt(leftDiag);
         // Ensure there is a piece AND it belongs to the enemy
         if (target != nullptr && target->getIsWhite() != this->isWhite) {
-            moves.push_back(Move(position, leftDiag, MoveType::Capture, target->getSymbol()));
+            moves.push_back(Move(position, leftDiag, MoveType::Capture, target->getSymbol(), isWhite));
         }
     }
 
@@ -50,7 +50,7 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
     if (board.onBoard(rightDiag)) {
         Piece* target = board.getPieceAt(rightDiag);
         if (target != nullptr && target->getIsWhite() != this->isWhite) {
-            moves.push_back(Move(position, rightDiag, MoveType::Capture, target->getSymbol()));
+            moves.push_back(Move(position, rightDiag, MoveType::Capture, target->getSymbol(), isWhite));
         }
     }
 
@@ -62,11 +62,11 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
         if (leftDiag == currentEpTarget) {
             // Note: En Passant ALWAYS captures a Pawn, so you can safely pass 'P' or 'p' here
             // if your Move constructor requires the captured piece symbol.
-            moves.push_back(Move(position, leftDiag, MoveType::EnPassant, isWhite ? 'p' : 'P')); 
+            moves.push_back(Move(position, leftDiag, MoveType::EnPassant, isWhite ? 'p' : 'P', isWhite)); 
         }
         
         if (rightDiag == currentEpTarget) {
-            moves.push_back(Move(position, rightDiag, MoveType::EnPassant, isWhite ? 'p' : 'P'));
+            moves.push_back(Move(position, rightDiag, MoveType::EnPassant, isWhite ? 'p' : 'P', isWhite));
         }
     }
 

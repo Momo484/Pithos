@@ -12,14 +12,6 @@ Piece::Piece(bool white, char sym, Square startPos)
 Piece::~Piece() {
 }
 
-// Getters
-char Piece::getSymbol() const {
-    return symbol;
-}
-
-bool Piece::getIsWhite() const {
-    return isWhite;
-}
 
 std::vector<Move> Piece::getSlidingMoves(const Board& board, const std::vector<std::pair<int,int>>& dirs) const {
     std::vector<Move> moves;
@@ -37,12 +29,25 @@ std::vector<Move> Piece::getSlidingMoves(const Board& board, const std::vector<s
             if (target != nullptr && isWhite == target->getIsWhite()) break;
 
             if (target != nullptr) {
-                moves.push_back(Move(position, moveTo, MoveType::Capture, target->getSymbol()));
+                moves.push_back(Move(position, moveTo, MoveType::Capture, target->getSymbol(), isWhite));
                 break; 
             } else {
-                moves.push_back(Move(position, moveTo, MoveType::Normal));
+                moves.push_back(Move(position, moveTo, MoveType::Normal, isWhite));
             }
         }
     }
     return moves;
+}
+
+// Getters
+char Piece::getSymbol() const {
+    return symbol;
+}
+
+bool Piece::getIsWhite() const {
+    return isWhite;
+}
+
+void Piece::setPosition(Square newPosition) {
+    position = newPosition;
 }

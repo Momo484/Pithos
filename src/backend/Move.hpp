@@ -18,17 +18,21 @@ private:
     Square to;
     std::string uci;
     MoveType type;
-    char capturedPieceSymbol;
+    char capturedPieceSymbol = 0;
+    char promotionPiece = 'q';   // only used for Promotion
+    bool isWhite;
 
 public:
-    // Constructors now take the Square struct
-    Move(Square fromSquare, Square toSquare, MoveType type);
-    Move(Square fromSquare, Square toSquare, MoveType type, char capturedPieceSymbol);
+    Move(Square from, Square to, MoveType type, bool isWhite);
+    Move(Square from, Square to, MoveType type, char capturedPieceSymbol, bool isWhite);
+    Move(Square from, Square to, MoveType type, bool isWhite, char promotionPiece);  // promotion
     Move(std::string uciString);
 
-    // Getters return the Square struct
     Square getFrom() const;
     Square getTo() const;
-    
-    const std::string& getUci() const; 
+    bool getIsWhite() const;
+    MoveType getType() const;
+    char getCapturedPieceSymbol() const;
+    char getPromotionPiece()const;
+    const std::string& getUci() const;
 };
