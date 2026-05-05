@@ -20,6 +20,5 @@ private:
     bool whiteTurn = true;
     GameResult result = GameResult::Ongoing;
 
-    Move parceUci(const std::string& uci);
     void updateResult();          // call after every successful move
 };

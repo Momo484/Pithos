@@ -7,6 +7,7 @@
 #include "Pieces/Bishop.hpp"
 #include "Pieces/Queen.hpp"
 #include "Pieces/King.hpp"
+#include <cctype>
 #include <memory>
 #include <vector>
 #include <assert.h>
@@ -197,16 +198,10 @@ bool Board::isKingChecked(bool isWhite) {
 
 // -- Legal move generation ------------------------------------------------------------------------
 bool Board::validateMove(Move move) {
-    // assuming that it is pseudolegal
     makeMove(move);
-    // check if making this move puts their king in check
-    if (isKingChecked(move.getIsWhite())) {
-        undoMove();
-        return false;
-    }
-    // its good otherwise.
+    bool legal = !isKingChecked(move.getIsWhite());
     undoMove();
-    return true;
+    return legal;
 }
 
 std::vector<Move> Board::pseudoToLegalMoves(std::vector<Move> moves) {
@@ -319,9 +314,61 @@ void Board::undoMove() {
             squares[from.y][from.x]->setPosition(from);
             break;
         
-        case MoveType::Capture:
+        case MoveType::Capture: {
             squares[from.y][from.x] = std::move(squares[to.y][to.x]);
             squares[from.y][from.x]->setPosition(from);
+            char sym = move.getCapturedPieceSymbol();
+            bool capturedWasWhite = std::isupper(sym);
+            squares[to.y][to.x] = makePiece(sym, capturedWasWhite, to);
+            break;
+        }
+
+        case MoveType::DoublePawnPush:
+            squares[from.y][from.x] = std::move(squares[to.y][to.x]);
+            squares[from.y][from.x]->setPosition(from);
+            break;
+
+        case MoveType::EnPassant: {
+            squares[from.y][from.x] = std::move(squares[to.y][to.x]);
+            squares[from.y][from.x]->setPosition(from);
+            // Restore the captured pawn at its original square
+            bool capturedWasWhite = !move.getIsWhite();
+            squares[from.y][to.x] = makePiece('P', capturedWasWhite, {to.x, from.y});
+            break;
+        }
+
+        case MoveType::CastleKingSide: {
+            int r = from.y;
+            squares[r][4] = std::move(squares[r][6]);   // king g→e
+            squares[r][4]->setPosition({4, r});
+            squares[r][7] = std::move(squares[r][5]);   // rook f→h
+            squares[r][7]->setPosition({7, r});
+            break;
+        }
+
+        case MoveType::CastleQueenSide: {
+            int r = from.y;
+            squares[r][4] = std::move(squares[r][2]);   // king c→e
+            squares[r][4]->setPosition({4, r});
+            squares[r][0] = std::move(squares[r][3]);   // rook d→a
+            squares[r][0]->setPosition({0, r});
+            break;
+        }
+
+        case MoveType::Promotion: {
+            // Put a pawn back, remove the promoted piece
+            bool isWhite = move.getIsWhite();
+            squares[from.y][from.x] = makePiece('P', isWhite, from);
+            // Restore any piece that was captured on the promotion square
+            char sym = move.getCapturedPieceSymbol();
+            if (sym != 0) {
+                bool capturedWasWhite = std::isupper(sym);
+                squares[to.y][to.x] = makePiece(sym, capturedWasWhite, to);
+            } else {
+                squares[to.y][to.x].reset();
+            }
+            break;
+        }
     }
 }
 

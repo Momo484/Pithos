@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Square.hpp"
 
 enum class MoveType {
