@@ -16,7 +16,6 @@ class Move {
 private:
     Square from;
     Square to;
-    std::string uci;
     MoveType type;
     char capturedPieceSymbol = 0;
     char promotionPiece = 'q';   // only used for Promotion
@@ -26,7 +25,6 @@ public:
     Move(Square from, Square to, MoveType type, bool isWhite);
     Move(Square from, Square to, MoveType type, char capturedPieceSymbol, bool isWhite);
     Move(Square from, Square to, MoveType type, bool isWhite, char promotionPiece);  // promotion
-    Move(std::string uciString);
 
     Square getFrom() const;
     Square getTo() const;
@@ -34,5 +32,4 @@ public:
     MoveType getType() const;
     char getCapturedPieceSymbol() const;
     char getPromotionPiece()const;
-    const std::string& getUci() const;
 };

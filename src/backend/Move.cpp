@@ -12,11 +12,6 @@ Move::Move(Square fromSquare, Square toSquare, MoveType type, char capturedPiece
     : from(fromSquare), to(toSquare), type(type), capturedPieceSymbol(capturedPieceSymbol), isWhite(isWhite) {
 }
 
-// Constructor 2: Building a move from a UCI string
-Move::Move(std::string uciString) 
-    : uci(uciString) {
-    
-}
 
 // Getters
 Square Move::getFrom() const {
@@ -29,9 +24,5 @@ Square Move::getTo() const {
 
 bool Move::getIsWhite() const {
     return isWhite;
-}
-
-const std::string& Move::getUci() const {
-    return uci;
 }
 

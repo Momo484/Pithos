@@ -15,7 +15,6 @@ private:
     std::stack<BoardMemento> history;
 
     std::unique_ptr<Piece> makePiece(char symbol, bool isWhite, Square pos) const;
-    bool validateMove(Move move);
     std::vector<Move> pseudoToLegalMoves(std::vector<Move> moves);
 
     void revokeCastlingRights(Square sq);
@@ -35,6 +34,7 @@ public:
     Square getEpTarget() const {return epTarget; };
     CastlingRights getCastlingRights() const {return castling; }
     
+    bool validateMove(Move move);
     void makeMove(Move move);
     void undoMove();
     
