@@ -8,8 +8,8 @@ enum class MoveType {
     EnPassant,
     CastleKingSide,
     CastleQueenSide,
+    // promotion deals with promotionCaptures
     Promotion,
-    PromotionCapture
 };
 
 class Move {

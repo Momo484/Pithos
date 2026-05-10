@@ -17,7 +17,7 @@ void Game::updateResult() {
         }
     }
 
-    // we leave the 50 move and 3 move ruls for later.
+    // we leave the 50 move and 3 move rules for later, but we will implement a functional FEN.
 }
 
 bool Game::submitMove(const std::string& uci) {

@@ -14,7 +14,8 @@ private:
     CastlingRights castling {};
     std::stack<BoardMemento> history;
 
-    int movesSinceLastPawnMove = 0;
+    int halfMoveClock = 0;
+    int fullMoveClock = 0;
 
     std::unique_ptr<Piece> makePiece(char symbol, bool isWhite, Square pos) const;
     std::vector<Move> pseudoToLegalMoves(std::vector<Move> moves);

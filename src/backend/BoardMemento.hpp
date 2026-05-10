@@ -15,5 +15,6 @@ struct BoardMemento {
     Move move;
     Square prevEpTarget;
     CastlingRights prevCastling;
+    int halfMoveClock;
     // No captured piece pointer needed — we reconstruct from capturedPieceSymbol
 };

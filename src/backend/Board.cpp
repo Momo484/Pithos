@@ -233,17 +233,32 @@ std::vector<Move> Board::generateAllLegalMoves(bool isWhiteTurn) {
 // -- makeMove -------------------------------------------------------------------------------------
 void Board::makeMove(Move move) {
     // push the snapshot
-    history.push({move, epTarget, castling});
+    history.push({move, epTarget, castling, halfMoveClock});
 
     Square from = move.getFrom();
     Square to = move.getTo();
     epTarget = {-1, -1};
 
+    if (!move.getIsWhite()) {
+        // we increment fullMoveClock on black turns.
+        fullMoveClock++;
+    }
+
     switch (move.getType()) {
-        case MoveType::Normal:
+        case MoveType::Normal: {
+            if (getPieceAt(from)->getSymbol() == 'p' || getPieceAt(from)->getSymbol() == 'P') {
+                // reset halfMoveClock on pawn move. 
+                halfMoveClock = 0;
+            }
+            squares[to.y][to.x] = std::move(squares[from.y][from.x]);
+            squares[to.y][to.x]->setPosition(to);
+            break;
+        }
         case MoveType::Capture:
             squares[to.y][to.x] = std::move(squares[from.y][from.x]);
             squares[to.y][to.x]->setPosition(to);
+            // reset halfMoveClock on capture.
+            halfMoveClock = 0;
             break;
         
         case MoveType::DoublePawnPush:
@@ -257,6 +272,8 @@ void Board::makeMove(Move move) {
             // Remove the captured pawn — it sits on 'to.x' but at the
             // moving pawn's original rank, not the destination rank
             squares[from.y][to.x].reset();
+
+            halfMoveClock = 0;
         }
 
         case MoveType::CastleKingSide: {
@@ -285,6 +302,8 @@ void Board::makeMove(Move move) {
             squares[from.y][from.x].reset();   // remove pawn
             bool isWhite = move.getIsWhite();
             squares[to.y][to.x] = makePiece(move.getPromotionPiece(), isWhite, to);
+            
+            halfMoveClock = 0;
             break;
         }
     }
@@ -307,6 +326,12 @@ void Board::undoMove() {
     // retoring previous state. 
     epTarget = memento.prevEpTarget;
     castling = memento.prevCastling;
+    halfMoveClock = memento.halfMoveClock;
+
+    if (!move.getIsWhite()) {
+        // we decrement our fullMoveClock since we undid a black move
+        fullMoveClock--;
+    }
 
     switch (move.getType()) {
         case MoveType::Normal:
@@ -370,5 +395,93 @@ void Board::undoMove() {
             break;
         }
     }
+}
+
+// -- FEN generation -------------------------------------------------------------------------------
+std::string Board::generateFEN() {
+    std::string FEN = "";
+
+    // First Field: piece position
+    for (int rank = 7; rank >= 0; rank--) {
+        int empty = 0;
+        for (int file = 0; file < 8; file++) {
+            Piece* current = getPieceAt({file, rank});
+            if (current == nullptr) {
+                empty++;
+            } else {
+                if (empty != 0) {
+                    FEN += std::to_string(empty);
+                }
+                FEN += current->getSymbol();
+            }
+        }
+        if (empty != 0) {
+            FEN += std::to_string(empty);
+        }
+        if (rank != 0) {
+            // all ranks but the last have a slash following it.
+            FEN += '/';
+        }
+    }
+    // a gap between the first field and the next
+    FEN += " ";
+
+    // Second Field: Active Colours 
+    // lowk disgusting but we have to figure our whose turn it is, 
+    bool whiteTurn = true;
+    if (!history.empty()) {
+        BoardMemento memento = std::move(history.top());
+        whiteTurn = !memento.move.getIsWhite();
+    }
+    FEN += whiteTurn ? "w" : "b";
+    FEN += " ";
+
+    // Third Field: Castling Rights
+    // first we deal with white
+    if (castling.whiteKingSide || castling.whiteQueenSide) {
+        if (castling.whiteKingSide) {
+            FEN += "K";
+        }
+        if (castling.whiteQueenSide) {
+            FEN += "Q";
+        }
+    } else {
+        FEN += "-";
+    }
+    // then the black
+    if (castling.blackKingSide || castling.blackQueenSide) {
+        if (castling.blackKingSide) {
+            FEN += "k";
+        }
+        if (castling.blackQueenSide) {
+            FEN += "q";
+        }
+    } else {
+        FEN += "-";
+    }
+    FEN += " ";
+
+    // Fourth Field: En Passant
+    if (epTarget.x == -1 || epTarget.y == -1) {
+        FEN += "-";
+    } else {
+        char file = 'a' + epTarget.x;
+        char rank = '0' + epTarget.y;
+        std::string fourthField;
+        fourthField[0] = file;
+        fourthField[1] = rank;
+        fourthField[2] = '\0';
+        FEN += fourthField;
+    }
+    FEN += " ";
+
+    // Fifth Field: Half Move Clock
+    FEN += std::to_string(halfMoveClock);
+    FEN += " ";
+
+    // Sixth Field: Full move clock
+    FEN += std::to_string(fullMoveClock);
+
+    return FEN;
 }
 
