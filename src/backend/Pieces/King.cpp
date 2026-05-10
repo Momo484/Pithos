@@ -3,8 +3,6 @@
 using namespace std;
 
 King::King(bool isWhite, Square position) : Piece(isWhite, (isWhite ? 'K' : 'k'), position) {
-    // king can castle at the start of the game.
-    mayCastle = true;
 }
 
 King::~King() {}
@@ -28,7 +26,7 @@ vector<Move> King::getLegalMoves(const Board& board) {
             // we good to move here pseuo-legally
             moves.push_back(Move(position, moveTo, MoveType::Normal, isWhite));
         } else if (target->getIsWhite() != isWhite) {
-            moves.push_back(Move(position, moveTo, MoveType::Capture, target->getSymbol()));
+            moves.push_back(Move(position, moveTo, MoveType::Capture, isWhite, target->getSymbol(), ' '));
         }
         // otherwise, we can't make this move.
     }
@@ -57,18 +55,4 @@ vector<Move> King::getLegalMoves(const Board& board) {
 
     return moves;
 };
-
-
-
-// called when a the king makes their first move, must be checked in conjuction
-// if the rooks status.
-void King::setCannotCastle() {
-    mayCastle = false;
-}
-
-bool King::canCastle() {
-    return mayCastle;
-}
-
-
 

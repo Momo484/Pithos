@@ -8,7 +8,8 @@ enum class MoveType {
     EnPassant,
     CastleKingSide,
     CastleQueenSide,
-    Promotion
+    Promotion,
+    PromotionCapture
 };
 
 class Move {
@@ -22,8 +23,8 @@ private:
 
 public:
     Move(Square from, Square to, MoveType type, bool isWhite);
-    Move(Square from, Square to, MoveType type, char capturedPieceSymbol, bool isWhite);
-    Move(Square from, Square to, MoveType type, bool isWhite, char promotionPiece);  // promotion
+    Move(Square from, Square to, MoveType type, bool isWhite, char capturedPieceSymbol, char promotionPiece);
+
 
     Square getFrom() const;
     Square getTo() const;

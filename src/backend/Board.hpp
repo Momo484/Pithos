@@ -14,12 +14,12 @@ private:
     CastlingRights castling {};
     std::stack<BoardMemento> history;
 
+    int movesSinceLastPawnMove = 0;
+
     std::unique_ptr<Piece> makePiece(char symbol, bool isWhite, Square pos) const;
     std::vector<Move> pseudoToLegalMoves(std::vector<Move> moves);
 
     void revokeCastlingRights(Square sq);
-
-    
     
 public:
 
@@ -44,4 +44,5 @@ public:
     void clearEpTarget();
     void setEpTarget(Square sq);
 
+    std::string generateFEN();
 };

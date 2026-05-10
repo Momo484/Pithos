@@ -29,7 +29,7 @@ std::vector<Move> Piece::getSlidingMoves(const Board& board, const std::vector<s
             if (target != nullptr && isWhite == target->getIsWhite()) break;
 
             if (target != nullptr) {
-                moves.push_back(Move(position, moveTo, MoveType::Capture, target->getSymbol(), isWhite));
+                moves.push_back(Move(position, moveTo, MoveType::Capture,isWhite, target->getSymbol(), ' '));
                 break; 
             } else {
                 moves.push_back(Move(position, moveTo, MoveType::Normal, isWhite));
