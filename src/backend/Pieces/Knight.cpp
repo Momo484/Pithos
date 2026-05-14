@@ -39,7 +39,7 @@ vector<Move> Knight::getLegalMoves(const Board& board) {
         // no we just check if it was a capture 
         if (target != nullptr) {
             // it is a capture 
-            moves.push_back(Move(position, moveTo, MoveType::Capture, isWhite, target->getSymbol()));
+            moves.push_back(Move(position, moveTo, MoveType::Capture, isWhite, target->getSymbol(), ' '));
         } else {
             // its a normal psuedo legal move.
             moves.push_back(Move(position, moveTo, MoveType::Normal, isWhite));
