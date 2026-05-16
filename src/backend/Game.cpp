@@ -17,7 +17,10 @@ void Game::updateResult() {
         }
     }
 
-    // we leave the 50 move and 3 move rules for later, but we will implement a functional FEN.
+    // we leave the 50 move for later.
+    if (board.checkThreeFoldRepitition()) {
+        result = GameResult::Draw;
+    }
 }
 
 bool Game::submitMove(const std::string& uci) {

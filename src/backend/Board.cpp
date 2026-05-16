@@ -8,6 +8,7 @@
 #include "Pieces/Queen.hpp"
 #include "Pieces/King.hpp"
 #include <cctype>
+#include <cstddef>
 #include <memory>
 #include <vector>
 #include <assert.h>
@@ -194,7 +195,14 @@ bool Board::isKingChecked(bool isWhite) {
     return false;
 }
 
-
+bool Board::checkThreeFoldRepitition() {
+    for (const auto& [key, count] : boardStateCount) {
+        if (count >= 3) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // -- Legal move generation ------------------------------------------------------------------------
 bool Board::validateMove(Move move) {
@@ -243,6 +251,11 @@ void Board::makeMove(Move move) {
         // we increment fullMoveClock on black turns.
         fullMoveClock++;
     }
+    std::string FEN = generateFEN();
+    size_t spacePos = FEN.find(' ');
+    std::string boardStateKey = FEN.substr(0, spacePos);
+
+    boardStateCount[boardStateKey]++;
 
     switch (move.getType()) {
         case MoveType::Normal: {
@@ -318,6 +331,12 @@ void Board::undoMove() {
     assert(!history.empty() && "undoMove called with empty history");
     BoardMemento memento = std::move(history.top());
     history.pop();
+
+    std::string FEN = generateFEN();
+    size_t spacePos = FEN.find(' ');
+    std::string boardStateKey = FEN.substr(0, spacePos);
+
+    boardStateCount[boardStateKey]--;
 
     const Move& move = memento.move;
     Square from = move.getFrom();

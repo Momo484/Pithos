@@ -4,6 +4,8 @@
 #include "Square.hpp"
 #include <memory>
 #include <stack>
+#include <string>
+#include <unordered_map>
 
 class Piece;
 
@@ -15,7 +17,12 @@ private:
     std::stack<BoardMemento> history;
 
     int halfMoveClock = 0;
-    int fullMoveClock = 0;
+    int fullMoveClock = 1;
+    // This keeps the count of every board state, so in the case that
+    // the board state repeats 3 times, before it is cleared, we can call threefold repitition.
+    // A board state cannot be repeated after a pawn move or capture, so no need to encapsulate it
+    // in the memento. it is represented by the first field on the FEN.
+    std::unordered_map<std::string, int> boardStateCount;
 
     std::unique_ptr<Piece> makePiece(char symbol, bool isWhite, Square pos) const;
     std::vector<Move> pseudoToLegalMoves(std::vector<Move> moves);
@@ -41,6 +48,7 @@ public:
     
     bool isKingChecked(bool isWhite);
     std::vector<Move> generateAllLegalMoves(bool isWhiteTurn);
+    bool checkThreeFoldRepitition();
 
     void clearEpTarget();
     void setEpTarget(Square sq);

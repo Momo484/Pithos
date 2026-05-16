@@ -2,6 +2,7 @@
 #include "Move.hpp"
 #include "Square.hpp"
 
+
 struct CastlingRights {
     bool whiteKingSide  = true;
     bool whiteQueenSide = true;
