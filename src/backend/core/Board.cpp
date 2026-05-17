@@ -10,7 +10,6 @@
 #include <cctype>
 #include <cstddef>
 #include <memory>
-#include <vector>
 #include <assert.h>
 
 

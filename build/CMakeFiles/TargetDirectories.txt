@@ -1,0 +1,11 @@
+/Users/aabhushan/Documents/Pithos/build/CMakeFiles/PithosCore.dir
+/Users/aabhushan/Documents/Pithos/build/CMakeFiles/pithos_backend.dir
+/Users/aabhushan/Documents/Pithos/build/CMakeFiles/backend_tests.dir
+/Users/aabhushan/Documents/Pithos/build/CMakeFiles/edit_cache.dir
+/Users/aabhushan/Documents/Pithos/build/CMakeFiles/rebuild_cache.dir
+/Users/aabhushan/Documents/Pithos/build/_deps/catch2-build/CMakeFiles/edit_cache.dir
+/Users/aabhushan/Documents/Pithos/build/_deps/catch2-build/CMakeFiles/rebuild_cache.dir
+/Users/aabhushan/Documents/Pithos/build/_deps/catch2-build/src/CMakeFiles/Catch2.dir
+/Users/aabhushan/Documents/Pithos/build/_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir
+/Users/aabhushan/Documents/Pithos/build/_deps/catch2-build/src/CMakeFiles/edit_cache.dir
+/Users/aabhushan/Documents/Pithos/build/_deps/catch2-build/src/CMakeFiles/rebuild_cache.dir
