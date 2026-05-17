@@ -13,7 +13,7 @@ uint64_t runPerft(Board& board, int depth, bool isWhiteTurn) {
     }
 
     uint64_t nodes = 0;
-    std::vector<Move>& moves = board.generateAllLegalMoves(isWhiteTurn);
+    const std::vector<Move>& moves = board.generateAllLegalMoves(isWhiteTurn);
 
     for (const Move& move : moves) {
         board.makeMove(move);
