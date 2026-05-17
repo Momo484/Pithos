@@ -46,7 +46,7 @@ public:
     void makeMove(Move move);
     void undoMove();
     
-    bool isKingChecked(bool isWhite);
+    const bool isKingChecked(bool isWhite);
     std::vector<Move> generateAllLegalMoves(bool isWhiteTurn);
     bool checkThreeFoldRepitition();
 

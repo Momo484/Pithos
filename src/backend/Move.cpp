@@ -23,3 +23,15 @@ bool Move::getIsWhite() const {
     return isWhite;
 }
 
+MoveType Move::getType() const {
+    return type;
+}
+
+char Move::getCapturedPieceSymbol() const {
+    return capturedPieceSymbol;
+}
+
+char Move::getPromotionPiece() const {
+    return getPromotionPiece();
+}
+

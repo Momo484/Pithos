@@ -65,7 +65,14 @@ Board::Board() {
 }
 
 void Board::setupStartingPosition() {
-    
+    // Clearing the board.
+    for (auto& row : squares) {
+        for (auto& sq : row) {
+            sq.reset();
+        }
+    }
+
+
     // --- BLACK PIECES (Top of the board) ---
     
     // Rank 8 (y = 7): Major and Minor Pieces
@@ -107,7 +114,7 @@ void Board::setupStartingPosition() {
 }
 
 // -- Check Detection ------------------------------------------------------------------------------
-bool Board::isKingChecked(bool isWhite) {
+const bool Board::isKingChecked(bool isWhite) {
     // ray cast from the king 
     // first we find the king, we could keep a reference, but that seems uneccesary.
     char kingSymbol = isWhite ? 'K' : 'k';
@@ -226,7 +233,7 @@ std::vector<Move> Board::generateAllLegalMoves(bool isWhiteTurn) {
     std::vector<Move> pseudoLegalMoves;
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            Piece *piece = getPieceAt({i, j});
+            Piece *piece = getPieceAt({j, i});
             if (piece != nullptr && piece->getIsWhite() == isWhiteTurn) {
                 std::vector<Move> piecePseudoLegal = piece->getLegalMoves(*this);
                 pseudoLegalMoves.insert(pseudoLegalMoves.end(), 
@@ -251,11 +258,6 @@ void Board::makeMove(Move move) {
         // we increment fullMoveClock on black turns.
         fullMoveClock++;
     }
-    std::string FEN = generateFEN();
-    size_t spacePos = FEN.find(' ');
-    std::string boardStateKey = FEN.substr(0, spacePos);
-
-    boardStateCount[boardStateKey]++;
 
     switch (move.getType()) {
         case MoveType::Normal: {
@@ -287,6 +289,7 @@ void Board::makeMove(Move move) {
             squares[from.y][to.x].reset();
 
             halfMoveClock = 0;
+            break;
         }
 
         case MoveType::CastleKingSide: {
@@ -323,6 +326,10 @@ void Board::makeMove(Move move) {
 
     revokeCastlingRights(from);
     revokeCastlingRights(to);
+    std::string FEN = generateFEN();
+    std::string key = FEN.substr(0, FEN.rfind(' '));  // strip halfmove
+    key = key.substr(0, key.rfind(' '));               // strip fullmove
+    boardStateCount[key]++;
 
 }
 
@@ -333,10 +340,9 @@ void Board::undoMove() {
     history.pop();
 
     std::string FEN = generateFEN();
-    size_t spacePos = FEN.find(' ');
-    std::string boardStateKey = FEN.substr(0, spacePos);
-
-    boardStateCount[boardStateKey]--;
+    std::string key = FEN.substr(0, FEN.rfind(' '));  // strip halfmove
+    key = key.substr(0, key.rfind(' '));               // strip fullmove
+    boardStateCount[key]--;
 
     const Move& move = memento.move;
     Square from = move.getFrom();
@@ -449,7 +455,7 @@ std::string Board::generateFEN() {
     // lowk disgusting but we have to figure our whose turn it is, 
     bool whiteTurn = true;
     if (!history.empty()) {
-        BoardMemento memento = std::move(history.top());
+        const BoardMemento& memento = history.top();
         whiteTurn = !memento.move.getIsWhite();
     }
     FEN += whiteTurn ? "w" : "b";
@@ -457,40 +463,20 @@ std::string Board::generateFEN() {
 
     // Third Field: Castling Rights
     // first we deal with white
-    if (castling.whiteKingSide || castling.whiteQueenSide) {
-        if (castling.whiteKingSide) {
-            FEN += "K";
-        }
-        if (castling.whiteQueenSide) {
-            FEN += "Q";
-        }
-    } else {
-        FEN += "-";
-    }
-    // then the black
-    if (castling.blackKingSide || castling.blackQueenSide) {
-        if (castling.blackKingSide) {
-            FEN += "k";
-        }
-        if (castling.blackQueenSide) {
-            FEN += "q";
-        }
-    } else {
-        FEN += "-";
-    }
+    std::string castleStr = "";
+    if (castling.whiteKingSide)  castleStr += 'K';
+    if (castling.whiteQueenSide) castleStr += 'Q';
+    if (castling.blackKingSide)  castleStr += 'k';
+    if (castling.blackQueenSide) castleStr += 'q';
+    FEN += castleStr.empty() ? "-" : castleStr;
     FEN += " ";
 
     // Fourth Field: En Passant
     if (epTarget.x == -1 || epTarget.y == -1) {
         FEN += "-";
     } else {
-        char file = 'a' + epTarget.x;
-        char rank = '0' + epTarget.y;
-        std::string fourthField;
-        fourthField[0] = file;
-        fourthField[1] = rank;
-        fourthField[2] = '\0';
-        FEN += fourthField;
+        FEN += static_cast<char>('a' + epTarget.x);
+        FEN += static_cast<char>('1' + epTarget.y);
     }
     FEN += " ";
 

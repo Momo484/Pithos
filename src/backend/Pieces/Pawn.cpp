@@ -50,10 +50,10 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
         // Ensure there is a piece AND it belongs to the enemy
         if (target != nullptr && target->getIsWhite() != this->isWhite) {
             if (leftDiag.y == promotionRank) {
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'Q' : 'q'));
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'N' : 'n'));
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'R' : 'r'));
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'B' : 'b'));
+                moves.push_back(Move(position, leftDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'Q' : 'q'));
+                moves.push_back(Move(position, leftDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'N' : 'n'));
+                moves.push_back(Move(position, leftDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'R' : 'r'));
+                moves.push_back(Move(position, leftDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'B' : 'b'));
             }
             moves.push_back(Move(position, leftDiag, MoveType::Capture, isWhite, target->getSymbol(), ' '));
         }
@@ -65,12 +65,12 @@ vector<Move> Pawn::getLegalMoves(const Board& board) {
         Piece* target = board.getPieceAt(rightDiag);
         if (target != nullptr && target->getIsWhite() != this->isWhite) {
             if (rightDiag.y == promotionRank) {
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'Q' : 'q'));
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'N' : 'n'));
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'R' : 'r'));
-                moves.push_back(Move(position, forward, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'B' : 'b'));
+                moves.push_back(Move(position, rightDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'Q' : 'q'));
+                moves.push_back(Move(position, rightDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'N' : 'n'));
+                moves.push_back(Move(position, rightDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'R' : 'r'));
+                moves.push_back(Move(position, rightDiag, MoveType::Promotion, isWhite, target->getSymbol(), isWhite ? 'B' : 'b'));
             }
-            moves.push_back(Move(position, leftDiag, MoveType::Capture, isWhite, target->getSymbol(), ' '));
+            moves.push_back(Move(position, rightDiag, MoveType::Capture, isWhite, target->getSymbol(), ' '));
         }
     }
 
