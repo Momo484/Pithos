@@ -8,8 +8,17 @@ class Game {
 public:
     Game();
 
-    // Called by UI / network layer with a move in whatever notation you use
-    bool submitMove(const std::string& uci);    // returns false if illegal
+    /**
+     * @brief Attempts to apply a UCI-formatted move to the current game state.
+     * * This function parses standard UCI strings (e.g., "e2e4", "e7e8q"), validates
+     * if the move is pseudo-legal and respects check conditions, and applies it to the board.
+     * * @param uci The Universal Chess Interface string representing the move.
+     * @return true If the move was legal and successfully applied.
+     * @return false If the move was illegal, improperly formatted, or the game is already over.
+     */
+    bool submitMove(const std::string& uci);
+
+
     GameResult  getResult()   const;
     bool isWhiteTurn() const { return whiteTurn; }
     std::string getBoardFen() const;
@@ -20,5 +29,8 @@ private:
     bool whiteTurn = true;
     GameResult result = GameResult::Ongoing;
 
-    void updateResult();          // call after every successful move
+    /**
+     * @brief Updates the current game state, by getting information from the board class.
+     */
+    void updateResult();
 };
