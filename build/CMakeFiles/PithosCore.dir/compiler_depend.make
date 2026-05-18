@@ -2388,7 +2388,8 @@ CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o: /Users/aabhushan
   /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.hpp \
   /Users/aabhushan/Documents/Pithos/src/backend/core/Square.hpp \
   /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.hpp \
-  /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.hpp
+  /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.hpp \
+  /Users/aabhushan/Documents/Pithos/src/backend/core/Square.hpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \

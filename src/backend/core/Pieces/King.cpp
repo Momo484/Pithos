@@ -2,7 +2,7 @@
 
 using namespace std;
 
-King::King(bool isWhite, Square position) : Piece(isWhite, (isWhite ? 'K' : 'k'), position) {
+King::King(bool isWhite) : Piece(isWhite, (isWhite ? 'K' : 'k')) {
 }
 
 King::~King() {}
@@ -12,7 +12,7 @@ const std::vector<std::pair<int,int>> King::dirs = {
     {1, 1}, {1, -1}, {-1, 1}, {-1, -1} // Bishop dirs
 };
 
-vector<Move> King::getLegalMoves(const Board& board) {
+vector<Move> King::getLegalMoves(const Board& board, Square position) {
     vector<Move> moves;
     // lets first check all the 1 steppers 
     for (const auto& dir : dirs) {

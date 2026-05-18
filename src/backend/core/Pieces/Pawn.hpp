@@ -7,11 +7,11 @@ class Pawn : public Piece {
 private:
 
 public:
-    Pawn(bool white, Square position);
+    Pawn(bool white);
     
     // Override the base destructor
     ~Pawn() override;
 
     // pseudo legal move generation.
-    std::vector<Move> getLegalMoves(const Board& board) override; 
+    std::vector<Move> getLegalMoves(const Board& board, Square position) override; 
 };
