@@ -212,6 +212,20 @@ CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s
 
+CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o: CMakeFiles/PithosCore.dir/flags.make
+CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/ZobristHash.cpp
+CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/ZobristHash.cpp
+
+CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/ZobristHash.cpp > CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.i
+
+CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/ZobristHash.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.s
+
 # Object files for target PithosCore
 PithosCore_OBJECTS = \
 "CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o" \
@@ -223,7 +237,8 @@ PithosCore_OBJECTS = \
 "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o" \
 "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o" \
 "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o" \
-"CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o"
+"CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o" \
+"CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o"
 
 # External object files for target PithosCore
 PithosCore_EXTERNAL_OBJECTS =
@@ -238,9 +253,10 @@ libPithosCore.a: CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o
 libPithosCore.a: CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o
 libPithosCore.a: CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o
 libPithosCore.a: CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o
+libPithosCore.a: CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o
 libPithosCore.a: CMakeFiles/PithosCore.dir/build.make
 libPithosCore.a: CMakeFiles/PithosCore.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libPithosCore.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libPithosCore.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/PithosCore.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PithosCore.dir/link.txt --verbose=$(VERBOSE)
 

@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o.d"
   "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o"
   "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o.d"
+  "CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o"
+  "CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o.d"
   "libPithosCore.a"
   "libPithosCore.pdb"
 )
