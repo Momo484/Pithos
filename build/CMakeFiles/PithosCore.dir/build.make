@@ -76,141 +76,141 @@ CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o: CMakeFiles/PithosCore.di
 CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Board.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Game.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Move.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Move.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Bishop.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Bishop.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/King.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/King.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Knight.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Knight.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Pawn.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Pawn.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Piece.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Piece.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Queen.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Queen.cpp.s
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o: CMakeFiles/PithosCore.dir/flags.make
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o -MF CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o.d -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp > CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.i
 
 CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/core/Pieces/Rook.cpp -o CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s
 
 # Object files for target PithosCore
 PithosCore_OBJECTS = \

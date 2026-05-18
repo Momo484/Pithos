@@ -76,15 +76,15 @@ CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: CMakeFiles/ba
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: CMakeFiles/backend_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -MF CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o.d -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -MF CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o.d -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp
 
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp > CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp > CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i
 
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s
 
 # Object files for target backend_tests
 backend_tests_OBJECTS = \
@@ -96,8 +96,8 @@ backend_tests_EXTERNAL_OBJECTS =
 backend_tests: CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o
 backend_tests: CMakeFiles/backend_tests.dir/build.make
 backend_tests: libPithosCore.a
-backend_tests: _deps/catch2-build/src/libCatch2Main.a
-backend_tests: _deps/catch2-build/src/libCatch2.a
+backend_tests: _deps/catch2-build/src/libCatch2Maind.a
+backend_tests: _deps/catch2-build/src/libCatch2d.a
 backend_tests: CMakeFiles/backend_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable backend_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend_tests.dir/link.txt --verbose=$(VERBOSE)

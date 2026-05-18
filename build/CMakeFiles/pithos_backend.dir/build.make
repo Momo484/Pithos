@@ -76,15 +76,15 @@ CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o: CMakeFiles/pithos_backend.
 CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/main.cpp
 CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o: CMakeFiles/pithos_backend.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o -MF CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o.d -o CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o -MF CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o.d -o CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/main.cpp
 
 CMakeFiles/pithos_backend.dir/src/backend/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pithos_backend.dir/src/backend/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/main.cpp > CMakeFiles/pithos_backend.dir/src/backend/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/main.cpp > CMakeFiles/pithos_backend.dir/src/backend/main.cpp.i
 
 CMakeFiles/pithos_backend.dir/src/backend/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pithos_backend.dir/src/backend/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/main.cpp -o CMakeFiles/pithos_backend.dir/src/backend/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/main.cpp -o CMakeFiles/pithos_backend.dir/src/backend/main.cpp.s
 
 # Object files for target pithos_backend
 pithos_backend_OBJECTS = \
