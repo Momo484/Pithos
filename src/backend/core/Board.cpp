@@ -7,6 +7,7 @@
 #include "Pieces/Bishop.hpp"
 #include "Pieces/Queen.hpp"
 #include "Pieces/King.hpp"
+#include "ZobristHash.hpp"
 #include <cctype>
 #include <cstddef>
 #include <memory>
@@ -59,7 +60,8 @@ void Board::revokeCastlingRights(Square sq) {
 
 // -- Setup ----------------------------------------------------------------------------------------
 Board::Board() {
-    
+    ZobristHash::initialise();
+
     // Initialize singleton piece objects
     pieceSingletons[0]  = std::make_unique<Pawn>(true);
     pieceSingletons[1]  = std::make_unique<Knight>(true);
@@ -84,6 +86,7 @@ void Board::setupStartingPosition() {
             squares[i][j] = ' ';
         }
     }
+    zobristHash = 0;
 
     // --- BLACK PIECES (Top of the board) ---
     
@@ -126,6 +129,18 @@ void Board::setupStartingPosition() {
     // Reset the En Passant target since it's the start of the game
     clearEpTarget();
     castling = {};
+
+    // we compute our initialse zobristHash here
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            if (squares[y][x] != ' ') {
+                zobristHash ^= ZobristHash::getPieceHash(squares[y][x], {x, y});
+            }
+        }
+    }
+    zobristHash ^= ZobristHash::getCastlingHash(castling.whiteKingSide, castling.whiteQueenSide, 
+                                               castling.blackKingSide, castling.blackQueenSide);
+    zobristHash ^= ZobristHash::getToMoveHash(true);  // White to move
 }
 
 // -- Check Detection ------------------------------------------------------------------------------
@@ -208,7 +223,7 @@ const bool Board::isKingChecked(bool isWhite) {
 }
 
 bool Board::checkThreeFoldRepitition() {
-    for (const auto& [key, count] : boardStateCount) {
+    for (const auto& [key, count] : boardStateHashCount) {
         if (count >= 3) {
             return true;
         }
@@ -259,6 +274,17 @@ void Board::makeMove(Move move) {
     Square to = move.getTo();
     char movingPiece = squares[from.y][from.x];
     char capturedPiece = squares[to.y][to.x];
+
+    // removing the current state from the zobrist hash
+    zobristHash ^= ZobristHash::getPieceHash(movingPiece, from);
+    zobristHash ^= ZobristHash::getCastlingHash(castling.whiteKingSide, castling.whiteQueenSide, 
+                                               castling.blackKingSide, castling.blackQueenSide);
+    if (epTarget.x != -1) {
+        zobristHash ^= ZobristHash::getEnPassantHash(epTarget);
+    }
+    zobristHash ^= ZobristHash::getToMoveHash(!move.getIsWhite());  // Toggle turn
+
+
     epTarget = {-1, -1};
 
     if (!move.getIsWhite()) {
@@ -282,27 +308,38 @@ void Board::makeMove(Move move) {
             }
             squares[to.y][to.x] = movingPiece;
             squares[from.y][from.x] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(movingPiece, to);
             break;
         }
-        case MoveType::Capture:
+        case MoveType::Capture: {
+            // removing the captured piece from the hash.
+            char capturedPiece = squares[to.y][to.x];
+            zobristHash ^= ZobristHash::getPieceHash(capturedPiece, to);
             squares[to.y][to.x] = movingPiece;
             squares[from.y][from.x] = ' ';
             // reset halfMoveClock on capture.
             halfMoveClock = 0;
+            zobristHash ^= ZobristHash::getPieceHash(movingPiece, to);
             break;
-        
-        case MoveType::DoublePawnPush:
+        }
+        case MoveType::DoublePawnPush: {
             squares[to.y][to.x] = movingPiece;
             squares[from.y][from.x] = ' ';
             epTarget = {from.x, (from.y + to.y) / 2};
+            zobristHash ^= ZobristHash::getPieceHash(movingPiece, to);
+            zobristHash ^= ZobristHash::getEnPassantHash(epTarget);
             break;
+        }
         case MoveType::EnPassant: {
+            char capturedPawn = std::isupper(movingPiece) ? 'p' : 'P';
+            zobristHash ^= ZobristHash::getPieceHash(capturedPawn, {to.x, from.y});
             squares[to.y][to.x] = movingPiece;
             squares[from.y][from.x] = ' ';
             // Remove the captured pawn — it sits on 'to.x' but at the
             // moving pawn's original rank, not the destination rank
             squares[from.y][to.x] = ' ';
             halfMoveClock = 0;
+            zobristHash ^= ZobristHash::getPieceHash(movingPiece, to);
             break;
         }
 
@@ -315,6 +352,8 @@ void Board::makeMove(Move move) {
             char rook = squares[r][7];
             squares[r][5] = rook;
             squares[r][7] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(movingPiece, {6, r});
+            zobristHash ^= ZobristHash::getPieceHash(rook, {5, r});
             break;
         }
 
@@ -327,13 +366,20 @@ void Board::makeMove(Move move) {
             char rook = squares[r][0];
             squares[r][3] = rook;
             squares[r][0] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(movingPiece, {2, r});
+            zobristHash ^= ZobristHash::getPieceHash(rook, {3, r});
             break;
         }
 
         case MoveType::Promotion: {
+            char capturedPiece = squares[to.y][to.x];
+            if (capturedPiece != ' ') {
+                zobristHash ^= ZobristHash::getPieceHash(capturedPiece, to);
+            }
             char promotionPiece = move.getPromotionPiece();
             squares[to.y][to.x] = promotionPiece;
             squares[from.y][from.x] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(promotionPiece, to);
             halfMoveClock = 0;
             break;
         }
@@ -341,10 +387,11 @@ void Board::makeMove(Move move) {
 
     revokeCastlingRights(from);
     revokeCastlingRights(to);
-    std::string FEN = generateFEN();
-    std::string key = FEN.substr(0, FEN.rfind(' '));  // strip halfmove
-    key = key.substr(0, key.rfind(' '));               // strip fullmove
-    boardStateCount[key]++;
+
+    zobristHash ^= ZobristHash::getCastlingHash(castling.whiteKingSide, castling.whiteQueenSide, 
+                                               castling.blackKingSide, castling.blackQueenSide);
+
+    boardStateHashCount[zobristHash]++;
 
 }
 
@@ -354,10 +401,7 @@ void Board::undoMove() {
     BoardMemento memento = std::move(history.top());
     history.pop();
 
-    std::string FEN = generateFEN();
-    std::string key = FEN.substr(0, FEN.rfind(' '));  // strip halfmove
-    key = key.substr(0, key.rfind(' '));               // strip fullmove
-    boardStateCount[key]--;
+    boardStateHashCount[zobristHash]--;
 
     const Move& move = memento.move;
     Square from = move.getFrom();
@@ -383,29 +427,44 @@ void Board::undoMove() {
         }
     }
 
+    // Remove current state from zobrist before restoration
+    zobristHash ^= ZobristHash::getPieceHash(piece, to);
+    zobristHash ^= ZobristHash::getCastlingHash(castling.whiteKingSide, castling.whiteQueenSide, 
+                                               castling.blackKingSide, castling.blackQueenSide);
+    if (epTarget.x != -1) {
+        zobristHash ^= ZobristHash::getEnPassantHash(epTarget);
+    }
+    zobristHash ^= ZobristHash::getToMoveHash(move.getIsWhite());  // Toggle turn back
+
     switch (move.getType()) {
         case MoveType::Normal:
-            squares[from.y][from.x] = squares[to.y][to.x];
+            squares[from.y][from.x] = piece;
             squares[to.y][to.x] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(piece, from);
             break;
         
         case MoveType::Capture: {
             char capturedPiece = move.getCapturedPieceSymbol();
             squares[from.y][from.x] = piece;
             squares[to.y][to.x] = capturedPiece;
+            zobristHash ^= ZobristHash::getPieceHash(piece, from);
+            zobristHash ^= ZobristHash::getPieceHash(capturedPiece, to);
             break;
         }
 
         case MoveType::DoublePawnPush:
             squares[from.y][from.x] = piece;
             squares[to.y][to.x] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(piece, from);
             break;
 
         case MoveType::EnPassant: {
+            char capturedPawn = !move.getIsWhite() ? 'P' : 'p';
             squares[from.y][from.x] = piece;
             squares[to.y][to.x] = ' ';
-            char capturedPawn = !move.getIsWhite() ? 'P' : 'p';
             squares[from.y][to.x] = capturedPawn;
+            zobristHash ^= ZobristHash::getPieceHash(piece, from);
+            zobristHash ^= ZobristHash::getPieceHash(capturedPawn, {to.x, from.y});
             break;
         }
 
@@ -416,6 +475,8 @@ void Board::undoMove() {
             char rook = squares[r][5];
             squares[r][7] = rook;
             squares[r][5] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(piece, from);
+            zobristHash ^= ZobristHash::getPieceHash(rook, {7, r});
             break;
         }
 
@@ -426,20 +487,31 @@ void Board::undoMove() {
             char rook = squares[r][3];
             squares[r][0] = rook;
             squares[r][3] = ' ';
+            zobristHash ^= ZobristHash::getPieceHash(piece, from);
+            zobristHash ^= ZobristHash::getPieceHash(rook, {0, r});
             break;
         }
 
         case MoveType::Promotion: {
             char pawnPiece = move.getIsWhite() ? 'P' : 'p';
-            squares[from.y][from.x] = pawnPiece;
             char capturedPiece = move.getCapturedPieceSymbol();
+            squares[from.y][from.x] = pawnPiece;
             if (capturedPiece != 0) {
                 squares[to.y][to.x] = capturedPiece;
+                zobristHash ^= ZobristHash::getPieceHash(capturedPiece, to);
             } else {
                 squares[to.y][to.x] = ' ';
             }
+            zobristHash ^= ZobristHash::getPieceHash(pawnPiece, from);
             break;
         }
+    }
+
+    // Restore castling rights in zobrist
+    zobristHash ^= ZobristHash::getCastlingHash(memento.prevCastling.whiteKingSide, memento.prevCastling.whiteQueenSide, 
+                                               memento.prevCastling.blackKingSide, memento.prevCastling.blackQueenSide);
+    if (memento.prevEpTarget.x != -1) {
+        zobristHash ^= ZobristHash::getEnPassantHash(memento.prevEpTarget);
     }
 }
 

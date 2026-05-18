@@ -2,6 +2,7 @@
 #include "BoardMemento.hpp"
 #include "Pieces/Piece.hpp"
 #include "Square.hpp"
+#include <cstdint>
 #include <memory>
 #include <stack>
 #include <string>
@@ -24,11 +25,10 @@ private:
     int halfMoveClock = 0;
     int fullMoveClock = 1;
 
-    // This keeps the count of every board state, so in the case that
-    // the board state repeats 3 times, before it is cleared, we can call threefold repitition.
-    // A board state cannot be repeated after a pawn move or capture, so no need to encapsulate it
-    // in the memento. it is represented by the first field on the FEN.
-    std::unordered_map<std::string, int> boardStateCount;
+    // new boardStateHashCount, keeps track of previously seen board states with 
+    // a zobristHash.
+    uint64_t zobristHash = 0;
+    std::unordered_map<uint64_t, int> boardStateHashCount;
 
     /**
      * @brief Takes a list of pseudoLegal moves and filters it, by determining which moves are legal
@@ -116,4 +116,10 @@ public:
      * @return The FEN notation string of the given board state, (FULL).
      */
     std::string generateFEN();
+
+    /**
+     * @brief Get the current zobrist hash of the board state
+     * 
+     */
+    uint64_t getZobristHash() const { return zobristHash; }
 };
