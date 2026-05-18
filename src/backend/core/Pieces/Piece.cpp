@@ -4,8 +4,8 @@
 using namespace std;
 
 // Constructor implementation using a C++ "Initializer List"
-Piece::Piece(bool white, char sym, Square startPos) 
-            : isWhite(white), symbol(sym), position(startPos) {
+Piece::Piece(bool white, char sym) 
+            : isWhite(white), symbol(sym) {
 }
 
 // Destructor implementation
@@ -13,7 +13,7 @@ Piece::~Piece() {
 }
 
 
-std::vector<Move> Piece::getSlidingMoves(const Board& board, const std::vector<std::pair<int,int>>& dirs) const {
+std::vector<Move> Piece::getSlidingMoves(const Board& board, Square position, const std::vector<std::pair<int,int>>& dirs) const {
     std::vector<Move> moves;
 
     for (const auto& dir : dirs) {
@@ -46,8 +46,4 @@ char Piece::getSymbol() const {
 
 bool Piece::getIsWhite() const {
     return isWhite;
-}
-
-void Piece::setPosition(Square newPosition) {
-    position = newPosition;
 }

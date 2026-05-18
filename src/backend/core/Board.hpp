@@ -11,7 +11,10 @@ class Piece;
 
 class Board{
 private:
-    std::unique_ptr<Piece> squares[8][8];
+    char squares[8][8];
+    // we keep static peice objects for logic calls
+    std::unique_ptr<Piece> pieceSingletons[12];
+
     Square epTarget = {-1, -1};
     CastlingRights castling {};
     std::stack<BoardMemento> history;
@@ -26,12 +29,6 @@ private:
     // A board state cannot be repeated after a pawn move or capture, so no need to encapsulate it
     // in the memento. it is represented by the first field on the FEN.
     std::unordered_map<std::string, int> boardStateCount;
-
-    /**
-     * @brief Generates a peice from the given symbol and side
-     * @return A unique pointer to the generated piece.
-     */
-    std::unique_ptr<Piece> makePiece(char symbol, bool isWhite, Square pos) const;
 
     /**
      * @brief Takes a list of pseudoLegal moves and filters it, by determining which moves are legal

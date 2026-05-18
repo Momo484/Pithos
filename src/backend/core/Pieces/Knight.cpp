@@ -4,7 +4,7 @@ using namespace std;
 
 
 // h for horsey!! :(( no allowed -> n for knight?
-Knight::Knight(bool white, Square position) : Piece(white, (white ? 'N' : 'n'), position) {}
+Knight::Knight(bool white) : Piece(white, (white ? 'N' : 'n')) {}
 
 Knight::~Knight() {
     // idk what a destructor is meant to look like yet.
@@ -19,7 +19,7 @@ const std::vector<std::pair<int,int>> Knight::moveOffsets = {
 
 // remember this detects pseudo legal moves, larger scales checks, like checking pins, and checks
 // are determined by the board. 
-vector<Move> Knight::getLegalMoves(const Board& board) {
+vector<Move> Knight::getLegalMoves(const Board& board, Square position) {
     vector<Move> moves; 
 
     for (const auto& offset : moveOffsets) {

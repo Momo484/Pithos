@@ -24,7 +24,20 @@ Piece* Board::getPieceAt(Square sq) const {
         return nullptr;
     }
 
-    return squares[sq.y][sq.x].get();
+    char piece = squares[sq.y][sq.x];
+    if (piece == ' ') return nullptr;
+
+    int idx = -1;
+    switch (std::tolower(piece)) {
+        case 'p': idx = std::isupper(piece) ? 0 : 6; break;
+        case 'n': idx = std::isupper(piece) ? 1 : 7; break;
+        case 'b': idx = std::isupper(piece) ? 2 : 8; break;
+        case 'r': idx = std::isupper(piece) ? 3 : 9; break;
+        case 'q': idx = std::isupper(piece) ? 4 : 10; break;
+        case 'k': idx = std::isupper(piece) ? 5 : 11; break;
+    }
+
+    return idx >= 0 ? pieceSingletons[idx].get() : nullptr;
 }
 
 void Board::clearEpTarget() {
@@ -33,20 +46,6 @@ void Board::clearEpTarget() {
 
 void Board::setEpTarget(Square ep) {
     epTarget = ep;
-}
-
-// Reconstructs a piece from a captured symbol — this is what keeps the
-// memento lightweight. No unique_ptr in the snapshot, just a char.
-std::unique_ptr<Piece> Board::makePiece(char symbol, bool isWhite, Square pos) const {
-    switch (std::tolower(symbol)) {
-        case 'p': return std::make_unique<Pawn>(isWhite, pos);
-        case 'r': return std::make_unique<Rook>(isWhite, pos);
-        case 'n': return std::make_unique<Knight>(isWhite, pos);
-        case 'b': return std::make_unique<Bishop>(isWhite, pos);
-        case 'q': return std::make_unique<Queen>(isWhite, pos);
-        case 'k': return std::make_unique<King>(isWhite, pos);
-        default:  return nullptr;
-    }
 }
 
 void Board::revokeCastlingRights(Square sq) {
@@ -60,33 +59,47 @@ void Board::revokeCastlingRights(Square sq) {
 
 // -- Setup ----------------------------------------------------------------------------------------
 Board::Board() {
+    
+    // Initialize singleton piece objects
+    pieceSingletons[0]  = std::make_unique<Pawn>(true);
+    pieceSingletons[1]  = std::make_unique<Knight>(true);
+    pieceSingletons[2]  = std::make_unique<Bishop>(true);
+    pieceSingletons[3]  = std::make_unique<Rook>(true);
+    pieceSingletons[4]  = std::make_unique<Queen>(true);
+    pieceSingletons[5]  = std::make_unique<King>(true);
+    pieceSingletons[6]  = std::make_unique<Pawn>(false);
+    pieceSingletons[7]  = std::make_unique<Knight>(false);
+    pieceSingletons[8]  = std::make_unique<Bishop>(false);
+    pieceSingletons[9]  = std::make_unique<Rook>(false);
+    pieceSingletons[10] = std::make_unique<Queen>(false);
+    pieceSingletons[11] = std::make_unique<King>(false);
+
     setupStartingPosition();
 }
 
 void Board::setupStartingPosition() {
-    // Clearing the board.
-    for (auto& row : squares) {
-        for (auto& sq : row) {
-            sq.reset();
+    // Clear the board
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            squares[i][j] = ' ';
         }
     }
-
 
     // --- BLACK PIECES (Top of the board) ---
     
     // Rank 8 (y = 7): Major and Minor Pieces
-    squares[7][0] = std::make_unique<Rook>  (false, Square{0, 7});
-    squares[7][1] = std::make_unique<Knight>(false, Square{1, 7});
-    squares[7][2] = std::make_unique<Bishop>(false, Square{2, 7});
-    squares[7][3] = std::make_unique<Queen> (false, Square{3, 7});
-    squares[7][4] = std::make_unique<King>  (false, Square{4, 7}); // King on 'e' file (x=4)
-    squares[7][5] = std::make_unique<Bishop>(false, Square{5, 7});
-    squares[7][6] = std::make_unique<Knight>(false, Square{6, 7});
-    squares[7][7] = std::make_unique<Rook>  (false, Square{7, 7});
+    squares[7][0] = 'r';
+    squares[7][1] = 'n';
+    squares[7][2] = 'b';
+    squares[7][3] = 'q';
+    squares[7][4] = 'k';
+    squares[7][5] = 'b';
+    squares[7][6] = 'n';
+    squares[7][7] = 'r';
 
     // Rank 7 (y = 6): Black Pawns
     for (int i = 0; i < 8; i++) {
-        squares[6][i] = std::make_unique<Pawn>(false, Square{i, 6});
+        squares[6][i] = 'p';
     }
 
     blackKingPos = {4, 7};
@@ -95,25 +108,24 @@ void Board::setupStartingPosition() {
 
     // Rank 2 (y = 1): White Pawns
     for (int i = 0; i < 8; i++) {
-        squares[1][i] = std::make_unique<Pawn>(true, Square{i, 1});
+        squares[1][i] = 'P';
     }
 
     // Rank 1 (y = 0): Major and Minor Pieces
-    squares[0][0] = std::make_unique<Rook>  (true, Square{0, 0});
-    squares[0][1] = std::make_unique<Knight>(true, Square{1, 0});
-    squares[0][2] = std::make_unique<Bishop>(true, Square{2, 0});
-    squares[0][3] = std::make_unique<Queen> (true, Square{3, 0});
-    squares[0][4] = std::make_unique<King>  (true, Square{4, 0}); // King on 'e' file (x=4)
-    squares[0][5] = std::make_unique<Bishop>(true, Square{5, 0});
-    squares[0][6] = std::make_unique<Knight>(true, Square{6, 0});
-    squares[0][7] = std::make_unique<Rook>  (true, Square{7, 0});
+    squares[0][0] = 'R';
+    squares[0][1] = 'N';
+    squares[0][2] = 'B';
+    squares[0][3] = 'Q';
+    squares[0][4] = 'K';
+    squares[0][5] = 'B';
+    squares[0][6] = 'N';
+    squares[0][7] = 'R';
 
     whiteKingPos = {4, 0};
 
     // Reset the En Passant target since it's the start of the game
     clearEpTarget();
     castling = {};
-
 }
 
 // -- Check Detection ------------------------------------------------------------------------------
@@ -228,7 +240,7 @@ std::vector<Move> Board::generateAllLegalMoves(bool isWhiteTurn) {
         for (int j = 0; j < 8; j++) {
             Piece *piece = getPieceAt({j, i});
             if (piece != nullptr && piece->getIsWhite() == isWhiteTurn) {
-                std::vector<Move> piecePseudoLegal = piece->getLegalMoves(*this);
+                std::vector<Move> piecePseudoLegal = piece->getLegalMoves(*this, {j, i});
                 pseudoLegalMoves.insert(pseudoLegalMoves.end(), 
                     piecePseudoLegal.begin(), piecePseudoLegal.end());
             }
@@ -245,6 +257,8 @@ void Board::makeMove(Move move) {
 
     Square from = move.getFrom();
     Square to = move.getTo();
+    char movingPiece = squares[from.y][from.x];
+    char capturedPiece = squares[to.y][to.x];
     epTarget = {-1, -1};
 
     if (!move.getIsWhite()) {
@@ -252,43 +266,42 @@ void Board::makeMove(Move move) {
         fullMoveClock++;
     }
 
-    // update the king position
-    if (getPieceAt(from)->getSymbol() == 'K') {
-        whiteKingPos = to;
-    } 
-    if (getPieceAt(from)->getSymbol() == 'k') {
-        blackKingPos = to;
+     if (std::tolower(movingPiece) == 'k') {
+        if (move.getIsWhite()) {
+            whiteKingPos = to;
+        } else {
+            blackKingPos = to;
+        }
     }
 
     switch (move.getType()) {
         case MoveType::Normal: {
-            if (getPieceAt(from)->getSymbol() == 'p' || getPieceAt(from)->getSymbol() == 'P') {
+            if (std::tolower(movingPiece) == 'p') {
                 // reset halfMoveClock on pawn move. 
                 halfMoveClock = 0;
             }
-            squares[to.y][to.x] = std::move(squares[from.y][from.x]);
-            squares[to.y][to.x]->setPosition(to);
+            squares[to.y][to.x] = movingPiece;
+            squares[from.y][from.x] = ' ';
             break;
         }
         case MoveType::Capture:
-            squares[to.y][to.x] = std::move(squares[from.y][from.x]);
-            squares[to.y][to.x]->setPosition(to);
+            squares[to.y][to.x] = movingPiece;
+            squares[from.y][from.x] = ' ';
             // reset halfMoveClock on capture.
             halfMoveClock = 0;
             break;
         
         case MoveType::DoublePawnPush:
-            squares[to.y][to.x] = std::move(squares[from.y][from.x]);
-            squares[to.y][to.x]->setPosition(to);
+            squares[to.y][to.x] = movingPiece;
+            squares[from.y][from.x] = ' ';
             epTarget = {from.x, (from.y + to.y) / 2};
             break;
         case MoveType::EnPassant: {
-            squares[to.y][to.x] = std::move(squares[from.y][from.x]);
-            squares[to.y][to.x]->setPosition(to);
+            squares[to.y][to.x] = movingPiece;
+            squares[from.y][from.x] = ' ';
             // Remove the captured pawn — it sits on 'to.x' but at the
             // moving pawn's original rank, not the destination rank
-            squares[from.y][to.x].reset();
-
+            squares[from.y][to.x] = ' ';
             halfMoveClock = 0;
             break;
         }
@@ -296,30 +309,31 @@ void Board::makeMove(Move move) {
         case MoveType::CastleKingSide: {
             int r = from.y;
             // King: e→g
-            squares[r][6] = std::move(squares[r][4]);
-            squares[r][6]->setPosition({6, r});
+            squares[r][6] = movingPiece;
+            squares[r][4] = ' ';
             // Rook: h→f
-            squares[r][5] = std::move(squares[r][7]);
-            squares[r][5]->setPosition({5, r});
+            char rook = squares[r][7];
+            squares[r][5] = rook;
+            squares[r][7] = ' ';
             break;
         }
 
         case MoveType::CastleQueenSide: {
             int r = from.y;
             // King: e→c
-            squares[r][2] = std::move(squares[r][4]);
-            squares[r][2]->setPosition({2, r});
+            squares[r][2] = movingPiece;
+            squares[r][4] = ' ';
             // Rook: a→d
-            squares[r][3] = std::move(squares[r][0]);
-            squares[r][3]->setPosition({3, r});
+            char rook = squares[r][0];
+            squares[r][3] = rook;
+            squares[r][0] = ' ';
             break;
         }
 
         case MoveType::Promotion: {
-            squares[from.y][from.x].reset();   // remove pawn
-            bool isWhite = move.getIsWhite();
-            squares[to.y][to.x] = makePiece(move.getPromotionPiece(), isWhite, to);
-            
+            char promotionPiece = move.getPromotionPiece();
+            squares[to.y][to.x] = promotionPiece;
+            squares[from.y][from.x] = ' ';
             halfMoveClock = 0;
             break;
         }
@@ -360,71 +374,69 @@ void Board::undoMove() {
     }
 
     // update the king position
-    if (getPieceAt(to)->getSymbol() == 'K') {
-        whiteKingPos = from;
-    } 
-    if (getPieceAt(to)->getSymbol() == 'k') {
-        blackKingPos = from;
+    char piece = squares[to.y][to.x];
+    if (std::tolower(piece) == 'k') {
+        if (move.getIsWhite()) {
+            whiteKingPos = from;
+        } else {
+            blackKingPos = from;
+        }
     }
 
     switch (move.getType()) {
         case MoveType::Normal:
-            squares[from.y][from.x] = std::move(squares[to.y][to.x]);
-            squares[from.y][from.x]->setPosition(from);
+            squares[from.y][from.x] = squares[to.y][to.x];
+            squares[to.y][to.x] = ' ';
             break;
         
         case MoveType::Capture: {
-            squares[from.y][from.x] = std::move(squares[to.y][to.x]);
-            squares[from.y][from.x]->setPosition(from);
-            char sym = move.getCapturedPieceSymbol();
-            bool capturedWasWhite = std::isupper(sym);
-            squares[to.y][to.x] = makePiece(sym, capturedWasWhite, to);
+            char capturedPiece = move.getCapturedPieceSymbol();
+            squares[from.y][from.x] = piece;
+            squares[to.y][to.x] = capturedPiece;
             break;
         }
 
         case MoveType::DoublePawnPush:
-            squares[from.y][from.x] = std::move(squares[to.y][to.x]);
-            squares[from.y][from.x]->setPosition(from);
+            squares[from.y][from.x] = piece;
+            squares[to.y][to.x] = ' ';
             break;
 
         case MoveType::EnPassant: {
-            squares[from.y][from.x] = std::move(squares[to.y][to.x]);
-            squares[from.y][from.x]->setPosition(from);
-            // Restore the captured pawn at its original square
-            bool capturedWasWhite = !move.getIsWhite();
-            squares[from.y][to.x] = makePiece('P', capturedWasWhite, {to.x, from.y});
+            squares[from.y][from.x] = piece;
+            squares[to.y][to.x] = ' ';
+            char capturedPawn = !move.getIsWhite() ? 'P' : 'p';
+            squares[from.y][to.x] = capturedPawn;
             break;
         }
 
         case MoveType::CastleKingSide: {
             int r = from.y;
-            squares[r][4] = std::move(squares[r][6]);   // king g→e
-            squares[r][4]->setPosition({4, r});
-            squares[r][7] = std::move(squares[r][5]);   // rook f→h
-            squares[r][7]->setPosition({7, r});
+            squares[r][4] = piece;
+            squares[r][6] = ' ';
+            char rook = squares[r][5];
+            squares[r][7] = rook;
+            squares[r][5] = ' ';
             break;
         }
 
         case MoveType::CastleQueenSide: {
             int r = from.y;
-            squares[r][4] = std::move(squares[r][2]);   // king c→e
-            squares[r][4]->setPosition({4, r});
-            squares[r][0] = std::move(squares[r][3]);   // rook d→a
-            squares[r][0]->setPosition({0, r});
+            squares[r][4] = piece;
+            squares[r][2] = ' ';
+            char rook = squares[r][3];
+            squares[r][0] = rook;
+            squares[r][3] = ' ';
             break;
         }
 
         case MoveType::Promotion: {
-            // Put a pawn back, remove the promoted piece
-            bool isWhite = move.getIsWhite();
-            squares[from.y][from.x] = makePiece('P', isWhite, from);
-            // Restore any piece that was captured on the promotion square
-            char sym = move.getCapturedPieceSymbol();
-            if (sym != 0) {
-                bool capturedWasWhite = std::isupper(sym);
-                squares[to.y][to.x] = makePiece(sym, capturedWasWhite, to);
+            char pawnPiece = move.getIsWhite() ? 'P' : 'p';
+            squares[from.y][from.x] = pawnPiece;
+            char capturedPiece = move.getCapturedPieceSymbol();
+            if (capturedPiece != 0) {
+                squares[to.y][to.x] = capturedPiece;
             } else {
-                squares[to.y][to.x].reset();
+                squares[to.y][to.x] = ' ';
             }
             break;
         }
@@ -439,29 +451,26 @@ std::string Board::generateFEN() {
     for (int rank = 7; rank >= 0; rank--) {
         int empty = 0;
         for (int file = 0; file < 8; file++) {
-            Piece* current = getPieceAt({file, rank});
-            if (current == nullptr) {
+            char current = squares[rank][file];
+            if (current == ' ') {
                 empty++;
             } else {
                 if (empty != 0) {
                     FEN += std::to_string(empty);
                 }
-                FEN += current->getSymbol();
+                FEN += current;
             }
         }
         if (empty != 0) {
             FEN += std::to_string(empty);
         }
         if (rank != 0) {
-            // all ranks but the last have a slash following it.
             FEN += '/';
         }
     }
-    // a gap between the first field and the next
     FEN += " ";
 
     // Second Field: Active Colours 
-    // lowk disgusting but we have to figure our whose turn it is, 
     bool whiteTurn = true;
     if (!history.empty()) {
         const BoardMemento& memento = history.top();
@@ -471,7 +480,6 @@ std::string Board::generateFEN() {
     FEN += " ";
 
     // Third Field: Castling Rights
-    // first we deal with white
     std::string castleStr = "";
     if (castling.whiteKingSide)  castleStr += 'K';
     if (castling.whiteQueenSide) castleStr += 'Q';

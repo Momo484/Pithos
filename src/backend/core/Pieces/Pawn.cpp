@@ -3,14 +3,14 @@
 
 using namespace std;
 
-Pawn::Pawn(bool white, Square position) : Piece(white, (white ? 'P' : 'p'), position) {
+Pawn::Pawn(bool white) : Piece(white, (white ? 'P' : 'p')) {
 }
 
 Pawn::~Pawn() {
     // Destructor
 }
 
-vector<Move> Pawn::getLegalMoves(const Board& board) {
+vector<Move> Pawn::getLegalMoves(const Board& board, Square position) {
     vector<Move> moves;
 
     // 1. Setup our multipliers and ranks based on color

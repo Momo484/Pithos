@@ -6,9 +6,9 @@ private:
     static const std::vector<std::pair<int,int>> dirs;
 
 public:
-    Rook(bool isWhite, Square position);
+    Rook(bool isWhite);
 
     ~Rook() override;
 
-    std::vector<Move> getLegalMoves(const Board& board) override; 
+    std::vector<Move> getLegalMoves(const Board& board, Square position) override; 
 };

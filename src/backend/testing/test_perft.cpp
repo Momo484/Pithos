@@ -62,5 +62,6 @@ TEST_CASE("Perft: Starting Position", "[perft]") {
     SECTION("Depth 2") { runPerftWithTiming(2, 400); }
     SECTION("Depth 3") { runPerftWithTiming(3, 8902); }
     SECTION("Depth 4") { runPerftWithTiming(4, 197281); }
-    // We will leave depth 4 out for a moment just to ensure it compiles fast
+    SECTION("Depth 5") { runPerftWithTiming(5, 4865609); }
+    
 }
