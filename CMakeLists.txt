@@ -21,12 +21,15 @@ file(GLOB_RECURSE TEST_SOURCES "src/backend/testing/*.cpp")
 
 # --- 3. Build Core Library ---
 add_library(PithosCore ${CORE_SOURCES})
+target_include_directories(PithosCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/backend/core)
 
 # --- 4. Build Main Engine ---
 add_executable(pithos_backend src/backend/main.cpp)
 target_link_libraries(pithos_backend PRIVATE PithosCore)
+target_include_directories(pithos_backend PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/backend/core)
 
 # --- 5. Build Testing Suite ---
 add_executable(backend_tests ${TEST_SOURCES})
 # Link your core logic, AND link the Catch2 framework we just downloaded
 target_link_libraries(backend_tests PRIVATE PithosCore Catch2::Catch2WithMain)
+target_include_directories(backend_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/backend/core)
