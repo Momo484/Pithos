@@ -421,6 +421,30 @@ src/backend/core/Pieces/Rook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.s
 .PHONY : src/backend/core/Pieces/Rook.cpp.s
 
+src/backend/core/ZobristHash.o: src/backend/core/ZobristHash.cpp.o
+.PHONY : src/backend/core/ZobristHash.o
+
+# target to build an object file
+src/backend/core/ZobristHash.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o
+.PHONY : src/backend/core/ZobristHash.cpp.o
+
+src/backend/core/ZobristHash.i: src/backend/core/ZobristHash.cpp.i
+.PHONY : src/backend/core/ZobristHash.i
+
+# target to preprocess a source file
+src/backend/core/ZobristHash.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.i
+.PHONY : src/backend/core/ZobristHash.cpp.i
+
+src/backend/core/ZobristHash.s: src/backend/core/ZobristHash.cpp.s
+.PHONY : src/backend/core/ZobristHash.s
+
+# target to generate assembly for a file
+src/backend/core/ZobristHash.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.s
+.PHONY : src/backend/core/ZobristHash.cpp.s
+
 src/backend/main.o: src/backend/main.cpp.o
 .PHONY : src/backend/main.o
 
@@ -512,6 +536,9 @@ help:
 	@echo "... src/backend/core/Pieces/Rook.o"
 	@echo "... src/backend/core/Pieces/Rook.i"
 	@echo "... src/backend/core/Pieces/Rook.s"
+	@echo "... src/backend/core/ZobristHash.o"
+	@echo "... src/backend/core/ZobristHash.i"
+	@echo "... src/backend/core/ZobristHash.s"
 	@echo "... src/backend/main.o"
 	@echo "... src/backend/main.i"
 	@echo "... src/backend/main.s"

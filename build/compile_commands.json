@@ -61,6 +61,12 @@
 },
 {
   "directory": "/Users/aabhushan/Documents/Pithos/build",
+  "command": "/usr/bin/clang++  -I/Users/aabhushan/Documents/Pithos/src/backend/core -g -std=gnu++17 -arch arm64 -o CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/core/ZobristHash.cpp",
+  "file": "/Users/aabhushan/Documents/Pithos/src/backend/core/ZobristHash.cpp",
+  "output": "CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Pithos/build",
   "command": "/usr/bin/clang++  -I/Users/aabhushan/Documents/Pithos/src/backend/core -g -std=gnu++17 -arch arm64 -o CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/main.cpp",
   "file": "/Users/aabhushan/Documents/Pithos/src/backend/main.cpp",
   "output": "CMakeFiles/pithos_backend.dir/src/backend/main.cpp.o"
