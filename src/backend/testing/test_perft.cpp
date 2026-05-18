@@ -1,4 +1,4 @@
-#include <catch2/catch_test_macros.hpp>
+#include <catch2/catch_test_macros.hpp> 
 #include "../core/Board.hpp"
 #include "../core/Move.hpp"
 
@@ -61,5 +61,6 @@ TEST_CASE("Perft: Starting Position", "[perft]") {
     SECTION("Depth 1") { runPerftWithTiming(1, 20); }
     SECTION("Depth 2") { runPerftWithTiming(2, 400); }
     SECTION("Depth 3") { runPerftWithTiming(3, 8902); }
+    SECTION("Depth 4") { runPerftWithTiming(4, 197281); }
     // We will leave depth 4 out for a moment just to ensure it compiles fast
 }

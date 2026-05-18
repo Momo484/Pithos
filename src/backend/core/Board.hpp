@@ -15,6 +15,8 @@ private:
     Square epTarget = {-1, -1};
     CastlingRights castling {};
     std::stack<BoardMemento> history;
+    Square blackKingPos;
+    Square whiteKingPos;
 
     int halfMoveClock = 0;
     int fullMoveClock = 1;
@@ -38,7 +40,7 @@ private:
      * out
      * @return A list of legal moves that are playable.
      */
-    std::vector<Move> pseudoToLegalMoves(std::vector<Move> moves);
+    std::vector<Move> pseudoToLegalMoves(const std::vector<Move> moves);
 
     /**
      * @brief Naivly tries to revoke the castling rights of the piece at the square in question

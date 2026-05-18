@@ -89,6 +89,8 @@ void Board::setupStartingPosition() {
         squares[6][i] = std::make_unique<Pawn>(false, Square{i, 6});
     }
 
+    blackKingPos = {4, 7};
+
     // --- WHITE PIECES (Bottom of the board) ---
 
     // Rank 2 (y = 1): White Pawns
@@ -106,6 +108,8 @@ void Board::setupStartingPosition() {
     squares[0][6] = std::make_unique<Knight>(true, Square{6, 0});
     squares[0][7] = std::make_unique<Rook>  (true, Square{7, 0});
 
+    whiteKingPos = {4, 0};
+
     // Reset the En Passant target since it's the start of the game
     clearEpTarget();
     castling = {};
@@ -116,18 +120,8 @@ void Board::setupStartingPosition() {
 const bool Board::isKingChecked(bool isWhite) {
     // ray cast from the king 
     // first we find the king, we could keep a reference, but that seems uneccesary.
-    char kingSymbol = isWhite ? 'K' : 'k';
-    Square kingPos = {-1, -1};
-    // findin the correct king.
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            if (auto* p = squares[i][j].get()) {
-                if (p->getSymbol() == kingSymbol) {
-                    kingPos = {j, i};
-                }
-            }
-        }
-    }
+
+    Square kingPos = isWhite ? whiteKingPos : blackKingPos;
 
     // Opponent symbols we test against
     char oppQueen  = isWhite ? 'q' : 'Q';
@@ -218,7 +212,7 @@ bool Board::validateMove(Move move) {
     return legal;
 }
 
-std::vector<Move> Board::pseudoToLegalMoves(std::vector<Move> moves) {
+std::vector<Move> Board::pseudoToLegalMoves(const std::vector<Move> moves) {
     std::vector<Move> legalMoves; 
     for (Move move : moves) {
         if (validateMove(move)) {
@@ -256,6 +250,14 @@ void Board::makeMove(Move move) {
     if (!move.getIsWhite()) {
         // we increment fullMoveClock on black turns.
         fullMoveClock++;
+    }
+
+    // update the king position
+    if (getPieceAt(from)->getSymbol() == 'K') {
+        whiteKingPos = to;
+    } 
+    if (getPieceAt(from)->getSymbol() == 'k') {
+        blackKingPos = to;
     }
 
     switch (move.getType()) {
@@ -355,6 +357,14 @@ void Board::undoMove() {
     if (!move.getIsWhite()) {
         // we decrement our fullMoveClock since we undid a black move
         fullMoveClock--;
+    }
+
+    // update the king position
+    if (getPieceAt(to)->getSymbol() == 'K') {
+        whiteKingPos = from;
+    } 
+    if (getPieceAt(to)->getSymbol() == 'k') {
+        blackKingPos = from;
     }
 
     switch (move.getType()) {
