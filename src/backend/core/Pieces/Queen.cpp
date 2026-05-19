@@ -6,12 +6,11 @@ Queen::Queen(bool isWhite) : Piece(isWhite, (isWhite ? 'Q' : 'q')) {}
 
 Queen::~Queen() {}
 
-const std::vector<std::pair<int,int>> Queen::dirs = {
-    {1, 0}, {-1, 0}, {0, 1}, {0, -1}, // Rook dirs
+const std::vector<std::pair<int, int>> Queen::dirs = {
+    {1, 0}, {-1, 0}, {0, 1},  {0, -1}, // Rook dirs
     {1, 1}, {1, -1}, {-1, 1}, {-1, -1} // Bishop dirs
 };
 
-vector<Move> Queen::getLegalMoves(const Board& board, Square position) {
-    return getSlidingMoves(board, position, dirs);
+vector<Move> Queen::getLegalMoves(const Board &board, Square position) {
+  return getSlidingMoves(board, position, dirs);
 }
-

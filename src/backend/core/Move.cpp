@@ -1,37 +1,24 @@
 #include "Move.hpp"
 
 // Constructor 1: Building a move from coordinates
-Move::Move(Square fromSquare, Square toSquare, MoveType type, bool isWhite) 
-    : from(fromSquare), to(toSquare), type(type), isWhite(isWhite) {
-}
+Move::Move(Square fromSquare, Square toSquare, MoveType type, bool isWhite)
+    : from(fromSquare), to(toSquare), type(type), isWhite(isWhite) {}
 
-Move::Move(Square fromSquare, Square toSquare, MoveType type, bool isWhite, char capturedPieceSymbol, char promotionPiece) 
-    : from(fromSquare), to(toSquare), type(type), isWhite(isWhite), capturedPieceSymbol(capturedPieceSymbol), promotionPiece(promotionPiece) {
+Move::Move(Square fromSquare, Square toSquare, MoveType type, bool isWhite,
+           char capturedPieceSymbol, char promotionPiece)
+    : from(fromSquare), to(toSquare), type(type), isWhite(isWhite),
+      capturedPieceSymbol(capturedPieceSymbol), promotionPiece(promotionPiece) {
 }
-
 
 // Getters
-Square Move::getFrom() const {
-    return from;
-}
+Square Move::getFrom() const { return from; }
 
-Square Move::getTo() const {
-    return to;
-}
+Square Move::getTo() const { return to; }
 
-bool Move::getIsWhite() const {
-    return isWhite;
-}
+bool Move::getIsWhite() const { return isWhite; }
 
-MoveType Move::getType() const {
-    return type;
-}
+MoveType Move::getType() const { return type; }
 
-char Move::getCapturedPieceSymbol() const {
-    return capturedPieceSymbol;
-}
+char Move::getCapturedPieceSymbol() const { return capturedPieceSymbol; }
 
-char Move::getPromotionPiece() const {
-    return getPromotionPiece();
-}
-
+char Move::getPromotionPiece() const { return getPromotionPiece(); }

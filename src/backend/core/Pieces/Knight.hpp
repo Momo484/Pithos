@@ -2,18 +2,16 @@
 #include "Piece.hpp"
 #include <vector>
 
-
 class Knight : public Piece {
 private:
-    static const std::vector<std::pair<int,int>> moveOffsets;
+  static const std::vector<std::pair<int, int>> moveOffsets;
 
 public:
-    Knight(bool white);
-    
-    // Override the base destructor
-    ~Knight() override;
+  Knight(bool white);
 
-    // pseudo legal move generation.
-    std::vector<Move> getLegalMoves(const Board& board, Square position) override; 
+  // Override the base destructor
+  ~Knight() override;
 
+  // pseudo legal move generation.
+  std::vector<Move> getLegalMoves(const Board &board, Square position) override;
 };

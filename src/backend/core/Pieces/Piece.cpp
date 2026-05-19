@@ -4,46 +4,43 @@
 using namespace std;
 
 // Constructor implementation using a C++ "Initializer List"
-Piece::Piece(bool white, char sym) 
-            : isWhite(white), symbol(sym) {
-}
+Piece::Piece(bool white, char sym) : isWhite(white), symbol(sym) {}
 
 // Destructor implementation
-Piece::~Piece() {
-}
+Piece::~Piece() {}
 
+std::vector<Move>
+Piece::getSlidingMoves(const Board &board, Square position,
+                       const std::vector<std::pair<int, int>> &dirs) const {
+  std::vector<Move> moves;
 
-std::vector<Move> Piece::getSlidingMoves(const Board& board, Square position, const std::vector<std::pair<int,int>>& dirs) const {
-    std::vector<Move> moves;
+  for (const auto &dir : dirs) {
+    Square moveTo = position;
+    while (true) {
+      moveTo.x += dir.first;
+      moveTo.y += dir.second;
 
-    for (const auto& dir : dirs) {
-        Square moveTo = position;
-        while (true) {
-            moveTo.x += dir.first;
-            moveTo.y += dir.second;
-            
-            if (!board.onBoard(moveTo)) break;
-            
-            Piece* target = board.getPieceAt(moveTo);
-            
-            if (target != nullptr && isWhite == target->getIsWhite()) break;
+      if (!board.onBoard(moveTo))
+        break;
 
-            if (target != nullptr) {
-                moves.push_back(Move(position, moveTo, MoveType::Capture,isWhite, target->getSymbol(), ' '));
-                break; 
-            } else {
-                moves.push_back(Move(position, moveTo, MoveType::Normal, isWhite));
-            }
-        }
+      Piece *target = board.getPieceAt(moveTo);
+
+      if (target != nullptr && isWhite == target->getIsWhite())
+        break;
+
+      if (target != nullptr) {
+        moves.push_back(Move(position, moveTo, MoveType::Capture, isWhite,
+                             target->getSymbol(), ' '));
+        break;
+      } else {
+        moves.push_back(Move(position, moveTo, MoveType::Normal, isWhite));
+      }
     }
-    return moves;
+  }
+  return moves;
 }
 
 // Getters
-char Piece::getSymbol() const {
-    return symbol;
-}
+char Piece::getSymbol() const { return symbol; }
 
-bool Piece::getIsWhite() const {
-    return isWhite;
-}
+bool Piece::getIsWhite() const { return isWhite; }

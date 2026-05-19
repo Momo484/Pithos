@@ -2,16 +2,14 @@
 #include "Piece.hpp"
 #include <vector>
 
-
 class Pawn : public Piece {
 private:
-
 public:
-    Pawn(bool white);
-    
-    // Override the base destructor
-    ~Pawn() override;
+  Pawn(bool white);
 
-    // pseudo legal move generation.
-    std::vector<Move> getLegalMoves(const Board& board, Square position) override; 
+  // Override the base destructor
+  ~Pawn() override;
+
+  // pseudo legal move generation.
+  std::vector<Move> getLegalMoves(const Board &board, Square position) override;
 };

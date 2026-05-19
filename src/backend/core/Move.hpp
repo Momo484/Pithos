@@ -2,34 +2,34 @@
 #include "Square.hpp"
 
 enum class MoveType {
-    Normal,
-    Capture,
-    DoublePawnPush,
-    EnPassant,
-    CastleKingSide,
-    CastleQueenSide,
-    // promotion deals with promotionCaptures
-    Promotion,
+  Normal,
+  Capture,
+  DoublePawnPush,
+  EnPassant,
+  CastleKingSide,
+  CastleQueenSide,
+  // promotion deals with promotionCaptures
+  Promotion,
 };
 
 class Move {
 private:
-    Square from;
-    Square to;
-    MoveType type;
-    char capturedPieceSymbol = 0;
-    char promotionPiece = 'q';   // only used for Promotion
-    bool isWhite;
+  Square from;
+  Square to;
+  MoveType type;
+  char capturedPieceSymbol = 0;
+  char promotionPiece = 'q'; // only used for Promotion
+  bool isWhite;
 
 public:
-    Move(Square from, Square to, MoveType type, bool isWhite);
-    Move(Square from, Square to, MoveType type, bool isWhite, char capturedPieceSymbol, char promotionPiece);
+  Move(Square from, Square to, MoveType type, bool isWhite);
+  Move(Square from, Square to, MoveType type, bool isWhite,
+       char capturedPieceSymbol, char promotionPiece);
 
-
-    Square getFrom() const;
-    Square getTo() const;
-    bool getIsWhite() const;
-    MoveType getType() const;
-    char getCapturedPieceSymbol() const;
-    char getPromotionPiece()const;
+  Square getFrom() const;
+  Square getTo() const;
+  bool getIsWhite() const;
+  MoveType getType() const;
+  char getCapturedPieceSymbol() const;
+  char getPromotionPiece() const;
 };
