@@ -3,12 +3,26 @@
 #include <QDebug>      // gives us qDebug() for printing, like cout
 #include <QMouseEvent> // gives us access to mouse click positions
 #include <QPainter>    // We use this to draw things
+#include <string>
 
 // --- Constructor
 
 BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) {
   // Enables mouse tracking so we get mouseMoveEvents without a button holds
   setMouseTracking(true);
+  for (char c : {'P', 'N', 'B', 'R', 'Q', 'K', 'p', 'n', 'b', 'r', 'q', 'k'}) {
+    std::string filename = ":/pieces/";
+    filename += (char)std::tolower(c); // piece letter — p, n, b, r, q, k
+    filename +=
+        std::isupper(c) ? 'w' : 'b'; // colour — w for white, b for black
+    filename += ".svg";
+    piecePixmaps[c] = QPixmap(QString::fromStdString(filename));
+  }
+  for (auto &[ch, px] : piecePixmaps) {
+    if (px.isNull())
+      qDebug() << "Failed to load piece:" << ch;
+  }
+  game.reset();
 }
 
 // --- Helper
@@ -40,40 +54,33 @@ bool BoardWidget::isValidSquare(Square sq) const {
 // Called every time the board needs to be redrawn
 // call update() to request a redraw, never call ourselves.
 
-void BoardWidget::paintEvent(QPaintEvent * /*event*/) {
-  // This is the drawing tool, always construct with this
-  // it must not outlive the paint event
+void BoardWidget::paintEvent(QPaintEvent *) {
   QPainter painter(this);
-
   int sz = squareSize();
 
-  for (int rank = 0; rank < 8; rank++) {
-    for (int file = 0; file < 8; file++) {
-      Square sq = {file, rank};
-      bool isLight = (rank + file) % 2 == 0;
-      // Classic cream and classic brown
+  for (int r = 0; r < 8; r++) {
+    for (int f = 0; f < 8; f++) {
+      Square sq = {f, r};
+      bool isLight = (r + f) % 2 == 0;
       QColor color = isLight ? QColor(240, 217, 181) : QColor(181, 136, 99);
-
       if (sq == selectedSquare) {
         color = QColor(100, 200, 100);
       }
-
-      painter.fillRect(file * sz, // x - how far from the left edge
-                       rank * sz, // y - how far from the top edge
-                       sz,        // width
-                       sz,        // height
-                       color);
+      painter.fillRect(f * sz, r * sz, sz, sz, color);
+      char tile = game.getSquare(f, 7 - r);
+      if (!isDragging || sq != selectedSquare) {
+        painter.drawPixmap(f * sz, r * sz, sz, sz, piecePixmaps[tile]);
+      }
     }
   }
 
   // drawing a ghost piece
   if (isDragging && isValidSquare(selectedSquare)) {
-    // circle for now
-    painter.setBrush(
-        QColor(100, 200, 100, 180)); // last value is for transparency
-    painter.setPen(Qt::NoPen);
-    int radius = sz / 2 - 4;
-    painter.drawEllipse(dragPos, radius, radius);
+    char dragged = game.getSquare(selectedSquare.x, 7 - selectedSquare.y);
+    if (dragged != ' ' && piecePixmaps.count(dragged)) {
+      painter.drawPixmap(dragPos.x() - sz / 2, dragPos.y() - sz / 2, sz, sz,
+                         piecePixmaps[dragged]);
+    }
   }
 }
 
@@ -162,7 +169,7 @@ void BoardWidget::handleMove(Square from, Square to) {
   uci += static_cast<char>('1' + (7 - to.y));
 
   qDebug() << "UCI:" << QString::fromStdString(uci);
-
+  game.submitMove(uci);
   cancelSelection();
 }
 

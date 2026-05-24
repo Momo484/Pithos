@@ -23,6 +23,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 file(GLOB_RECURSE CORE_SOURCES "src/backend/core/*.cpp")
 file(GLOB_RECURSE TEST_SOURCES "src/backend/testing/*.cpp")
 file(GLOB_RECURSE FRONTEND_SOURCES "src/frontend/*.cpp")
+qt6_add_resources(RESOURCES src/frontend/resources/resources.qrc)
 
 # --- 4. Build Core Library ---
 add_library(PithosCore ${CORE_SOURCES})
@@ -45,7 +46,7 @@ target_include_directories(backend_tests PRIVATE
 )
 
 # --- 7. Build Frontend ---
-add_executable(pithos_chess ${FRONTEND_SOURCES})
+add_executable(pithos_chess ${FRONTEND_SOURCES} ${RESOURCES})
 target_link_libraries(pithos_chess PRIVATE PithosCore Qt6::Widgets)
 target_include_directories(pithos_chess PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/backend/core

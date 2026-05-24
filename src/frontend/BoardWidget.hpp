@@ -1,6 +1,9 @@
 #pragma once
+#include "Game.hpp"
 #include "Square.hpp"
 #include <QWidget>
+#include <QPixmap>
+#include <unordered_map>
 
 // Qwidget is the base class for anything drawn onto the screen in Qt.
 // We inherit from it and override the methods we care about (OOP).
@@ -36,6 +39,8 @@ protected:
 private:
   // Helps converts our pixel position on the screen to a board square.
 
+  std::unordered_map<char, QPixmap> piecePixmaps;
+  Game game;
   Square selectedSquare = {-1, -1};
   bool isDragging = false;
   QPoint dragPos;

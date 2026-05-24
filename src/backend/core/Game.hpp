@@ -25,6 +25,7 @@ public:
   std::string getBoardFen() { return board.generateFEN(); }
   std::vector<std::string> &getMoveHistory() const;
   std::vector<Square> getLegalDestinations(Square from);
+  char getSquare(int file, int rank) const;
   void reset();
 
 private:

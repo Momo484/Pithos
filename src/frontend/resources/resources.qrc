@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pieces/pb.svg</file>
+        <file>pieces/nb.svg</file>
+        <file>pieces/bb.svg</file>
+        <file>pieces/rb.svg</file>
+        <file>pieces/qb.svg</file>
+        <file>pieces/kb.svg</file>
+        <file>pieces/pw.svg</file>
+        <file>pieces/nw.svg</file>
+        <file>pieces/bw.svg</file>
+        <file>pieces/rw.svg</file>
+        <file>pieces/qw.svg</file>
+        <file>pieces/kw.svg</file>
+    </qresource>
+</RCC>

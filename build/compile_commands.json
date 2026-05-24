@@ -114,6 +114,12 @@
   "output": "CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o"
 },
 {
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -I/Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/backend/core -I/Users/aabhushan/Documents/Projects/Pithos/src/frontend -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -std=gnu++17 -arch arm64 -o CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp",
+  "output": "CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o"
+},
+{
   "directory": "/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/src",
   "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/src/catch2/.. -I/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/generated-includes -std=gnu++17 -arch arm64 -ffile-prefix-map=/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/= -o CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/src/catch2/benchmark/catch_chronometer.cpp",
   "file": "/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/src/catch2/benchmark/catch_chronometer.cpp",

@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "pithos_chess_autogen"
   "CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o.d"
+  "CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o"
+  "CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o.d"
   "CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o"
   "CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o.d"
   "CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o"
@@ -12,6 +14,7 @@ file(REMOVE_RECURSE
   "pithos_chess.pdb"
   "pithos_chess_autogen/mocs_compilation.cpp"
   "pithos_chess_autogen/timestamp"
+  "qrc_resources.cpp"
 )
 
 # Per-language clean rules from dependency scanning.

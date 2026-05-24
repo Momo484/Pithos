@@ -69,9 +69,27 @@ include CMakeFiles/pithos_chess.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/pithos_chess.dir/flags.make
 
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/resources.qrc
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/pb.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/nb.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/bb.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/rb.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/qb.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/kb.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/pw.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/nw.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/bw.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/rw.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/qw.svg
+qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/kw.svg
+qrc_resources.cpp: src/frontend/resources/resources.qrc.depends
+qrc_resources.cpp: /opt/homebrew/opt/qt/share/qt/libexec/rcc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating qrc_resources.cpp"
+	/opt/homebrew/opt/qt/share/qt/libexec/rcc --name resources --output /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/resources.qrc
+
 pithos_chess_autogen/timestamp: /opt/homebrew/opt/qt/share/qt/libexec/moc
 pithos_chess_autogen/timestamp: CMakeFiles/pithos_chess.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target pithos_chess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic MOC for target pithos_chess"
 	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/pithos_chess_autogen.dir/AutogenInfo.json ""
 	/opt/homebrew/bin/cmake -E touch /Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/timestamp
 
@@ -81,7 +99,7 @@ CMakeFiles/pithos_chess.dir/codegen:
 CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o: CMakeFiles/pithos_chess.dir/flags.make
 CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o: pithos_chess_autogen/mocs_compilation.cpp
 CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o: CMakeFiles/pithos_chess.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o -MF CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/mocs_compilation.cpp
 
 CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.i: cmake_force
@@ -95,7 +113,7 @@ CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.s: cmake_f
 CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o: CMakeFiles/pithos_chess.dir/flags.make
 CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/BoardWidget.cpp
 CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o: CMakeFiles/pithos_chess.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o -MF CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o.d -o CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/frontend/BoardWidget.cpp
 
 CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.i: cmake_force
@@ -109,7 +127,7 @@ CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.s: cmake_force
 CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o: CMakeFiles/pithos_chess.dir/flags.make
 CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/main.cpp
 CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o: CMakeFiles/pithos_chess.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o -MF CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o.d -o CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/frontend/main.cpp
 
 CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.i: cmake_force
@@ -120,11 +138,26 @@ CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Projects/Pithos/src/frontend/main.cpp -o CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.s
 
+CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o: CMakeFiles/pithos_chess.dir/flags.make
+CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o: qrc_resources.cpp
+CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o: CMakeFiles/pithos_chess.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o -MF CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o.d -o CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp
+
+CMakeFiles/pithos_chess.dir/qrc_resources.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pithos_chess.dir/qrc_resources.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp > CMakeFiles/pithos_chess.dir/qrc_resources.cpp.i
+
+CMakeFiles/pithos_chess.dir/qrc_resources.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pithos_chess.dir/qrc_resources.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp -o CMakeFiles/pithos_chess.dir/qrc_resources.cpp.s
+
 # Object files for target pithos_chess
 pithos_chess_OBJECTS = \
 "CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o" \
-"CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o"
+"CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o" \
+"CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o"
 
 # External object files for target pithos_chess
 pithos_chess_EXTERNAL_OBJECTS =
@@ -132,13 +165,14 @@ pithos_chess_EXTERNAL_OBJECTS =
 pithos_chess: CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o
 pithos_chess: CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o
 pithos_chess: CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o
+pithos_chess: CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o
 pithos_chess: CMakeFiles/pithos_chess.dir/build.make
 pithos_chess: libPithosCore.a
 pithos_chess: /opt/homebrew/opt/qt/lib/QtWidgets.framework/Versions/A/QtWidgets
 pithos_chess: /opt/homebrew/opt/qt/lib/QtGui.framework/Versions/A/QtGui
 pithos_chess: /opt/homebrew/opt/qt/lib/QtCore.framework/Versions/A/QtCore
 pithos_chess: CMakeFiles/pithos_chess.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable pithos_chess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable pithos_chess"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pithos_chess.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -150,6 +184,7 @@ CMakeFiles/pithos_chess.dir/clean:
 .PHONY : CMakeFiles/pithos_chess.dir/clean
 
 CMakeFiles/pithos_chess.dir/depend: pithos_chess_autogen/timestamp
+CMakeFiles/pithos_chess.dir/depend: qrc_resources.cpp
 	cd /Users/aabhushan/Documents/Projects/Pithos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aabhushan/Documents/Projects/Pithos /Users/aabhushan/Documents/Projects/Pithos /Users/aabhushan/Documents/Projects/Pithos/build /Users/aabhushan/Documents/Projects/Pithos/build /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/pithos_chess.dir/DependInfo.cmake "--color=$(COLOR)" pithos_chess
 .PHONY : CMakeFiles/pithos_chess.dir/depend
 

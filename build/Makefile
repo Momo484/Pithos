@@ -394,6 +394,30 @@ pithos_chess_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.s
 .PHONY : pithos_chess_autogen/mocs_compilation.cpp.s
 
+qrc_resources.o: qrc_resources.cpp.o
+.PHONY : qrc_resources.o
+
+# target to build an object file
+qrc_resources.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o
+.PHONY : qrc_resources.cpp.o
+
+qrc_resources.i: qrc_resources.cpp.i
+.PHONY : qrc_resources.i
+
+# target to preprocess a source file
+qrc_resources.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/qrc_resources.cpp.i
+.PHONY : qrc_resources.cpp.i
+
+qrc_resources.s: qrc_resources.cpp.s
+.PHONY : qrc_resources.s
+
+# target to generate assembly for a file
+qrc_resources.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/qrc_resources.cpp.s
+.PHONY : qrc_resources.cpp.s
+
 src/backend/core/Board.o: src/backend/core/Board.cpp.o
 .PHONY : src/backend/core/Board.o
 
@@ -788,6 +812,9 @@ help:
 	@echo "... pithos_chess_autogen/mocs_compilation.o"
 	@echo "... pithos_chess_autogen/mocs_compilation.i"
 	@echo "... pithos_chess_autogen/mocs_compilation.s"
+	@echo "... qrc_resources.o"
+	@echo "... qrc_resources.i"
+	@echo "... qrc_resources.s"
 	@echo "... src/backend/core/Board.o"
 	@echo "... src/backend/core/Board.i"
 	@echo "... src/backend/core/Board.s"

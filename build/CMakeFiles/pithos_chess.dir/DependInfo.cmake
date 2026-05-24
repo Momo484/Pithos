@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "pithos_chess_autogen/timestamp" "custom" "pithos_chess_autogen/deps"
   "/Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/mocs_compilation.cpp" "CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o.d"
+  "/Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp" "CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o" "gcc" "CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o.d"
   "/Users/aabhushan/Documents/Projects/Pithos/src/frontend/BoardWidget.cpp" "CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o" "gcc" "CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o.d"
   "/Users/aabhushan/Documents/Projects/Pithos/src/frontend/main.cpp" "CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o" "gcc" "CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o.d"
   )

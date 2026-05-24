@@ -30,6 +30,7 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/pkg/env/global/bin/"
       - "/Library/Apple/usr/bin/"
       - "/opt/homebrew/bin/"
       - "/Applications/Ghostty.app/Contents/MacOS/"
@@ -50,6 +51,7 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/pkg/env/global/bin"
         - "/Library/Apple/usr/bin"
         - "/opt/homebrew/bin"
         - "/Applications/Ghostty.app/Contents/MacOS"
@@ -59,7 +61,7 @@ events:
       - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
       - "CMakeLists.txt:16 (project)"
     message: |
-      The system is: Darwin - 24.6.0 - arm64
+      The system is: Darwin - 25.5.0 - arm64
   -
     kind: "find-v1"
     backtrace:
@@ -90,6 +92,7 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/pkg/env/global/bin/"
       - "/Library/Apple/usr/bin/"
       - "/opt/homebrew/bin/"
       - "/Applications/Ghostty.app/Contents/MacOS/"
@@ -110,6 +113,7 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/pkg/env/global/bin"
         - "/Library/Apple/usr/bin"
         - "/opt/homebrew/bin"
         - "/Applications/Ghostty.app/Contents/MacOS"

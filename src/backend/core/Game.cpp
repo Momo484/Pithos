@@ -66,6 +66,10 @@ std::vector<Square> Game::getLegalDestinations(Square from) {
   return destinations;
 }
 
+char Game::getSquare(int file, int rank) const {
+  return board.getSquare({file, rank});
+}
+
 void Game::reset() {
   board.setupStartingPosition();
   whiteTurn = true;

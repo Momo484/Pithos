@@ -278,6 +278,7 @@ bool Board::checkThreeFoldRepitition() {
 }
 
 // -- Legal move generation
+// TODO: This doesn't properly check that a castle does not put the king in danger
 // ------------------------------------------------------------------------
 bool Board::validateMove(Move move) {
   makeMove(move);
@@ -584,6 +585,7 @@ std::string Board::generateFEN() {
       } else {
         if (empty != 0) {
           FEN += std::to_string(empty);
+          empty = 0;
         }
         FEN += current;
       }

@@ -61,6 +61,13 @@ public:
   Piece *getPieceAt(Square sq) const;
 
   /**
+   * @brief returns the character of the peice at the particular square on the
+   * board
+   * @return a character of the piece at square.
+   */
+  char getSquare(Square sq) const { return squares[sq.y][sq.x]; };
+
+  /**
    * @brief Helper function that determines if a given square is on the chess
    * board
    * @return true if the square is on the board
