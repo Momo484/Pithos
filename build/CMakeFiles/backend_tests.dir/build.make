@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aabhushan/Documents/Pithos
+CMAKE_SOURCE_DIR = /Users/aabhushan/Documents/Projects/Pithos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aabhushan/Documents/Pithos/build
+CMAKE_BINARY_DIR = /Users/aabhushan/Documents/Projects/Pithos/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/backend_tests.dir/depend.make
@@ -69,37 +69,59 @@ include CMakeFiles/backend_tests.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/backend_tests.dir/flags.make
 
+backend_tests_autogen/timestamp: /opt/homebrew/opt/qt/share/qt/libexec/moc
+backend_tests_autogen/timestamp: CMakeFiles/backend_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target backend_tests"
+	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/backend_tests_autogen.dir/AutogenInfo.json ""
+	/opt/homebrew/bin/cmake -E touch /Users/aabhushan/Documents/Projects/Pithos/build/backend_tests_autogen/timestamp
+
 CMakeFiles/backend_tests.dir/codegen:
 .PHONY : CMakeFiles/backend_tests.dir/codegen
 
+CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o: CMakeFiles/backend_tests.dir/flags.make
+CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o: backend_tests_autogen/mocs_compilation.cpp
+CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o: CMakeFiles/backend_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o -MF CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/build/backend_tests_autogen/mocs_compilation.cpp
+
+CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Projects/Pithos/build/backend_tests_autogen/mocs_compilation.cpp > CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Projects/Pithos/build/backend_tests_autogen/mocs_compilation.cpp -o CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: CMakeFiles/backend_tests.dir/flags.make
-CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp
+CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: /Users/aabhushan/Documents/Projects/Pithos/src/backend/testing/test_perft.cpp
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o: CMakeFiles/backend_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -MF CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o.d -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -c /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -MF CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o.d -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/backend/testing/test_perft.cpp
 
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp > CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabhushan/Documents/Projects/Pithos/src/backend/testing/test_perft.cpp > CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.i
 
 CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Pithos/src/backend/testing/test_perft.cpp -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabhushan/Documents/Projects/Pithos/src/backend/testing/test_perft.cpp -o CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s
 
 # Object files for target backend_tests
 backend_tests_OBJECTS = \
+"CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o"
 
 # External object files for target backend_tests
 backend_tests_EXTERNAL_OBJECTS =
 
+backend_tests: CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o
 backend_tests: CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o
 backend_tests: CMakeFiles/backend_tests.dir/build.make
 backend_tests: libPithosCore.a
-backend_tests: _deps/catch2-build/src/libCatch2Maind.a
-backend_tests: _deps/catch2-build/src/libCatch2d.a
+backend_tests: _deps/catch2-build/src/libCatch2Main.a
+backend_tests: _deps/catch2-build/src/libCatch2.a
 backend_tests: CMakeFiles/backend_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable backend_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable backend_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -110,7 +132,7 @@ CMakeFiles/backend_tests.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/backend_tests.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/backend_tests.dir/clean
 
-CMakeFiles/backend_tests.dir/depend:
-	cd /Users/aabhushan/Documents/Pithos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aabhushan/Documents/Pithos /Users/aabhushan/Documents/Pithos /Users/aabhushan/Documents/Pithos/build /Users/aabhushan/Documents/Pithos/build /Users/aabhushan/Documents/Pithos/build/CMakeFiles/backend_tests.dir/DependInfo.cmake "--color=$(COLOR)" backend_tests
+CMakeFiles/backend_tests.dir/depend: backend_tests_autogen/timestamp
+	cd /Users/aabhushan/Documents/Projects/Pithos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aabhushan/Documents/Projects/Pithos /Users/aabhushan/Documents/Projects/Pithos /Users/aabhushan/Documents/Projects/Pithos/build /Users/aabhushan/Documents/Projects/Pithos/build /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/backend_tests.dir/DependInfo.cmake "--color=$(COLOR)" backend_tests
 .PHONY : CMakeFiles/backend_tests.dir/depend
 

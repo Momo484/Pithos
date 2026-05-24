@@ -21,9 +21,6 @@ events:
       - "uname"
     candidate_directories:
       - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin/"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -35,20 +32,15 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/Library/Apple/usr/bin/"
       - "/opt/homebrew/bin/"
+      - "/Applications/Ghostty.app/Contents/MacOS/"
     searched_directories:
       - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin/uname"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/uname"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/uname"
-      - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin/uname"
       - "/usr/local/bin/uname"
       - "/System/Cryptexes/App/usr/bin/uname"
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
         - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
         - "/usr/bin"
@@ -60,10 +52,7 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/Library/Apple/usr/bin"
         - "/opt/homebrew/bin"
-        - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin"
+        - "/Applications/Ghostty.app/Contents/MacOS"
   -
     kind: "message-v1"
     backtrace:
@@ -92,9 +81,6 @@ events:
       - "install_name_tool"
     candidate_directories:
       - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin/"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -106,20 +92,15 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/Library/Apple/usr/bin/"
       - "/opt/homebrew/bin/"
+      - "/Applications/Ghostty.app/Contents/MacOS/"
     searched_directories:
       - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin/install_name_tool"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/install_name_tool"
-      - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/install_name_tool"
-      - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin/install_name_tool"
       - "/usr/local/bin/install_name_tool"
       - "/System/Cryptexes/App/usr/bin/install_name_tool"
     found: "/usr/bin/install_name_tool"
     search_context:
       ENV{PATH}:
         - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
         - "/usr/bin"
@@ -131,9 +112,6 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/Library/Apple/usr/bin"
         - "/opt/homebrew/bin"
-        - "/Users/aabhushan/.vscode/extensions/vadimcn.vscode-lldb-1.12.1/bin"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
-        - "/Users/aabhushan/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/aabhushan/.nvm/versions/node/v24.15.0/bin"
+        - "/Applications/Ghostty.app/Contents/MacOS"
       CMAKE_INSTALL_PREFIX: "/usr/local"
 ...

@@ -55,4 +55,19 @@ bool Game::submitMove(const std::string &uci) {
   return true;
 }
 
+std::vector<Square> Game::getLegalDestinations(Square from) {
+  const auto legal = board.generateAllLegalMoves(whiteTurn);
+  std::vector<Square> destinations;
+  for (const Move &m : legal) {
+    if (m.getFrom() == from) {
+      destinations.push_back(m.getTo());
+    }
+  }
+  return destinations;
+}
 
+void Game::reset() {
+  board.setupStartingPosition();
+  whiteTurn = true;
+  result = GameResult::Ongoing;
+}

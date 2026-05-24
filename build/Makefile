@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aabhushan/Documents/Pithos
+CMAKE_SOURCE_DIR = /Users/aabhushan/Documents/Projects/Pithos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aabhushan/Documents/Pithos/build
+CMAKE_BINARY_DIR = /Users/aabhushan/Documents/Projects/Pithos/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aabhushan/Documents/Pithos/build/CMakeFiles /Users/aabhushan/Documents/Pithos/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles /Users/aabhushan/Documents/Projects/Pithos/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aabhushan/Documents/Pithos/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -156,6 +156,123 @@ backend_tests/fast:
 .PHONY : backend_tests/fast
 
 #=============================================================================
+# Target rules for targets named pithos_chess
+
+# Build rule for target.
+pithos_chess: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pithos_chess
+.PHONY : pithos_chess
+
+# fast build rule for target.
+pithos_chess/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/build
+.PHONY : pithos_chess/fast
+
+#=============================================================================
+# Target rules for targets named PithosCore_autogen_timestamp_deps
+
+# Build rule for target.
+PithosCore_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PithosCore_autogen_timestamp_deps
+.PHONY : PithosCore_autogen_timestamp_deps
+
+# fast build rule for target.
+PithosCore_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore_autogen_timestamp_deps.dir/build.make CMakeFiles/PithosCore_autogen_timestamp_deps.dir/build
+.PHONY : PithosCore_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named PithosCore_autogen
+
+# Build rule for target.
+PithosCore_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PithosCore_autogen
+.PHONY : PithosCore_autogen
+
+# fast build rule for target.
+PithosCore_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore_autogen.dir/build.make CMakeFiles/PithosCore_autogen.dir/build
+.PHONY : PithosCore_autogen/fast
+
+#=============================================================================
+# Target rules for targets named pithos_backend_autogen_timestamp_deps
+
+# Build rule for target.
+pithos_backend_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pithos_backend_autogen_timestamp_deps
+.PHONY : pithos_backend_autogen_timestamp_deps
+
+# fast build rule for target.
+pithos_backend_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_backend_autogen_timestamp_deps.dir/build.make CMakeFiles/pithos_backend_autogen_timestamp_deps.dir/build
+.PHONY : pithos_backend_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named pithos_backend_autogen
+
+# Build rule for target.
+pithos_backend_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pithos_backend_autogen
+.PHONY : pithos_backend_autogen
+
+# fast build rule for target.
+pithos_backend_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_backend_autogen.dir/build.make CMakeFiles/pithos_backend_autogen.dir/build
+.PHONY : pithos_backend_autogen/fast
+
+#=============================================================================
+# Target rules for targets named backend_tests_autogen_timestamp_deps
+
+# Build rule for target.
+backend_tests_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 backend_tests_autogen_timestamp_deps
+.PHONY : backend_tests_autogen_timestamp_deps
+
+# fast build rule for target.
+backend_tests_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests_autogen_timestamp_deps.dir/build.make CMakeFiles/backend_tests_autogen_timestamp_deps.dir/build
+.PHONY : backend_tests_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named backend_tests_autogen
+
+# Build rule for target.
+backend_tests_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 backend_tests_autogen
+.PHONY : backend_tests_autogen
+
+# fast build rule for target.
+backend_tests_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests_autogen.dir/build.make CMakeFiles/backend_tests_autogen.dir/build
+.PHONY : backend_tests_autogen/fast
+
+#=============================================================================
+# Target rules for targets named pithos_chess_autogen_timestamp_deps
+
+# Build rule for target.
+pithos_chess_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pithos_chess_autogen_timestamp_deps
+.PHONY : pithos_chess_autogen_timestamp_deps
+
+# fast build rule for target.
+pithos_chess_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess_autogen_timestamp_deps.dir/build.make CMakeFiles/pithos_chess_autogen_timestamp_deps.dir/build
+.PHONY : pithos_chess_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named pithos_chess_autogen
+
+# Build rule for target.
+pithos_chess_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pithos_chess_autogen
+.PHONY : pithos_chess_autogen
+
+# fast build rule for target.
+pithos_chess_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess_autogen.dir/build.make CMakeFiles/pithos_chess_autogen.dir/build
+.PHONY : pithos_chess_autogen/fast
+
+#=============================================================================
 # Target rules for targets named Catch2
 
 # Build rule for target.
@@ -180,6 +297,102 @@ Catch2WithMain: cmake_check_build_system
 Catch2WithMain/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build
 .PHONY : Catch2WithMain/fast
+
+PithosCore_autogen/mocs_compilation.o: PithosCore_autogen/mocs_compilation.cpp.o
+.PHONY : PithosCore_autogen/mocs_compilation.o
+
+# target to build an object file
+PithosCore_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/PithosCore_autogen/mocs_compilation.cpp.o
+.PHONY : PithosCore_autogen/mocs_compilation.cpp.o
+
+PithosCore_autogen/mocs_compilation.i: PithosCore_autogen/mocs_compilation.cpp.i
+.PHONY : PithosCore_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+PithosCore_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/PithosCore_autogen/mocs_compilation.cpp.i
+.PHONY : PithosCore_autogen/mocs_compilation.cpp.i
+
+PithosCore_autogen/mocs_compilation.s: PithosCore_autogen/mocs_compilation.cpp.s
+.PHONY : PithosCore_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+PithosCore_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PithosCore.dir/build.make CMakeFiles/PithosCore.dir/PithosCore_autogen/mocs_compilation.cpp.s
+.PHONY : PithosCore_autogen/mocs_compilation.cpp.s
+
+backend_tests_autogen/mocs_compilation.o: backend_tests_autogen/mocs_compilation.cpp.o
+.PHONY : backend_tests_autogen/mocs_compilation.o
+
+# target to build an object file
+backend_tests_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests.dir/build.make CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.o
+.PHONY : backend_tests_autogen/mocs_compilation.cpp.o
+
+backend_tests_autogen/mocs_compilation.i: backend_tests_autogen/mocs_compilation.cpp.i
+.PHONY : backend_tests_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+backend_tests_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests.dir/build.make CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.i
+.PHONY : backend_tests_autogen/mocs_compilation.cpp.i
+
+backend_tests_autogen/mocs_compilation.s: backend_tests_autogen/mocs_compilation.cpp.s
+.PHONY : backend_tests_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+backend_tests_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests.dir/build.make CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.s
+.PHONY : backend_tests_autogen/mocs_compilation.cpp.s
+
+pithos_backend_autogen/mocs_compilation.o: pithos_backend_autogen/mocs_compilation.cpp.o
+.PHONY : pithos_backend_autogen/mocs_compilation.o
+
+# target to build an object file
+pithos_backend_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_backend.dir/build.make CMakeFiles/pithos_backend.dir/pithos_backend_autogen/mocs_compilation.cpp.o
+.PHONY : pithos_backend_autogen/mocs_compilation.cpp.o
+
+pithos_backend_autogen/mocs_compilation.i: pithos_backend_autogen/mocs_compilation.cpp.i
+.PHONY : pithos_backend_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+pithos_backend_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_backend.dir/build.make CMakeFiles/pithos_backend.dir/pithos_backend_autogen/mocs_compilation.cpp.i
+.PHONY : pithos_backend_autogen/mocs_compilation.cpp.i
+
+pithos_backend_autogen/mocs_compilation.s: pithos_backend_autogen/mocs_compilation.cpp.s
+.PHONY : pithos_backend_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+pithos_backend_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_backend.dir/build.make CMakeFiles/pithos_backend.dir/pithos_backend_autogen/mocs_compilation.cpp.s
+.PHONY : pithos_backend_autogen/mocs_compilation.cpp.s
+
+pithos_chess_autogen/mocs_compilation.o: pithos_chess_autogen/mocs_compilation.cpp.o
+.PHONY : pithos_chess_autogen/mocs_compilation.o
+
+# target to build an object file
+pithos_chess_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.o
+.PHONY : pithos_chess_autogen/mocs_compilation.cpp.o
+
+pithos_chess_autogen/mocs_compilation.i: pithos_chess_autogen/mocs_compilation.cpp.i
+.PHONY : pithos_chess_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+pithos_chess_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.i
+.PHONY : pithos_chess_autogen/mocs_compilation.cpp.i
+
+pithos_chess_autogen/mocs_compilation.s: pithos_chess_autogen/mocs_compilation.cpp.s
+.PHONY : pithos_chess_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+pithos_chess_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/pithos_chess_autogen/mocs_compilation.cpp.s
+.PHONY : pithos_chess_autogen/mocs_compilation.cpp.s
 
 src/backend/core/Board.o: src/backend/core/Board.cpp.o
 .PHONY : src/backend/core/Board.o
@@ -493,6 +706,54 @@ src/backend/testing/test_perft.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests.dir/build.make CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s
 .PHONY : src/backend/testing/test_perft.cpp.s
 
+src/frontend/BoardWidget.o: src/frontend/BoardWidget.cpp.o
+.PHONY : src/frontend/BoardWidget.o
+
+# target to build an object file
+src/frontend/BoardWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.o
+.PHONY : src/frontend/BoardWidget.cpp.o
+
+src/frontend/BoardWidget.i: src/frontend/BoardWidget.cpp.i
+.PHONY : src/frontend/BoardWidget.i
+
+# target to preprocess a source file
+src/frontend/BoardWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.i
+.PHONY : src/frontend/BoardWidget.cpp.i
+
+src/frontend/BoardWidget.s: src/frontend/BoardWidget.cpp.s
+.PHONY : src/frontend/BoardWidget.s
+
+# target to generate assembly for a file
+src/frontend/BoardWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.s
+.PHONY : src/frontend/BoardWidget.cpp.s
+
+src/frontend/main.o: src/frontend/main.cpp.o
+.PHONY : src/frontend/main.o
+
+# target to build an object file
+src/frontend/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o
+.PHONY : src/frontend/main.cpp.o
+
+src/frontend/main.i: src/frontend/main.cpp.i
+.PHONY : src/frontend/main.i
+
+# target to preprocess a source file
+src/frontend/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.i
+.PHONY : src/frontend/main.cpp.i
+
+src/frontend/main.s: src/frontend/main.cpp.s
+.PHONY : src/frontend/main.s
+
+# target to generate assembly for a file
+src/frontend/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.s
+.PHONY : src/frontend/main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -501,11 +762,32 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... PithosCore_autogen"
+	@echo "... PithosCore_autogen_timestamp_deps"
+	@echo "... backend_tests_autogen"
+	@echo "... backend_tests_autogen_timestamp_deps"
+	@echo "... pithos_backend_autogen"
+	@echo "... pithos_backend_autogen_timestamp_deps"
+	@echo "... pithos_chess_autogen"
+	@echo "... pithos_chess_autogen_timestamp_deps"
 	@echo "... Catch2"
 	@echo "... Catch2WithMain"
 	@echo "... PithosCore"
 	@echo "... backend_tests"
 	@echo "... pithos_backend"
+	@echo "... pithos_chess"
+	@echo "... PithosCore_autogen/mocs_compilation.o"
+	@echo "... PithosCore_autogen/mocs_compilation.i"
+	@echo "... PithosCore_autogen/mocs_compilation.s"
+	@echo "... backend_tests_autogen/mocs_compilation.o"
+	@echo "... backend_tests_autogen/mocs_compilation.i"
+	@echo "... backend_tests_autogen/mocs_compilation.s"
+	@echo "... pithos_backend_autogen/mocs_compilation.o"
+	@echo "... pithos_backend_autogen/mocs_compilation.i"
+	@echo "... pithos_backend_autogen/mocs_compilation.s"
+	@echo "... pithos_chess_autogen/mocs_compilation.o"
+	@echo "... pithos_chess_autogen/mocs_compilation.i"
+	@echo "... pithos_chess_autogen/mocs_compilation.s"
 	@echo "... src/backend/core/Board.o"
 	@echo "... src/backend/core/Board.i"
 	@echo "... src/backend/core/Board.s"
@@ -545,6 +827,12 @@ help:
 	@echo "... src/backend/testing/test_perft.o"
 	@echo "... src/backend/testing/test_perft.i"
 	@echo "... src/backend/testing/test_perft.s"
+	@echo "... src/frontend/BoardWidget.o"
+	@echo "... src/frontend/BoardWidget.i"
+	@echo "... src/frontend/BoardWidget.s"
+	@echo "... src/frontend/main.o"
+	@echo "... src/frontend/main.i"
+	@echo "... src/frontend/main.s"
 .PHONY : help
 
 

@@ -20,10 +20,12 @@ public:
    */
   bool submitMove(const std::string &uci);
 
-  GameResult getResult() const;
+  GameResult getResult() const { return result; }
   bool isWhiteTurn() const { return whiteTurn; }
-  std::string getBoardFen() const;
-  const std::vector<std::string> &getMoveHistory() const;
+  std::string getBoardFen() { return board.generateFEN(); }
+  std::vector<std::string> &getMoveHistory() const;
+  std::vector<Square> getLegalDestinations(Square from);
+  void reset();
 
 private:
   Board board;

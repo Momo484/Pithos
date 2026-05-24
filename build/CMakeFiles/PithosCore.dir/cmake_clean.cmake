@@ -1,4 +1,9 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/PithosCore_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/PithosCore_autogen.dir/ParseCache.txt"
+  "PithosCore_autogen"
+  "CMakeFiles/PithosCore.dir/PithosCore_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/PithosCore.dir/PithosCore_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o"
   "CMakeFiles/PithosCore.dir/src/backend/core/Board.cpp.o.d"
   "CMakeFiles/PithosCore.dir/src/backend/core/Game.cpp.o"
@@ -21,6 +26,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PithosCore.dir/src/backend/core/Pieces/Rook.cpp.o.d"
   "CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o"
   "CMakeFiles/PithosCore.dir/src/backend/core/ZobristHash.cpp.o.d"
+  "PithosCore_autogen/mocs_compilation.cpp"
+  "PithosCore_autogen/timestamp"
   "libPithosCore.a"
   "libPithosCore.pdb"
 )
