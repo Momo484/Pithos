@@ -278,8 +278,6 @@ bool Board::checkThreeFoldRepitition() {
 }
 
 // -- Legal move generation
-// TODO: This doesn't properly check that a castle does not put the king in
-// danger
 // ------------------------------------------------------------------------
 bool Board::validateMove(Move move) {
   if (move.getType() == MoveType::CastleKingSide ||
