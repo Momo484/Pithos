@@ -35,7 +35,7 @@ int BoardWidget::squareSize() const {
 
 // --- sizeHint
 
-QSize BoardWidget::sizeHint() const { return QSize(480, 480); }
+QSize BoardWidget::sizeHint() const { return QSize(800, 800); }
 
 // --- PixeltoSquare
 
@@ -64,7 +64,7 @@ void BoardWidget::paintEvent(QPaintEvent *) {
       bool isLight = (r + f) % 2 == 0;
       QColor color = isLight ? QColor(240, 217, 181) : QColor(181, 136, 99);
       if (sq == selectedSquare) {
-        color = QColor(100, 200, 100);
+        color = QColor(72, 92, 130);
       }
       painter.fillRect(f * sz, r * sz, sz, sz, color);
       char tile = game.getSquare(f, 7 - r);
@@ -170,6 +170,14 @@ void BoardWidget::handleMove(Square from, Square to) {
 
   qDebug() << "UCI:" << QString::fromStdString(uci);
   game.submitMove(uci);
+  GameResult result = game.getResult();
+  if (result == GameResult::Draw) {
+    qDebug() << "Drawn Game!" << Qt::endl;
+  } else if (result == GameResult::WhiteWins) {
+    qDebug() << "White Wins!" << Qt::endl;
+  } else if (result == GameResult::BlackWins) {
+    qDebug() << "Black Wins!" << Qt::endl;
+  }
   cancelSelection();
 }
 

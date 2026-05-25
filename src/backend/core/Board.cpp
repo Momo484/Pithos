@@ -278,9 +278,30 @@ bool Board::checkThreeFoldRepitition() {
 }
 
 // -- Legal move generation
-// TODO: This doesn't properly check that a castle does not put the king in danger
+// TODO: This doesn't properly check that a castle does not put the king in
+// danger
 // ------------------------------------------------------------------------
 bool Board::validateMove(Move move) {
+  if (move.getType() == MoveType::CastleKingSide ||
+      move.getType() == MoveType::CastleQueenSide) {
+    // essentially check if the king can move one move to the right, then check
+    // if it can do the castle but first, the king may not already be in check
+    bool iswhite = move.getIsWhite();
+    if (isKingChecked(iswhite)) {
+      return false;
+    }
+    int fileDir = (move.getType() == MoveType::CastleKingSide) ? 1 : -1;
+    Square kingSquare = iswhite ? whiteKingPos : blackKingPos;
+    Square transitSquare = {kingSquare.x + fileDir, kingSquare.y};
+    Move transitMove(kingSquare, transitSquare, MoveType::Normal, iswhite);
+    makeMove(transitMove);
+    bool transitChecked = isKingChecked(iswhite);
+    undoMove();
+    if (transitChecked) {
+      return false;
+    }
+  }
+  // Do the normal checking
   makeMove(move);
   bool legal = !isKingChecked(move.getIsWhite());
   undoMove();
