@@ -56,6 +56,12 @@ bool Game::submitMove(const std::string &uci) {
   return true;
 }
 
+void Game::undoMove() {
+  whiteTurn = !whiteTurn;
+  board.undoMove();
+  updateResult(); 
+}
+
 std::unordered_set<Square, SquareHash> Game::getLegalDestinations(Square from) {
   const auto legal = board.generateAllLegalMoves(whiteTurn);
   std::unordered_set<Square, SquareHash> destinations;

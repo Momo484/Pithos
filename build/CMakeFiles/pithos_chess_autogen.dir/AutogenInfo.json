@@ -422,6 +422,18 @@
 			"Mu",
 			"4VGN7JTGM2/moc_BoardWidget.cpp",
 			null
+		],
+		[
+			"/Users/aabhushan/Documents/Projects/Pithos/src/frontend/MainWindow.hpp",
+			"Mu",
+			"4VGN7JTGM2/moc_MainWindow.cpp",
+			null
+		],
+		[
+			"/Users/aabhushan/Documents/Projects/Pithos/src/frontend/SidePanel.hpp",
+			"Mu",
+			"4VGN7JTGM2/moc_SidePanel.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -493,6 +505,16 @@
 	[
 		[
 			"/Users/aabhushan/Documents/Projects/Pithos/src/frontend/BoardWidget.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/Users/aabhushan/Documents/Projects/Pithos/src/frontend/MainWindow.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/Users/aabhushan/Documents/Projects/Pithos/src/frontend/SidePanel.cpp",
 			"Mu",
 			null
 		],

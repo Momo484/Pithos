@@ -8,9 +8,10 @@
 
 // --- Constructor
 
-BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent) {
+BoardWidget::BoardWidget(Game& game, QWidget *parent) : game(game), QWidget(parent) {
   // Enables mouse tracking so we get mouseMoveEvents without a button holds
   setMouseTracking(true);
+  setFocusPolicy(Qt::StrongFocus);
   for (char c : {'P', 'N', 'B', 'R', 'Q', 'K', 'p', 'n', 'b', 'r', 'q', 'k'}) {
     std::string filename = ":/pieces/";
     filename += (char)std::tolower(c); // piece letter — p, n, b, r, q, k
@@ -222,7 +223,8 @@ void BoardWidget::handleMove(Square from, Square to) {
   } else if (result == GameResult::BlackWins) {
     qDebug() << "Black Wins!" << Qt::endl;
   }
-  cancelSelection();
+  refresh();
+  emit gameStateChanged();
 }
 
 // --- CancelSelection()
@@ -230,4 +232,11 @@ void BoardWidget::handleMove(Square from, Square to) {
 void BoardWidget::cancelSelection() {
   selectedSquare = {-1, -1};
   isDragging = false;
+}
+
+// --- Refresh
+
+void BoardWidget::refresh() {
+  cancelSelection();
+  update();
 }
