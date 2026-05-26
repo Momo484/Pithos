@@ -59,6 +59,8 @@ bool BoardWidget::isValidSquare(Square sq) const {
 
 void BoardWidget::paintEvent(QPaintEvent *) {
   QPainter painter(this);
+  painter.setRenderHint(QPainter::Antialiasing);
+  painter.setRenderHint(QPainter::SmoothPixmapTransform);
   int sz = squareSize();
 
   // precompute hints once — note the rank flip on selectedSquare
