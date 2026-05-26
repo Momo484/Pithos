@@ -296,101 +296,25 @@ PithosCore_autogen/timestamp: /Users/aabhushan/Documents/Projects/Pithos/CMakeLi
   /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
   /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargetsPrecheck.cmake \
   /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeCCompiler.cmake.in \
-  /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c \
   /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeCXXCompiler.cmake.in \
-  /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp \
   /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake \
   /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeCompilerIdDetection.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake \
   /opt/homebrew/share/cmake/Modules/CMakeFindDependencyMacro.cmake \
   /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake \
   /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake \
   /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeSystem.cmake.in \
   /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake \
   /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeTestCompilerCommon.cmake \
-  /opt/homebrew/share/cmake/Modules/CMakeUnixFindMake.cmake \
   /opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake \
   /opt/homebrew/share/cmake/Modules/CheckCXXCompilerFlag.cmake \
   /opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake \
   /opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake \
   /opt/homebrew/share/cmake/Modules/CheckLibraryExists.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake \
   /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-C.cmake \
   /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake \
   /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake \
   /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/CrayClang-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Diab-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake \
   /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/OrangeC-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Renesas-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/TIClang-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake \
-  /opt/homebrew/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
   /opt/homebrew/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake \
   /opt/homebrew/share/cmake/Modules/FetchContent.cmake \
   /opt/homebrew/share/cmake/Modules/FetchContent/CMakeLists.cmake.in \
@@ -404,11 +328,7 @@ PithosCore_autogen/timestamp: /Users/aabhushan/Documents/Projects/Pithos/CMakeLi
   /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake \
   /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake \
   /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake \
-  /opt/homebrew/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake \
-  /opt/homebrew/share/cmake/Modules/Internal/CMakeInspectCLinker.cmake \
-  /opt/homebrew/share/cmake/Modules/Internal/CMakeInspectCXXLinker.cmake \
   /opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake \
-  /opt/homebrew/share/cmake/Modules/Internal/FeatureTesting.cmake \
   /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake \
   /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake \
   /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake \
@@ -418,7 +338,6 @@ PithosCore_autogen/timestamp: /Users/aabhushan/Documents/Projects/Pithos/CMakeLi
   /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake \
-  /opt/homebrew/share/cmake/Modules/Platform/Darwin-Determine-CXX.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake \
@@ -427,51 +346,27 @@ PithosCore_autogen/timestamp: /Users/aabhushan/Documents/Projects/Pithos/CMakeLi
   /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake
 
 
-/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake:
-
 /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake:
 
-/opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake:
-
-/opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake:
-
-/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake:
+/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake:
 
 /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake:
 
-/opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake:
+/opt/homebrew/share/cmake/Modules/MacroAddFileDependencies.cmake:
 
-/opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake:
+/opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake:
 
-/opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake:
+/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:
 
-/opt/homebrew/share/cmake/Modules/Internal/FeatureTesting.cmake:
-
-/opt/homebrew/share/cmake/Modules/Internal/CMakeInspectCXXLinker.cmake:
-
-/opt/homebrew/share/cmake/Modules/Internal/CMakeInspectCLinker.cmake:
-
-/opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake:
-
-/opt/homebrew/share/cmake/Modules/GNUInstallDirs.cmake:
-
-/opt/homebrew/share/cmake/Modules/FindThreads.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake:
+/opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake:
 
 /opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake:
 
-/Users/aabhushan/Documents/Projects/Pithos/CMakeLists.txt:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginDependencies.cmake:
+/opt/homebrew/share/cmake/Modules/FindThreads.cmake:
 
 /opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:
 
 /opt/homebrew/share/cmake/Modules/FindOpenGL.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICNSPluginTargetsPrecheck.cmake:
 
 /opt/homebrew/share/cmake/Modules/FindGit.cmake:
 
@@ -479,83 +374,7 @@ PithosCore_autogen/timestamp: /Users/aabhushan/Documents/Projects/Pithos/CMakeLi
 
 /opt/homebrew/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:
-
-CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginAdditionalTargetInfo.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/TIClang-DetermineCompiler.cmake:
-
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Rook.hpp:
-
-/opt/homebrew/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginConfig.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Renesas-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets-release.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6QMacStylePluginTargetsPrecheck.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginTargetsPrecheck.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginDependencies.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake:
-
 /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake:
-
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Board.cpp:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Diab-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/CrayClang-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake:
 
 /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake:
 
@@ -563,57 +382,21 @@ CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 
 /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-C.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp:
+/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:
 
 /opt/homebrew/share/cmake/Modules/CheckCXXCompilerFlag.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeTestCompilerCommon.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:
-
 /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6ConfigVersion.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake:
-
 /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJp2PluginConfig.cmake:
 
 /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake:
 
 /opt/homebrew/share/cmake/Modules/CMakeFindDependencyMacro.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:
-
 /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake:
 
 /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeCXXCompiler.cmake.in:
-
-/opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake:
 
@@ -623,27 +406,13 @@ CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake:
-
-/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsTargetsPrecheck.cmake:
-
-/opt/homebrew/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-release.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/OrangeC-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake:
-
-/opt/homebrew/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginDependencies.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake:
 
@@ -652,8 +421,6 @@ CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6QMacStylePluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6QMacStylePluginConfig.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMacHeifPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargetsPrecheck.cmake:
 
@@ -665,17 +432,9 @@ CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWebpPluginTargets.cmake:
 
-/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWebpPluginAdditionalTargetInfo.cmake:
-
-/opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTgaPluginAdditionalTargetInfo.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWbmpPluginTargets.cmake:
 
@@ -685,8 +444,6 @@ CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginTargetsPrecheck.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CorePlugins.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginConfig.cmake:
@@ -695,15 +452,9 @@ CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTiffPluginTargets.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTgaPluginTargets.cmake:
-
-CMakeFiles/4.3.2/CMakeCCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfig.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTgaPluginTargets-release.cmake:
 
@@ -711,23 +462,19 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets-release.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginConfig.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargetsPrecheck.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets-release.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgIconPluginConfig.cmake:
 
 /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWbmpPluginTargetsPrecheck.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QPdfPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeSystem.cmake.in:
+/opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets.cmake:
 
@@ -735,21 +482,15 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets.cmake:
 
-/opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMngPluginTargetsPrecheck.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets-release.cmake:
+/opt/homebrew/share/cmake/Modules/FindVulkan.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTiffPluginTargets-release.cmake:
-
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Pawn.hpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMngPluginTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMngPluginTargets-release.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets-release.cmake:
 
@@ -759,11 +500,7 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMacHeifPluginConfig.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginAdditionalTargetInfo.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTgaPluginTargetsPrecheck.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake:
 
@@ -775,17 +512,13 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJp2PluginTargetsPrecheck.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake:
+/opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJp2PluginTargets-release.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QPdfPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6Targets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJp2PluginAdditionalTargetInfo.cmake:
-
-/opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginAdditionalTargetInfo.cmake:
 
@@ -793,23 +526,17 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICNSPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/FindVulkan.cmake:
-
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Move.cpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QGifPluginTargetsPrecheck.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QGifPluginConfig.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWbmpPluginTargetsPrecheck.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginTargetsPrecheck.cmake:
-
-/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake:
 
@@ -819,19 +546,17 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginAdditionalTargetInfo.cmake:
 
+/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiVersionlessAliasTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-release.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICOPluginTargets.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfig.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiTargets-release.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusDependencies.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJp2PluginTargets.cmake:
 
@@ -853,13 +578,9 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QGifPluginTargets-release.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMacHeifPluginTargets-release.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersionImpl.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWebpPluginTargetsPrecheck.cmake:
-
-/opt/homebrew/lib/cmake/Qt6/QtPublicPluginHelpers.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWebpPluginConfig.cmake:
 
@@ -868,6 +589,10 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreTargetsPrecheck.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersion.cmake:
+
+/opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusTargetsPrecheck.cmake:
 
@@ -879,25 +604,27 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTgaPluginAdditionalTargetInfo.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusConfig.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomDocumentNamespaceHelpers.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargetsPrecheck.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsAdditionalTargetInfo.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6QMacStylePluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginAdditionalTargetInfo.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginDependencies.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginConfig.cmake:
 
@@ -905,39 +632,37 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWebpPluginTargets-release.cmake:
 
-/opt/homebrew/lib/cmake/Qt6/QtPublicToolHelpers.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICNSPluginConfig.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginDependencies.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginTargets-release.cmake:
-
-/opt/homebrew/lib/cmake/Qt6/FindWrapOpenGL.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginDependencies.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:
 
-/opt/homebrew/lib/cmake/Qt6/QtPublicSbomRelationshipHelpers.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginTargetsPrecheck.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginDependencies.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargetsPrecheck.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginAdditionalTargetInfo.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginDependencies.cmake:
+
+/opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICOPluginTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargetsPrecheck.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusTargets.cmake:
-
-/opt/homebrew/lib/cmake/Qt6/QtPublicSbomGenerationCycloneDXHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6ConfigExtras.cmake:
 
@@ -945,19 +670,9 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginTargets-release.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeCCompiler.cmake.in:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginTargets.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginAdditionalTargetInfo.cmake:
 
@@ -965,17 +680,15 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMacHeifPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake:
+/opt/homebrew/lib/cmake/Qt6/QtPublicPluginHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginDependencies.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake:
+/opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake:
 
-/opt/homebrew/share/cmake/Modules/MacroAddFileDependencies.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QPdfPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginConfig.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginConfig.cmake:
 
@@ -983,49 +696,61 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake:
 
-/opt/homebrew/lib/cmake/Qt6/QtPublicTestHelpers.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargetsPrecheck.cmake:
-
-/opt/homebrew/share/cmake/Modules/Platform/Darwin-Determine-CXX.cmake:
 
 /opt/homebrew/share/cmake/Modules/FetchContent/CMakeLists.cmake.in:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginTargetsPrecheck.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginDependencies.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargetsPrecheck.cmake:
 
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Knight.cpp:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICNSPluginConfig.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICOPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CorePlugins.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeCompilerIdDetection.cmake:
+/opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgPluginAdditionalTargetInfo.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:
+
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Pawn.hpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtFeature.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargetsPrecheck.cmake:
+CMakeFiles/4.3.2/CMakeCXXCompiler.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomLicenseHelpers.cmake:
 
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets-release.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginConfig.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginConfig.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6QMacStylePluginTargetsPrecheck.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICNSPluginTargetsPrecheck.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake:
 
@@ -1041,13 +766,9 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Queen.hpp:
 
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/ZobristHash.hpp:
-
 /opt/homebrew/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake:
-
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Board.hpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTiffPluginConfig.cmake:
 
@@ -1055,17 +776,21 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomDepHelpers.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake:
+/opt/homebrew/lib/cmake/Qt6/QtPublicTestHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginConfig.cmake:
 
+/Users/aabhushan/Documents/Projects/Pithos/CMakeLists.txt:
+
+/opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake:
+
+/opt/homebrew/lib/cmake/Qt6/QtPublicSbomGenerationCycloneDXHelpers.cmake:
+
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Move.hpp:
 
-/opt/homebrew/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake:
+/opt/homebrew/lib/cmake/Qt6/FindWrapOpenGL.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomQtEntityHelpers.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginConfig.cmake:
 
@@ -1073,39 +798,31 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICNSPluginTargets-release.cmake:
 
-/opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake:
-
-/opt/homebrew/opt/qt/lib/cmake/Qt6/QtPublicCMakeEarlyPolicyHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICOPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6Config.cmake:
 
-/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake:
+/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake:
+
+/opt/homebrew/share/cmake/Modules/GNUInstallDirs.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomOpsHelpers.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtFeatureCommon.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusDependencies.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginAdditionalTargetInfo.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeUnixFindMake.cmake:
-
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomCycloneDXHelpers.cmake:
 
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Bishop.cpp:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6VersionlessAliasTargets.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreVersionlessAliasTargets.cmake:
 
@@ -1119,15 +836,19 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake:
 
+/opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginConfig.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/King.hpp:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake:
 
-/opt/homebrew/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginTargets-release.cmake:
 
@@ -1145,15 +866,17 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomFileHelpers.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake:
-
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6CoreTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginTargets-release.cmake:
 
-/opt/homebrew/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake:
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Bishop.cpp:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake:
+
+/opt/homebrew/lib/cmake/Qt6/QtPublicToolHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QPdfPluginTargets.cmake:
 
@@ -1167,23 +890,29 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargetsPrecheck.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake:
-
-/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake:
 
-/opt/homebrew/bin/cmake:
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Board.cpp:
 
-/opt/homebrew/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake:
+/opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake:
+
+/opt/homebrew/bin/cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/ZobristHash.cpp:
 
+/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake:
+
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomExternalReferenceHelpers.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets-release.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake:
+
+CMakeFiles/4.3.2/CMakeCCompiler.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6/QtPublicCMakeEarlyPolicyHelpers.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets.cmake:
 
@@ -1191,21 +920,23 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake:
+
+/opt/homebrew/lib/cmake/Qt6/QtPublicSbomRelationshipHelpers.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QSvgIconPluginAdditionalTargetInfo.cmake:
 
-/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Piece.cpp:
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Rook.hpp:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Game.hpp:
 
-/opt/homebrew/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake:
+/opt/homebrew/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake:
-
-/opt/homebrew/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets-release.cmake:
 
@@ -1213,9 +944,11 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicAndroidHelpers.cmake:
 
-/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QWebpPluginTargetsPrecheck.cmake:
 
-/opt/homebrew/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:
+/opt/homebrew/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
+
+/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets-release.cmake:
 
@@ -1224,6 +957,10 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 /opt/homebrew/opt/qt/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6DBusTools/Qt6DBusToolsAdditionalTargetInfo.cmake:
+
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Knight.cpp:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicSbomAttributionHelpers.cmake:
 
@@ -1235,19 +972,25 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/FindWrapAtomic.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake:
+/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/QtPublicGitHelpers.cmake:
+
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/ZobristHash.hpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6GuiTargetsPrecheck.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusVersionlessAliasTargets.cmake:
 
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Piece.cpp:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QGifPluginTargets.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Piece.hpp:
 
-/opt/homebrew/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake:
+/Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Board.hpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QPdfPluginConfig.cmake:
 
@@ -1255,21 +998,35 @@ CMakeFiles/4.3.2/CMakeCCompiler.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/King.cpp:
 
-/opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake:
+/opt/homebrew/opt/qt/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargetsPrecheck.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Pawn.cpp:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6DBus/Qt6DBusConfigVersion.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake:
+/opt/homebrew/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Game.cpp:
+
+/opt/homebrew/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Rook.cpp:
 
 /Users/aabhushan/Documents/Projects/Pithos/src/backend/core/Pieces/Bishop.hpp:
 
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QJp2PluginConfig.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake:
+
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginConfig.cmake:
+
+/opt/homebrew/opt/qt/lib/cmake/Qt6/Qt6ConfigVersion.cmake:
+
+/opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake:
+
+/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:
 
 /opt/homebrew/opt/qt/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginTargets.cmake:
 

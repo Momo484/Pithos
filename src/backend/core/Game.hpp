@@ -1,6 +1,7 @@
 // Game.hpp
 #pragma once
 #include "Board.hpp"
+#include <unordered_set>
 
 enum class GameResult { Ongoing, WhiteWins, BlackWins, Draw };
 
@@ -24,7 +25,7 @@ public:
   bool isWhiteTurn() const { return whiteTurn; }
   std::string getBoardFen() { return board.generateFEN(); }
   std::vector<std::string> &getMoveHistory() const;
-  std::vector<Square> getLegalDestinations(Square from);
+  std::unordered_set<Square, SquareHash> getLegalDestinations(Square from);
   char getSquare(int file, int rank) const;
   void reset();
 

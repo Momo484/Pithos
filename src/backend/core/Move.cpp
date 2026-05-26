@@ -21,4 +21,4 @@ MoveType Move::getType() const { return type; }
 
 char Move::getCapturedPieceSymbol() const { return capturedPieceSymbol; }
 
-char Move::getPromotionPiece() const { return getPromotionPiece(); }
+char Move::getPromotionPiece() const { return promotionPiece; }

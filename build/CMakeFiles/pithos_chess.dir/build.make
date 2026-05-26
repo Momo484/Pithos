@@ -90,7 +90,7 @@ qrc_resources.cpp: /opt/homebrew/opt/qt/share/qt/libexec/rcc
 pithos_chess_autogen/timestamp: /opt/homebrew/opt/qt/share/qt/libexec/moc
 pithos_chess_autogen/timestamp: CMakeFiles/pithos_chess.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic MOC for target pithos_chess"
-	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/pithos_chess_autogen.dir/AutogenInfo.json ""
+	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/pithos_chess_autogen.dir/AutogenInfo.json Debug
 	/opt/homebrew/bin/cmake -E touch /Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/timestamp
 
 CMakeFiles/pithos_chess.dir/codegen:

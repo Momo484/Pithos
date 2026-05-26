@@ -4,6 +4,7 @@
 #include <QMouseEvent> // gives us access to mouse click positions
 #include <QPainter>    // We use this to draw things
 #include <string>
+#include <unordered_set>
 
 // --- Constructor
 
@@ -55,33 +56,76 @@ bool BoardWidget::isValidSquare(Square sq) const {
 // call update() to request a redraw, never call ourselves.
 
 void BoardWidget::paintEvent(QPaintEvent *) {
-  QPainter painter(this);
-  int sz = squareSize();
+    QPainter painter(this);
+    int sz = squareSize();
 
-  for (int r = 0; r < 8; r++) {
-    for (int f = 0; f < 8; f++) {
-      Square sq = {f, r};
-      bool isLight = (r + f) % 2 == 0;
-      QColor color = isLight ? QColor(240, 217, 181) : QColor(181, 136, 99);
-      if (sq == selectedSquare) {
-        color = QColor(72, 92, 130);
-      }
-      painter.fillRect(f * sz, r * sz, sz, sz, color);
-      char tile = game.getSquare(f, 7 - r);
-      if (!isDragging || sq != selectedSquare) {
-        painter.drawPixmap(f * sz, r * sz, sz, sz, piecePixmaps[tile]);
-      }
-    }
-  }
+    // precompute hints once — note the rank flip on selectedSquare
+    Square backendSelected = {selectedSquare.x, 7 - selectedSquare.y};
+    std::unordered_set<Square, SquareHash> moveHints = 
+        game.getLegalDestinations(backendSelected);
 
-  // drawing a ghost piece
-  if (isDragging && isValidSquare(selectedSquare)) {
-    char dragged = game.getSquare(selectedSquare.x, 7 - selectedSquare.y);
-    if (dragged != ' ' && piecePixmaps.count(dragged)) {
-      painter.drawPixmap(dragPos.x() - sz / 2, dragPos.y() - sz / 2, sz, sz,
-                         piecePixmaps[dragged]);
+    // --- pass 1: draw squares ---
+    for (int r = 0; r < 8; r++) {
+        for (int f = 0; f < 8; f++) {
+            Square sq = {f, r};
+            bool isLight = (r + f) % 2 == 0;
+            QColor color = isLight ? QColor(240, 217, 181) : QColor(181, 136, 99);
+            if (sq == selectedSquare) {
+                color = QColor(72, 92, 130);
+            }
+            painter.fillRect(f * sz, r * sz, sz, sz, color);
+        }
     }
-  }
+
+    // --- pass 2: draw pieces ---
+    for (int r = 0; r < 8; r++) {
+        for (int f = 0; f < 8; f++) {
+            Square sq = {f, r};
+            // skip the dragged piece's origin square
+            if (isDragging && sq == selectedSquare) continue;
+            char tile = game.getSquare(f, 7 - r);
+            if (tile != ' ' && piecePixmaps.count(tile)) {
+                painter.drawPixmap(f * sz, r * sz, sz, sz, piecePixmaps.at(tile));
+            }
+        }
+    }
+
+    // --- pass 3: draw move hints on top of everything ---
+    painter.setPen(Qt::NoPen);
+    for (int r = 0; r < 8; r++) {
+        for (int f = 0; f < 8; f++) {
+            // hints are in backend coordinates, so flip r for lookup
+            Square backendSq = {f, 7 - r};
+            if (!moveHints.count(backendSq)) continue;
+
+            char tile = game.getSquare(f, 7 - r);
+            if (tile == ' ') {
+                // empty square — draw a small centred dot
+                painter.setBrush(QColor(0, 0, 0, 80));
+                int dotSize = sz / 3;
+                int offset  = (sz - dotSize) / 2;
+                painter.drawEllipse(f * sz + offset, r * sz + offset, 
+                                    dotSize, dotSize);
+            } else {
+                // occupied square — draw a ring around the edge
+                painter.setBrush(Qt::NoBrush);
+                painter.setPen(QPen(QColor(0, 0, 0, 80), 4));
+                int margin = 4;
+                painter.drawEllipse(f * sz + margin, r * sz + margin,
+                                    sz - margin * 2, sz - margin * 2);
+                painter.setPen(Qt::NoPen);
+            }
+        }
+    }
+
+    // --- pass 4: draw ghost piece ---
+    if (isDragging && isValidSquare(selectedSquare)) {
+        char dragged = game.getSquare(selectedSquare.x, 7 - selectedSquare.y);
+        if (dragged != ' ' && piecePixmaps.count(dragged)) {
+            painter.drawPixmap(dragPos.x() - sz / 2, dragPos.y() - sz / 2,
+                               sz, sz, piecePixmaps.at(dragged));
+        }
+    }
 }
 
 // --- mousePressEvent

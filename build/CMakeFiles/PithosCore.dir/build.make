@@ -72,7 +72,7 @@ include CMakeFiles/PithosCore.dir/flags.make
 PithosCore_autogen/timestamp: /opt/homebrew/opt/qt/share/qt/libexec/moc
 PithosCore_autogen/timestamp: CMakeFiles/PithosCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target PithosCore"
-	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/PithosCore_autogen.dir/AutogenInfo.json ""
+	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/PithosCore_autogen.dir/AutogenInfo.json Debug
 	/opt/homebrew/bin/cmake -E touch /Users/aabhushan/Documents/Projects/Pithos/build/PithosCore_autogen/timestamp
 
 CMakeFiles/PithosCore.dir/codegen:
