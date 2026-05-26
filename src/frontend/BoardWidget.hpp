@@ -40,8 +40,11 @@ protected:
   // When the mouse is moving.
   void mouseMoveEvent(QMouseEvent *event) override;
 
-  // Qt calss this twhen the user released the moust button.
+  // Qt calls this when the user released the moust button.
   void mouseReleaseEvent(QMouseEvent *event) override;
+
+  // Qt Calls this when the user presses a key
+  void keyPressEvent(QKeyEvent *event) override;
 
 private:
   // Helps converts our pixel position on the screen to a board square.
