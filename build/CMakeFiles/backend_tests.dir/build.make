@@ -72,7 +72,7 @@ include CMakeFiles/backend_tests.dir/flags.make
 backend_tests_autogen/timestamp: /opt/homebrew/opt/qt/share/qt/libexec/moc
 backend_tests_autogen/timestamp: CMakeFiles/backend_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target backend_tests"
-	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/backend_tests_autogen.dir/AutogenInfo.json ""
+	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/backend_tests_autogen.dir/AutogenInfo.json Debug
 	/opt/homebrew/bin/cmake -E touch /Users/aabhushan/Documents/Projects/Pithos/build/backend_tests_autogen/timestamp
 
 CMakeFiles/backend_tests.dir/codegen:
@@ -118,8 +118,8 @@ backend_tests: CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilati
 backend_tests: CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.o
 backend_tests: CMakeFiles/backend_tests.dir/build.make
 backend_tests: libPithosCore.a
-backend_tests: _deps/catch2-build/src/libCatch2Main.a
-backend_tests: _deps/catch2-build/src/libCatch2.a
+backend_tests: _deps/catch2-build/src/libCatch2Maind.a
+backend_tests: _deps/catch2-build/src/libCatch2d.a
 backend_tests: CMakeFiles/backend_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable backend_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend_tests.dir/link.txt --verbose=$(VERBOSE)

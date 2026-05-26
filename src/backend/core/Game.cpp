@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include <unordered_set>
 
 Game::Game() {}
 
@@ -55,12 +56,12 @@ bool Game::submitMove(const std::string &uci) {
   return true;
 }
 
-std::vector<Square> Game::getLegalDestinations(Square from) {
+std::unordered_set<Square, SquareHash> Game::getLegalDestinations(Square from) {
   const auto legal = board.generateAllLegalMoves(whiteTurn);
-  std::vector<Square> destinations;
+  std::unordered_set<Square, SquareHash> destinations;
   for (const Move &m : legal) {
     if (m.getFrom() == from) {
-      destinations.push_back(m.getTo());
+      destinations.insert(m.getTo());
     }
   }
   return destinations;

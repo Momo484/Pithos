@@ -1,6 +1,6 @@
-set(__QT_DEPLOY_TARGET_Catch2_FILE /Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/src/libCatch2.a)
+set(__QT_DEPLOY_TARGET_Catch2_FILE /Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/src/libCatch2d.a)
 set(__QT_DEPLOY_TARGET_Catch2_TYPE STATIC_LIBRARY)
-set(__QT_DEPLOY_TARGET_Catch2WithMain_FILE /Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/src/libCatch2Main.a)
+set(__QT_DEPLOY_TARGET_Catch2WithMain_FILE /Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/src/libCatch2Maind.a)
 set(__QT_DEPLOY_TARGET_Catch2WithMain_TYPE STATIC_LIBRARY)
 set(__QT_DEPLOY_TARGET_PithosCore_FILE /Users/aabhushan/Documents/Projects/Pithos/build/libPithosCore.a)
 set(__QT_DEPLOY_TARGET_PithosCore_TYPE STATIC_LIBRARY)
