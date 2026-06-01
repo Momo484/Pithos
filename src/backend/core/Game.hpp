@@ -20,6 +20,7 @@ public:
    * already over.
    */
   bool submitMove(const std::string &uci);
+  void undoMove();
 
   GameResult getResult() const { return result; }
   bool isWhiteTurn() const { return whiteTurn; }

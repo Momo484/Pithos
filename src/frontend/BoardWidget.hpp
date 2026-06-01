@@ -18,9 +18,16 @@ public:
   // Standard Qt widget constructor - always takes an optional parent.
   // Parent owns this widget's memory, so we don'et need to delete it.
   // Explicit tells the compiler that the type must be compiled as stated
-  explicit BoardWidget(QWidget *parent = nullptr);
+  explicit BoardWidget(Game& game, QWidget *parent = nullptr);
 
   QSize sizeHint() const override;
+
+public slots:
+  // called by main window when side panel triggers a state change
+  void refresh();
+
+signals:
+  void gameStateChanged();
 
 protected:
   // Qt calls this automatically whenever the widget needs to be redrawn.
@@ -33,14 +40,17 @@ protected:
   // When the mouse is moving.
   void mouseMoveEvent(QMouseEvent *event) override;
 
-  // Qt calss this twhen the user released the moust button.
+  // Qt calls this when the user released the moust button.
   void mouseReleaseEvent(QMouseEvent *event) override;
+
+  // Qt Calls this when the user presses a key
+  void keyPressEvent(QKeyEvent *event) override;
 
 private:
   // Helps converts our pixel position on the screen to a board square.
 
   std::unordered_map<char, QPixmap> piecePixmaps;
-  Game game;
+  Game& game;
   Square selectedSquare = {-1, -1};
   bool isDragging = false;
   QPoint dragPos;

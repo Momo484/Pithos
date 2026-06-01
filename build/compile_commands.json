@@ -109,6 +109,18 @@
 },
 {
   "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/backend/core -I/Users/aabhushan/Documents/Projects/Pithos/src/frontend -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -g -std=gnu++17 -arch arm64 -o CMakeFiles/pithos_chess.dir/src/frontend/MainWindow.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/frontend/MainWindow.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/frontend/MainWindow.cpp",
+  "output": "CMakeFiles/pithos_chess.dir/src/frontend/MainWindow.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/backend/core -I/Users/aabhushan/Documents/Projects/Pithos/src/frontend -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -g -std=gnu++17 -arch arm64 -o CMakeFiles/pithos_chess.dir/src/frontend/SidePanel.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/frontend/SidePanel.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/frontend/SidePanel.cpp",
+  "output": "CMakeFiles/pithos_chess.dir/src/frontend/SidePanel.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
   "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/backend/core -I/Users/aabhushan/Documents/Projects/Pithos/src/frontend -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -g -std=gnu++17 -arch arm64 -o CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/frontend/main.cpp",
   "file": "/Users/aabhushan/Documents/Projects/Pithos/src/frontend/main.cpp",
   "output": "CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o"

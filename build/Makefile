@@ -754,6 +754,54 @@ src/frontend/BoardWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/BoardWidget.cpp.s
 .PHONY : src/frontend/BoardWidget.cpp.s
 
+src/frontend/MainWindow.o: src/frontend/MainWindow.cpp.o
+.PHONY : src/frontend/MainWindow.o
+
+# target to build an object file
+src/frontend/MainWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/MainWindow.cpp.o
+.PHONY : src/frontend/MainWindow.cpp.o
+
+src/frontend/MainWindow.i: src/frontend/MainWindow.cpp.i
+.PHONY : src/frontend/MainWindow.i
+
+# target to preprocess a source file
+src/frontend/MainWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/MainWindow.cpp.i
+.PHONY : src/frontend/MainWindow.cpp.i
+
+src/frontend/MainWindow.s: src/frontend/MainWindow.cpp.s
+.PHONY : src/frontend/MainWindow.s
+
+# target to generate assembly for a file
+src/frontend/MainWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/MainWindow.cpp.s
+.PHONY : src/frontend/MainWindow.cpp.s
+
+src/frontend/SidePanel.o: src/frontend/SidePanel.cpp.o
+.PHONY : src/frontend/SidePanel.o
+
+# target to build an object file
+src/frontend/SidePanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/SidePanel.cpp.o
+.PHONY : src/frontend/SidePanel.cpp.o
+
+src/frontend/SidePanel.i: src/frontend/SidePanel.cpp.i
+.PHONY : src/frontend/SidePanel.i
+
+# target to preprocess a source file
+src/frontend/SidePanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/SidePanel.cpp.i
+.PHONY : src/frontend/SidePanel.cpp.i
+
+src/frontend/SidePanel.s: src/frontend/SidePanel.cpp.s
+.PHONY : src/frontend/SidePanel.s
+
+# target to generate assembly for a file
+src/frontend/SidePanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pithos_chess.dir/build.make CMakeFiles/pithos_chess.dir/src/frontend/SidePanel.cpp.s
+.PHONY : src/frontend/SidePanel.cpp.s
+
 src/frontend/main.o: src/frontend/main.cpp.o
 .PHONY : src/frontend/main.o
 
@@ -857,6 +905,12 @@ help:
 	@echo "... src/frontend/BoardWidget.o"
 	@echo "... src/frontend/BoardWidget.i"
 	@echo "... src/frontend/BoardWidget.s"
+	@echo "... src/frontend/MainWindow.o"
+	@echo "... src/frontend/MainWindow.i"
+	@echo "... src/frontend/MainWindow.s"
+	@echo "... src/frontend/SidePanel.o"
+	@echo "... src/frontend/SidePanel.i"
+	@echo "... src/frontend/SidePanel.s"
 	@echo "... src/frontend/main.o"
 	@echo "... src/frontend/main.i"
 	@echo "... src/frontend/main.s"

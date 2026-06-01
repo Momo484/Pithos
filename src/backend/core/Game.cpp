@@ -13,16 +13,23 @@ void Game::updateResult() {
   if (legal.empty()) {
     if (kingInCheck) {
       result = whiteTurn ? GameResult::BlackWins : GameResult::WhiteWins;
+      return;
     } else {
       // stale mate situation
       result = GameResult::Draw;
+      return;
     }
   }
 
   // we leave the 50 move for later.
   if (board.checkThreeFoldRepitition()) {
     result = GameResult::Draw;
+    return;
   }
+
+  // in all other cases for now, game result goes back to ongoing
+  // This came to being important, once undo's were allowed.
+  result = GameResult::Ongoing;
 }
 
 bool Game::submitMove(const std::string &uci) {
@@ -54,6 +61,12 @@ bool Game::submitMove(const std::string &uci) {
   whiteTurn = !whiteTurn;
   updateResult();
   return true;
+}
+
+void Game::undoMove() {
+  whiteTurn = !whiteTurn;
+  board.undoMove();
+  updateResult(); 
 }
 
 std::unordered_set<Square, SquareHash> Game::getLegalDestinations(Square from) {
