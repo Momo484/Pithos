@@ -2,8 +2,14 @@
 #include <cctype>
 #include <random>
 
+/**
+ * @file ZobristHash.cpp
+ * @brief Implementation of Zobrist hash generation for chess positions.
+ */
+
+// Static member definitions
 bool ZobristHash::initialised = false;
-uint64_t ZobristHash::pieceSquareTable[NUM_SQUARES][NUM_PIECES];
+uint64_t ZobristHash::pieceSquareTable[ZobristHash::NUM_SQUARES][ZobristHash::NUM_PIECES];
 uint64_t ZobristHash::whiteToMove;
 uint64_t ZobristHash::castlingRights[16];
 uint64_t ZobristHash::enPassantFiles[8];
@@ -31,26 +37,27 @@ void ZobristHash::initialise() {
   if (initialised)
     return;
 
-  // It is currently fixed for reproducability
+  // Use a fixed seed for reproducible, deterministic hash generation across runs
   std::mt19937_64 rng(0xDEADBEEF);
   std::uniform_int_distribution<uint64_t> dist;
 
-  // We give each peice square combination it's own random number for the hash
-  // to XOR.
+  // Generate unique random numbers for each piece on each square
+  // This creates NUM_SQUARES * NUM_PIECES (64 * 12 = 768) unique hash values
   for (int sq = 0; sq < NUM_SQUARES; sq++) {
     for (int pc = 0; pc < NUM_PIECES; pc++) {
       pieceSquareTable[sq][pc] = dist(rng);
     }
   }
 
-  // similarly we give the other fields their own random number, that is
-  // hopefully unique.
+  // Generate random values for move turn indicator
   whiteToMove = dist(rng);
 
+  // Generate random values for all 16 castling rights configurations
   for (int i = 0; i < 16; i++) {
     castlingRights[i] = dist(rng);
   }
 
+  // Generate random values for each en passant file
   for (int i = 0; i < 8; i++) {
     enPassantFiles[i] = dist(rng);
   }
@@ -66,11 +73,13 @@ uint64_t ZobristHash::getPieceHash(char symbol, Square sq) {
   int squareIdx = sq.rank * 8 + sq.file;
   if (squareIdx < 0 || squareIdx >= NUM_SQUARES)
     return 0;
+
   return pieceSquareTable[squareIdx][pieceIdx];
 }
 
 uint64_t ZobristHash::getCastlingHash(bool whiteKingSide, bool whiteQueenSide,
                                       bool blackKingSide, bool blackQueenSide) {
+  // Encode castling rights as a 4-bit index
   int idx = 0;
   if (whiteKingSide)
     idx |= 0x1;
@@ -80,15 +89,19 @@ uint64_t ZobristHash::getCastlingHash(bool whiteKingSide, bool whiteQueenSide,
     idx |= 0x4;
   if (blackQueenSide)
     idx |= 0x8;
+
   return castlingRights[idx];
 }
 
 uint64_t ZobristHash::getEnPassantHash(Square epTarget) {
   if (epTarget.file < 0 || epTarget.file >= 8)
     return 0;
+
   return enPassantFiles[epTarget.file];
 }
 
 uint64_t ZobristHash::getToMoveHash(bool isWhite) {
+  // Convention: return the hash when it's white's turn, 0 for black's turn
+  // Toggling move is done by XORing twice (once to clear, once to set)
   return isWhite ? whiteToMove : 0;
 }
