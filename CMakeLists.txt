@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(PithosBackend VERSION 1.0)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_AUTOMOC ON)                   # required for Qt's moc preprocessor
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)   # for clangd
@@ -23,6 +23,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 file(GLOB_RECURSE CORE_SOURCES "src/backend/core/*.cpp")
 file(GLOB_RECURSE TEST_SOURCES "src/backend/testing/*.cpp")
 file(GLOB_RECURSE FRONTEND_SOURCES "src/frontend/*.cpp")
+file(GLOB_RECURSE HERODOTUS_SOURCES "src/engines/herodotus/*.cpp")
 qt6_add_resources(RESOURCES src/frontend/resources/resources.qrc)
 
 # --- 4. Build Core Library ---
@@ -51,4 +52,11 @@ target_link_libraries(pithos_chess PRIVATE PithosCore Qt6::Widgets)
 target_include_directories(pithos_chess PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/backend/core
     ${CMAKE_CURRENT_SOURCE_DIR}/src/frontend
+)
+
+# --- 8. Build Herodotus Engine ---
+add_executable(herodotus ${HERODOTUS_SOURCES})
+
+target_include_directories(herodotus PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engines/herodotus
 )
