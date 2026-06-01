@@ -34,6 +34,9 @@ SidePanel::SidePanel(Game &game, QWidget *parent)
   // Buttons
   QPushButton *resetBtn = new QPushButton("Reset [R]");
   QPushButton *undoBtn = new QPushButton("Undo [U]");
+  QPushButton *playEngineWhite = new QPushButton("Play engine as White");
+  QPushButton *playEngineBlack = new QPushButton("Play engine as Black");
+  QPushButton *playHuman = new QPushButton("Human vs. Human");
 
   // Layout
   layout->addWidget(title);
@@ -43,10 +46,16 @@ SidePanel::SidePanel(Game &game, QWidget *parent)
   layout->addSpacing(8);
   layout->addWidget(resetBtn);
   layout->addWidget(undoBtn);
+  layout->addWidget(divider);
+  layout->addWidget(playHuman);
+  layout->addWidget(playEngineWhite);
+  layout->addWidget(playEngineBlack);
   layout->addStretch(); // pushes everything to the top.
 
   connect(resetBtn, &QPushButton::clicked, this, &SidePanel::onResetClicked);
   connect(undoBtn, &QPushButton::clicked, this, &SidePanel::onUndoClicked);
+
+  // Connect play engine buttons, once engine is made.
 }
 
 void SidePanel::onResetClicked() {
