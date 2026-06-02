@@ -23,6 +23,7 @@
  * - Whether a piece was captured
  * - Whether the move promotes a pawn
  * - Whether the move is an en passant capture
+ * - Whether the move is a pawn double push (making for a new en passant square)
  *
  * The color of the moving piece and piece type are explicitly stored
  * for quick access and validation without requiring board lookups.
@@ -38,6 +39,7 @@
  *   std::nullopt,      // No capture
  *   std::nullopt,      // No promotion
  *   false              // Not en passant
+ *   true               // triggers en passant square addition
  * };
  *
  * // White pawn promotes to queen on e8
@@ -48,6 +50,7 @@
  *   Square{7, 4},      // e8
  *   std::nullopt,      // No capture
  *   Piece::QUEEN,      // Promote to queen
+ *   false
  *   false
  * };
  *
@@ -60,6 +63,7 @@
  *   Piece::PAWN,       // Captured pawn
  *   std::nullopt,      // No promotion
  *   true               // This is en passant
+ *   false
  * };
  * ```
  */
@@ -134,4 +138,12 @@ struct Move {
    *       handled separately when applying the move to the board.
    */
   bool isCastling = false;
+
+  /**
+   * @brief Flag indicating whether this move triggers an en passant square recording
+   * Allowing the moving pawn to be en passanted. 
+   *
+   * @note The engine should record the en passant square addition, it is not within the move
+   */
+  bool isPawnDoublePush = false;
 };

@@ -1,9 +1,11 @@
 #pragma once
 
-#include "../types/Types.hpp"
-#include "../types/GameState.hpp"
 #include "../types/Bitboard.hpp"
+#include "../types/GameState.hpp"
+#include "../types/Move.hpp"
+#include "../types/Types.hpp"
 #include <optional>
+#include <vector>
 
 /**
  * @file HerodotusEngine.hpp
@@ -26,6 +28,12 @@
  * ```
  */
 
+class HerodotusEngine;
+
+namespace MoveGen {
+void generatePseudoLegalMoves(HerodotusEngine &engine, std::vector<Move> &out);
+}
+
 /**
  * @class HerodotusEngine
  * @brief Main chess engine class for position representation and manipulation.
@@ -35,10 +43,11 @@
  * - Complete game state (whose turn, castling rights, en passant)
  * - Utility functions for position analysis and display
  *
- * The internal bitboard layout uses little-endian encoding where bit 0 represents
- * the a1 square, bit 7 represents h1, bit 8 represents a2, etc.
+ * The internal bitboard layout uses little-endian encoding where bit 0
+ * represents the a1 square, bit 7 represents h1, bit 8 represents a2, etc.
  *
- * @invariant pieces[color][piece] contains exactly one bit for each piece of that type
+ * @invariant pieces[color][piece] contains exactly one bit for each piece of
+ * that type
  * @invariant gameState is kept in sync with piece positions
  */
 class HerodotusEngine {
@@ -60,7 +69,32 @@ private:
   /// Current game state (whose turn, castling rights, move counters, etc.)
   GameState gameState;
 
+  /**
+   * @brief Mailbox array for O(1) piece lookup by square index.
+   *
+   * mailbox[sq] contains the Piece type at that square, or NUM_PIECES if empty.
+   * Kept in sync with the bitboard arrays by syncMailbox().
+   */
+  Piece mailbox[64];
+
+  friend void MoveGen::generatePseudoLegalMoves(HerodotusEngine &,
+                                                std::vector<Move> &);
+
   // ===== Private Methods =====
+
+  Bitboard getWhitePieces();
+  Bitboard getBlackPieces();
+  Bitboard getAllPieces();
+
+  /**
+   * @brief Rebuilds the mailbox from the bitboard arrays.
+   *
+   * Iterates every piece bitboard and sets mailbox[sq] for each occupied
+   * square. Empty squares are set to Piece::NUM_PIECES.
+   *
+   * @post mailbox[sq] == pieces[color][piece] is consistent for all squares.
+   */
+  void syncMailbox();
 
   /**
    * @brief Sets up the default starting position for a chess game.
@@ -70,7 +104,8 @@ private:
    * - Pawns on rank 2 (white) and rank 7 (black)
    * - Other pieces arranged in their initial configuration
    *
-   * The gameState is NOT modified by this method; call initialise() for full setup.
+   * The gameState is NOT modified by this method; call initialise() for full
+   * setup.
    *
    * @post All piece bitboards contain the starting position
    * @see initialise()
@@ -88,50 +123,6 @@ private:
    * @post All pieces[i][j] == 0
    */
   void clearBoard();
-
-  /**
-   * @brief Generates a bitboard of all white pieces.
-   *
-   * Computes the union of all white piece bitboards using bitwise OR operations.
-   * This is useful for checking occupancy and move generation.
-   *
-   * @return A bitboard with bits set for every square containing a white piece
-   *
-   * @example
-   * ```cpp
-   * Bitboard whitePieces = engine.getWhitePieces();
-   * bool isWhiteOccupied = (whitePieces & (1ULL << squareIndex)) != 0;
-   * ```
-   */
-  Bitboard getWhitePieces();
-
-  /**
-   * @brief Generates a bitboard of all black pieces.
-   *
-   * Computes the union of all black piece bitboards using bitwise OR operations.
-   * This is useful for checking occupancy and move generation.
-   *
-   * @return A bitboard with bits set for every square containing a black piece
-   *
-   * @see getWhitePieces()
-   */
-  Bitboard getBlackPieces();
-
-  /**
-   * @brief Generates a bitboard of all occupied squares (both colors).
-   *
-   * Computes the union of all piece bitboards (both white and black).
-   * This is useful for move generation and position analysis.
-   *
-   * @return A bitboard with bits set for every square containing any piece
-   *
-   * @example
-   * ```cpp
-   * Bitboard occupied = engine.getAllPieces();
-   * Bitboard empty = ~occupied;  // Complement to get empty squares
-   * ```
-   */
-  Bitboard getAllPieces();
 
 public:
   /**

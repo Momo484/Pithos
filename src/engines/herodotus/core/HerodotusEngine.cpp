@@ -98,6 +98,25 @@ void HerodotusEngine::initialise() {
   gameState.enPassant = std::nullopt;
   gameState.whiteKing = {0, 4};  // e1
   gameState.blackKing = {7, 4};  // e8
+
+  // Build the mailbox from the bitboard arrays
+  syncMailbox();
+}
+
+void HerodotusEngine::syncMailbox() {
+  for (auto& entry : mailbox) {
+    entry = Piece::NUM_PIECES;
+  }
+  for (int color = 0; color < Color::NUM_COLORS; color++) {
+    for (int pieceType = 0; pieceType < Piece::NUM_PIECES; pieceType++) {
+      Bitboard bb = pieces[color][pieceType];
+      while (bb) {
+        int sq = __builtin_ctzll(bb);
+        mailbox[sq] = static_cast<Piece>(pieceType);
+        bb &= bb - 1;
+      }
+    }
+  }
 }
 
 void HerodotusEngine::printBoardState() {
