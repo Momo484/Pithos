@@ -83,14 +83,14 @@ qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resou
 qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/qw.svg
 qrc_resources.cpp: /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/pieces/kw.svg
 qrc_resources.cpp: src/frontend/resources/resources.qrc.depends
-qrc_resources.cpp: /opt/homebrew/opt/qt/share/qt/libexec/rcc
+qrc_resources.cpp: /opt/homebrew/share/qt/libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating qrc_resources.cpp"
-	/opt/homebrew/opt/qt/share/qt/libexec/rcc --name resources --output /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/resources.qrc
+	/opt/homebrew/share/qt/libexec/rcc --name resources --output /Users/aabhushan/Documents/Projects/Pithos/build/qrc_resources.cpp /Users/aabhushan/Documents/Projects/Pithos/src/frontend/resources/resources.qrc
 
-pithos_chess_autogen/timestamp: /opt/homebrew/opt/qt/share/qt/libexec/moc
+pithos_chess_autogen/timestamp: /opt/homebrew/share/qt/libexec/moc
 pithos_chess_autogen/timestamp: CMakeFiles/pithos_chess.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic MOC for target pithos_chess"
-	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/pithos_chess_autogen.dir/AutogenInfo.json Debug
+	/opt/homebrew/bin/cmake -E cmake_autogen /Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles/pithos_chess_autogen.dir/AutogenInfo.json ""
 	/opt/homebrew/bin/cmake -E touch /Users/aabhushan/Documents/Projects/Pithos/build/pithos_chess_autogen/timestamp
 
 CMakeFiles/pithos_chess.dir/codegen:
@@ -200,9 +200,9 @@ pithos_chess: CMakeFiles/pithos_chess.dir/src/frontend/main.cpp.o
 pithos_chess: CMakeFiles/pithos_chess.dir/qrc_resources.cpp.o
 pithos_chess: CMakeFiles/pithos_chess.dir/build.make
 pithos_chess: libPithosCore.a
-pithos_chess: /opt/homebrew/opt/qt/lib/QtWidgets.framework/Versions/A/QtWidgets
-pithos_chess: /opt/homebrew/opt/qt/lib/QtGui.framework/Versions/A/QtGui
-pithos_chess: /opt/homebrew/opt/qt/lib/QtCore.framework/Versions/A/QtCore
+pithos_chess: /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets
+pithos_chess: /opt/homebrew/lib/QtGui.framework/Versions/A/QtGui
+pithos_chess: /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore
 pithos_chess: CMakeFiles/pithos_chess.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/aabhushan/Documents/Projects/Pithos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable pithos_chess"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pithos_chess.dir/link.txt --verbose=$(VERBOSE)

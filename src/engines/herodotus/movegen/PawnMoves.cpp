@@ -1,12 +1,13 @@
 #include "movegen/PawnMoves.hpp"
 #include "types/Move.hpp"
+#include "types/Square.hpp"
 
 namespace MoveGen {
 
-void generatePawnMoves(const Bitboard (&pieces)[2][6],
-                       const Piece (&mailbox)[64], Bitboard friendly,
-                       Bitboard enemy, Bitboard all, Color side,
-                       const GameState &state, std::vector<Move> &out) {
+void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
+                       Bitboard friendly, Bitboard enemy, Bitboard all,
+                       Color side, const GameState &state,
+                       std::vector<Move> &out) {
 
   bool isWhite = side == Color::WHITE;
   Bitboard empty = ~all;
@@ -195,7 +196,8 @@ void generatePawnMoves(const Bitboard (&pieces)[2][6],
       Bitboard epBB = state.enPassant->squareToU64();
       // Here we check for pawns that are one rank below the en passant square
       // and either to the left of to the right.
-      Bitboard attackers = ((epBB << 9) & ~FILE_A | (epBB << 7) & ~FILE_H) & pawnBB;
+      Bitboard attackers =
+          ((epBB << 9) & ~FILE_A | (epBB << 7) & ~FILE_H) & pawnBB;
       while (attackers) {
         int fromSq = __builtin_ctzll(attackers);
         Square from = Square::fromIndex(fromSq);

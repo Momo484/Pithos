@@ -169,6 +169,19 @@ pithos_chess/fast:
 .PHONY : pithos_chess/fast
 
 #=============================================================================
+# Target rules for targets named herodotus
+
+# Build rule for target.
+herodotus: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 herodotus
+.PHONY : herodotus
+
+# fast build rule for target.
+herodotus/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/build
+.PHONY : herodotus/fast
+
+#=============================================================================
 # Target rules for targets named PithosCore_autogen_timestamp_deps
 
 # Build rule for target.
@@ -273,6 +286,32 @@ pithos_chess_autogen/fast:
 .PHONY : pithos_chess_autogen/fast
 
 #=============================================================================
+# Target rules for targets named herodotus_autogen_timestamp_deps
+
+# Build rule for target.
+herodotus_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 herodotus_autogen_timestamp_deps
+.PHONY : herodotus_autogen_timestamp_deps
+
+# fast build rule for target.
+herodotus_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus_autogen_timestamp_deps.dir/build.make CMakeFiles/herodotus_autogen_timestamp_deps.dir/build
+.PHONY : herodotus_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named herodotus_autogen
+
+# Build rule for target.
+herodotus_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 herodotus_autogen
+.PHONY : herodotus_autogen
+
+# fast build rule for target.
+herodotus_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus_autogen.dir/build.make CMakeFiles/herodotus_autogen.dir/build
+.PHONY : herodotus_autogen/fast
+
+#=============================================================================
 # Target rules for targets named Catch2
 
 # Build rule for target.
@@ -345,6 +384,30 @@ backend_tests_autogen/mocs_compilation.s: backend_tests_autogen/mocs_compilation
 backend_tests_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests.dir/build.make CMakeFiles/backend_tests.dir/backend_tests_autogen/mocs_compilation.cpp.s
 .PHONY : backend_tests_autogen/mocs_compilation.cpp.s
+
+herodotus_autogen/mocs_compilation.o: herodotus_autogen/mocs_compilation.cpp.o
+.PHONY : herodotus_autogen/mocs_compilation.o
+
+# target to build an object file
+herodotus_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/herodotus_autogen/mocs_compilation.cpp.o
+.PHONY : herodotus_autogen/mocs_compilation.cpp.o
+
+herodotus_autogen/mocs_compilation.i: herodotus_autogen/mocs_compilation.cpp.i
+.PHONY : herodotus_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+herodotus_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/herodotus_autogen/mocs_compilation.cpp.i
+.PHONY : herodotus_autogen/mocs_compilation.cpp.i
+
+herodotus_autogen/mocs_compilation.s: herodotus_autogen/mocs_compilation.cpp.s
+.PHONY : herodotus_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+herodotus_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/herodotus_autogen/mocs_compilation.cpp.s
+.PHONY : herodotus_autogen/mocs_compilation.cpp.s
 
 pithos_backend_autogen/mocs_compilation.o: pithos_backend_autogen/mocs_compilation.cpp.o
 .PHONY : pithos_backend_autogen/mocs_compilation.o
@@ -730,6 +793,78 @@ src/backend/testing/test_perft.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/backend_tests.dir/build.make CMakeFiles/backend_tests.dir/src/backend/testing/test_perft.cpp.s
 .PHONY : src/backend/testing/test_perft.cpp.s
 
+src/engines/herodotus/core/HerodotusEngine.o: src/engines/herodotus/core/HerodotusEngine.cpp.o
+.PHONY : src/engines/herodotus/core/HerodotusEngine.o
+
+# target to build an object file
+src/engines/herodotus/core/HerodotusEngine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/core/HerodotusEngine.cpp.o
+.PHONY : src/engines/herodotus/core/HerodotusEngine.cpp.o
+
+src/engines/herodotus/core/HerodotusEngine.i: src/engines/herodotus/core/HerodotusEngine.cpp.i
+.PHONY : src/engines/herodotus/core/HerodotusEngine.i
+
+# target to preprocess a source file
+src/engines/herodotus/core/HerodotusEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/core/HerodotusEngine.cpp.i
+.PHONY : src/engines/herodotus/core/HerodotusEngine.cpp.i
+
+src/engines/herodotus/core/HerodotusEngine.s: src/engines/herodotus/core/HerodotusEngine.cpp.s
+.PHONY : src/engines/herodotus/core/HerodotusEngine.s
+
+# target to generate assembly for a file
+src/engines/herodotus/core/HerodotusEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/core/HerodotusEngine.cpp.s
+.PHONY : src/engines/herodotus/core/HerodotusEngine.cpp.s
+
+src/engines/herodotus/hash/ZobristHash.o: src/engines/herodotus/hash/ZobristHash.cpp.o
+.PHONY : src/engines/herodotus/hash/ZobristHash.o
+
+# target to build an object file
+src/engines/herodotus/hash/ZobristHash.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/hash/ZobristHash.cpp.o
+.PHONY : src/engines/herodotus/hash/ZobristHash.cpp.o
+
+src/engines/herodotus/hash/ZobristHash.i: src/engines/herodotus/hash/ZobristHash.cpp.i
+.PHONY : src/engines/herodotus/hash/ZobristHash.i
+
+# target to preprocess a source file
+src/engines/herodotus/hash/ZobristHash.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/hash/ZobristHash.cpp.i
+.PHONY : src/engines/herodotus/hash/ZobristHash.cpp.i
+
+src/engines/herodotus/hash/ZobristHash.s: src/engines/herodotus/hash/ZobristHash.cpp.s
+.PHONY : src/engines/herodotus/hash/ZobristHash.s
+
+# target to generate assembly for a file
+src/engines/herodotus/hash/ZobristHash.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/hash/ZobristHash.cpp.s
+.PHONY : src/engines/herodotus/hash/ZobristHash.cpp.s
+
+src/engines/herodotus/main.o: src/engines/herodotus/main.cpp.o
+.PHONY : src/engines/herodotus/main.o
+
+# target to build an object file
+src/engines/herodotus/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/main.cpp.o
+.PHONY : src/engines/herodotus/main.cpp.o
+
+src/engines/herodotus/main.i: src/engines/herodotus/main.cpp.i
+.PHONY : src/engines/herodotus/main.i
+
+# target to preprocess a source file
+src/engines/herodotus/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/main.cpp.i
+.PHONY : src/engines/herodotus/main.cpp.i
+
+src/engines/herodotus/main.s: src/engines/herodotus/main.cpp.s
+.PHONY : src/engines/herodotus/main.s
+
+# target to generate assembly for a file
+src/engines/herodotus/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/main.cpp.s
+.PHONY : src/engines/herodotus/main.cpp.s
+
 src/frontend/BoardWidget.o: src/frontend/BoardWidget.cpp.o
 .PHONY : src/frontend/BoardWidget.o
 
@@ -838,6 +973,8 @@ help:
 	@echo "... PithosCore_autogen_timestamp_deps"
 	@echo "... backend_tests_autogen"
 	@echo "... backend_tests_autogen_timestamp_deps"
+	@echo "... herodotus_autogen"
+	@echo "... herodotus_autogen_timestamp_deps"
 	@echo "... pithos_backend_autogen"
 	@echo "... pithos_backend_autogen_timestamp_deps"
 	@echo "... pithos_chess_autogen"
@@ -846,6 +983,7 @@ help:
 	@echo "... Catch2WithMain"
 	@echo "... PithosCore"
 	@echo "... backend_tests"
+	@echo "... herodotus"
 	@echo "... pithos_backend"
 	@echo "... pithos_chess"
 	@echo "... PithosCore_autogen/mocs_compilation.o"
@@ -854,6 +992,9 @@ help:
 	@echo "... backend_tests_autogen/mocs_compilation.o"
 	@echo "... backend_tests_autogen/mocs_compilation.i"
 	@echo "... backend_tests_autogen/mocs_compilation.s"
+	@echo "... herodotus_autogen/mocs_compilation.o"
+	@echo "... herodotus_autogen/mocs_compilation.i"
+	@echo "... herodotus_autogen/mocs_compilation.s"
 	@echo "... pithos_backend_autogen/mocs_compilation.o"
 	@echo "... pithos_backend_autogen/mocs_compilation.i"
 	@echo "... pithos_backend_autogen/mocs_compilation.s"
@@ -902,6 +1043,15 @@ help:
 	@echo "... src/backend/testing/test_perft.o"
 	@echo "... src/backend/testing/test_perft.i"
 	@echo "... src/backend/testing/test_perft.s"
+	@echo "... src/engines/herodotus/core/HerodotusEngine.o"
+	@echo "... src/engines/herodotus/core/HerodotusEngine.i"
+	@echo "... src/engines/herodotus/core/HerodotusEngine.s"
+	@echo "... src/engines/herodotus/hash/ZobristHash.o"
+	@echo "... src/engines/herodotus/hash/ZobristHash.i"
+	@echo "... src/engines/herodotus/hash/ZobristHash.s"
+	@echo "... src/engines/herodotus/main.o"
+	@echo "... src/engines/herodotus/main.i"
+	@echo "... src/engines/herodotus/main.s"
 	@echo "... src/frontend/BoardWidget.o"
 	@echo "... src/frontend/BoardWidget.i"
 	@echo "... src/frontend/BoardWidget.s"

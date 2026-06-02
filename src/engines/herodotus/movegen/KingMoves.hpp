@@ -7,7 +7,8 @@
 #include <vector>
 
 namespace MoveGen {
-void generateKingMoves(Bitboard kingBB, Bitboard friendly, Bitboard all,
-                       Color side, const GameState &state,
+void generateKingMoves(const PositionBitboards &pieces,
+                       const Mailbox &mailbox, Bitboard friendly, Bitboard enemy,
+                       Bitboard all, Color side, const GameState &state,
                        std::vector<Move> &out);
 }

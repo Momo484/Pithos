@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../types/Square.hpp"
+#include <array>
 #include <cstdint>
 
 /**
@@ -75,7 +76,7 @@ private:
    * - 0-5: White pieces (Pawn, Knight, Bishop, Rook, Queen, King)
    * - 6-11: Black pieces (Pawn, Knight, Bishop, Rook, Queen, King)
    */
-  static uint64_t pieceSquareTable[NUM_SQUARES][NUM_PIECES];
+  static std::array<std::array<uint64_t, NUM_PIECES>, NUM_SQUARES> pieceSquareTable;
 
   /// Hash value indicating it's white's turn to move
   static uint64_t whiteToMove;
@@ -92,7 +93,7 @@ private:
    * - Bit 2: Black kingside castling
    * - Bit 3: Black queenside castling
    */
-  static uint64_t castlingRights[16];
+  static std::array<uint64_t, 16> castlingRights;
 
   /**
    * @brief En passant file hash table.
@@ -103,7 +104,7 @@ private:
    *
    * Index 0-7 corresponds to files a-h.
    */
-  static uint64_t enPassantFiles[8];
+  static std::array<uint64_t, 8> enPassantFiles;
 
   /**
    * @brief Maps a piece character to its index in the piece table.

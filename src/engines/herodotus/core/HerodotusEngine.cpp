@@ -52,10 +52,9 @@ void HerodotusEngine::setupStartingPosition() {
 }
 
 void HerodotusEngine::clearBoard() {
-  // Zero out all bitboards to represent an empty board
-  for (int i = 0; i < 2; i++) {
-    for (int j = 0; j < 6; j++) {
-      pieces[i][j] = 0ULL;
+  for (auto& colorArray : pieces) {
+    for (auto& bb : colorArray) {
+      bb = 0ULL;
     }
   }
 }
@@ -124,10 +123,10 @@ void HerodotusEngine::printBoardState() {
   std::vector<std::vector<char>> board(8, std::vector<char>(8, '.'));
 
   // Iterate through each side (white, black) and piece type
-  for (int side = 0; side < 2; side++) {
+  for (int side = 0; side < Color::NUM_COLORS; side++) {
     bool isWhite = (side == Color::WHITE) ? true : false;
 
-    for (int piece = 0; piece < 6; piece++) {
+    for (int piece = 0; piece < Piece::NUM_PIECES; piece++) {
       // Determine the character representation for this piece
       char pieceChar = 'k';  // Default to king, overridden below
       if (piece == Piece::PAWN) {

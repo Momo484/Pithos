@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include "Bitboard.hpp"
+#include "Square.hpp"
+
 /**
  * @file Types.hpp
  * @brief Core type definitions and enumerations for the Herodotus chess engine.
@@ -38,3 +42,12 @@ enum Color {
   BLACK = 1,     ///< Black player
   NUM_COLORS = 2 ///< Total number of colors
 };
+
+/// @brief Array of all bitboards for a single color (6 piece types).
+using PieceBitboards = std::array<Bitboard, Piece::NUM_PIECES>;
+
+/// @brief Array of all bitboards for both colors (2 × 6).
+using PositionBitboards = std::array<PieceBitboards, Color::NUM_COLORS>;
+
+/// @brief Mailbox array mapping square index → piece type (or NUM_PIECES if empty).
+using Mailbox = std::array<Piece, Square::NUM_SQUARES>;

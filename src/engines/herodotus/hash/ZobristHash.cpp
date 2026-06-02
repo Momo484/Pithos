@@ -9,10 +9,10 @@
 
 // Static member definitions
 bool ZobristHash::initialised = false;
-uint64_t ZobristHash::pieceSquareTable[ZobristHash::NUM_SQUARES][ZobristHash::NUM_PIECES];
+std::array<std::array<uint64_t, ZobristHash::NUM_PIECES>, ZobristHash::NUM_SQUARES> ZobristHash::pieceSquareTable;
 uint64_t ZobristHash::whiteToMove;
-uint64_t ZobristHash::castlingRights[16];
-uint64_t ZobristHash::enPassantFiles[8];
+std::array<uint64_t, 16> ZobristHash::castlingRights;
+std::array<uint64_t, 8> ZobristHash::enPassantFiles;
 
 int ZobristHash::getPieceIndex(char symbol) {
   switch (std::tolower(symbol)) {
@@ -43,9 +43,9 @@ void ZobristHash::initialise() {
 
   // Generate unique random numbers for each piece on each square
   // This creates NUM_SQUARES * NUM_PIECES (64 * 12 = 768) unique hash values
-  for (int sq = 0; sq < NUM_SQUARES; sq++) {
-    for (int pc = 0; pc < NUM_PIECES; pc++) {
-      pieceSquareTable[sq][pc] = dist(rng);
+  for (auto& row : pieceSquareTable) {
+    for (auto& val : row) {
+      val = dist(rng);
     }
   }
 
@@ -53,13 +53,13 @@ void ZobristHash::initialise() {
   whiteToMove = dist(rng);
 
   // Generate random values for all 16 castling rights configurations
-  for (int i = 0; i < 16; i++) {
-    castlingRights[i] = dist(rng);
+  for (auto& val : castlingRights) {
+    val = dist(rng);
   }
 
   // Generate random values for each en passant file
-  for (int i = 0; i < 8; i++) {
-    enPassantFiles[i] = dist(rng);
+  for (auto& val : enPassantFiles) {
+    val = dist(rng);
   }
 
   initialised = true;

@@ -120,6 +120,8 @@ struct Square {
     return {static_cast<std::uint8_t>(index >> 3),
             static_cast<std::uint8_t>(index & 7)};
   }
+
+  const static int NUM_SQUARES = 64;
 };
 
 /**

@@ -4,7 +4,6 @@
 #include "../types/GameState.hpp"
 #include "../types/Move.hpp"
 #include "../types/Types.hpp"
-#include <optional>
 #include <vector>
 
 /**
@@ -64,7 +63,7 @@ private:
    * Each bit in pieces[color][piece] represents a piece of that type and color.
    * A bit set to 1 means a piece occupies that square.
    */
-  Bitboard pieces[2][6];
+  PositionBitboards pieces;
 
   /// Current game state (whose turn, castling rights, move counters, etc.)
   GameState gameState;
@@ -75,7 +74,7 @@ private:
    * mailbox[sq] contains the Piece type at that square, or NUM_PIECES if empty.
    * Kept in sync with the bitboard arrays by syncMailbox().
    */
-  Piece mailbox[64];
+  Mailbox mailbox;
 
   friend void MoveGen::generatePseudoLegalMoves(HerodotusEngine &,
                                                 std::vector<Move> &);
