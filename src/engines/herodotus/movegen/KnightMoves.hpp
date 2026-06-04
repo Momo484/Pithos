@@ -6,6 +6,8 @@
 #include <vector>
 
 namespace MoveGen {
-void generateKnightMoves(Bitboard knightBB, Bitboard friendly, Color side,
+void generateKnightMoves(const PositionBitboards &pieces,
+                         const Mailbox &mailbox, Bitboard friendly,
+                         Bitboard enemy, Color side,
                          std::vector<Move> &out);
 }

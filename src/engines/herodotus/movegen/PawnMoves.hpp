@@ -3,7 +3,6 @@
 #include "types/Bitboard.hpp"
 #include "types/GameState.hpp"
 #include "types/Move.hpp"
-#include "types/Square.hpp"
 #include "types/Types.hpp"
 #include <vector>
 

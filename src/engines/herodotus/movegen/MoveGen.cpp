@@ -21,7 +21,8 @@ void generatePseudoLegalMoves(HerodotusEngine &engine, std::vector<Move> &out) {
 
   generatePawnMoves(engine.pieces, engine.mailbox, friendly, enemy, all, side,
                     engine.gameState, out);
-  generateKnightMoves(engine.pieces[side][KNIGHT], friendly, side, out);
+  generateKnightMoves(engine.pieces, engine.mailbox, friendly, enemy, side,
+                      out);
   generateBishopMoves(engine.pieces[side][BISHOP], friendly, all, side, out);
   generateRookMoves(engine.pieces[side][ROOK], friendly, all, side, out);
   generateQueenMoves(engine.pieces[side][QUEEN], friendly, all, side, out);

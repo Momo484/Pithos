@@ -1,10 +1,11 @@
 #include "movegen/KingMoves.hpp"
 #include "types/Bitboard.hpp"
+#include "utils/BitboardTables.hpp"
 
 namespace MoveGen {
-void generateKingMoves(const PositionBitboards &pieces,
-                       const Mailbox &mailbox, Bitboard friendly, Bitboard enemy,
-                       Bitboard all, Color side, const GameState &state,
+void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
+                       Bitboard friendly, Bitboard enemy, Bitboard all,
+                       Color side, const GameState &state,
                        std::vector<Move> &out) {
 
   bool isWhite = side == Color::WHITE;
@@ -73,9 +74,46 @@ void generateKingMoves(const PositionBitboards &pieces,
   // king and rook is empty, for each respective side, and also if they have
   // castling rights. The engine will be responsible for legalising it, and
   // ensuring that the king doesnt move into or through check.
-  // I think i now need those bitboard with the space between two squares.
-  // I can find a square index with FILE_X & RANK_Y, which is nice tho.
-
-  
+  // initially we are going to create it seperatly for white and black, but we
+  // might be able to combine it later
+  if (isWhite) {
+    if (state.castlingRights & GameState::WHITE_KINGSIDE_CASTLE) {
+      Bitboard between =
+          BitboardTables::betweenSquares(RANK_1 & FILE_E, RANK_1 & FILE_H);
+      if ((between & all) == 0) {
+        out.push_back({side, Piece::KING, from,
+                       Square::fromIndex(RANK_1 & FILE_G), std::nullopt,
+                       std::nullopt, false, true, false});
+      }
+    }
+    if (state.castlingRights & GameState::WHITE_QUEENSIDE_CASTLE) {
+      Bitboard between =
+          BitboardTables::betweenSquares(RANK_1 & FILE_E, RANK_1 & FILE_A);
+      if ((between & all) == 0) {
+        out.push_back({side, Piece::KING, from,
+                       Square::fromIndex(RANK_1 & FILE_C), std::nullopt,
+                       std::nullopt, false, true, false});
+      }
+    }
+  } else {
+    if (state.castlingRights & GameState::BLACK_KINGSIDE_CASTLE) {
+      Bitboard between =
+          BitboardTables::betweenSquares(RANK_8 & FILE_E, RANK_8 & FILE_H);
+      if ((between & all) == 0) {
+        out.push_back({side, Piece::KING, from,
+                       Square::fromIndex(RANK_8 & FILE_G), std::nullopt,
+                       std::nullopt, false, true, false});
+      }
+    }
+    if (state.castlingRights & GameState::BLACK_QUEENSIDE_CASTLE) {
+      Bitboard between =
+          BitboardTables::betweenSquares(RANK_8 & FILE_E, RANK_8 & FILE_A);
+      if ((between & all) == 0) {
+        out.push_back({side, Piece::KING, from,
+                       Square::fromIndex(RANK_8 & FILE_C), std::nullopt,
+                       std::nullopt, false, true, false});
+      }
+    }
+  }
 }
 } // namespace MoveGen
