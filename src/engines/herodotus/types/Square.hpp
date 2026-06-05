@@ -121,6 +121,10 @@ struct Square {
             static_cast<std::uint8_t>(index & 7)};
   }
 
+  static Square fromIndex(Bitboard bitboard) {
+    return Square::fromIndex(__builtin_ctzll(bitboard));
+  }
+
   const static int NUM_SQUARES = 64;
 };
 
