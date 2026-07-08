@@ -865,6 +865,222 @@ src/engines/herodotus/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/main.cpp.s
 .PHONY : src/engines/herodotus/main.cpp.s
 
+src/engines/herodotus/movegen/BishopMoves.o: src/engines/herodotus/movegen/BishopMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/BishopMoves.o
+
+# target to build an object file
+src/engines/herodotus/movegen/BishopMoves.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/BishopMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/BishopMoves.cpp.o
+
+src/engines/herodotus/movegen/BishopMoves.i: src/engines/herodotus/movegen/BishopMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/BishopMoves.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/BishopMoves.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/BishopMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/BishopMoves.cpp.i
+
+src/engines/herodotus/movegen/BishopMoves.s: src/engines/herodotus/movegen/BishopMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/BishopMoves.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/BishopMoves.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/BishopMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/BishopMoves.cpp.s
+
+src/engines/herodotus/movegen/KingMoves.o: src/engines/herodotus/movegen/KingMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/KingMoves.o
+
+# target to build an object file
+src/engines/herodotus/movegen/KingMoves.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KingMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/KingMoves.cpp.o
+
+src/engines/herodotus/movegen/KingMoves.i: src/engines/herodotus/movegen/KingMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/KingMoves.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/KingMoves.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KingMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/KingMoves.cpp.i
+
+src/engines/herodotus/movegen/KingMoves.s: src/engines/herodotus/movegen/KingMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/KingMoves.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/KingMoves.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KingMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/KingMoves.cpp.s
+
+src/engines/herodotus/movegen/KnightMoves.o: src/engines/herodotus/movegen/KnightMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/KnightMoves.o
+
+# target to build an object file
+src/engines/herodotus/movegen/KnightMoves.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KnightMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/KnightMoves.cpp.o
+
+src/engines/herodotus/movegen/KnightMoves.i: src/engines/herodotus/movegen/KnightMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/KnightMoves.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/KnightMoves.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KnightMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/KnightMoves.cpp.i
+
+src/engines/herodotus/movegen/KnightMoves.s: src/engines/herodotus/movegen/KnightMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/KnightMoves.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/KnightMoves.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KnightMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/KnightMoves.cpp.s
+
+src/engines/herodotus/movegen/MoveGen.o: src/engines/herodotus/movegen/MoveGen.cpp.o
+.PHONY : src/engines/herodotus/movegen/MoveGen.o
+
+# target to build an object file
+src/engines/herodotus/movegen/MoveGen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/MoveGen.cpp.o
+.PHONY : src/engines/herodotus/movegen/MoveGen.cpp.o
+
+src/engines/herodotus/movegen/MoveGen.i: src/engines/herodotus/movegen/MoveGen.cpp.i
+.PHONY : src/engines/herodotus/movegen/MoveGen.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/MoveGen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/MoveGen.cpp.i
+.PHONY : src/engines/herodotus/movegen/MoveGen.cpp.i
+
+src/engines/herodotus/movegen/MoveGen.s: src/engines/herodotus/movegen/MoveGen.cpp.s
+.PHONY : src/engines/herodotus/movegen/MoveGen.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/MoveGen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/MoveGen.cpp.s
+.PHONY : src/engines/herodotus/movegen/MoveGen.cpp.s
+
+src/engines/herodotus/movegen/PawnMoves.o: src/engines/herodotus/movegen/PawnMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/PawnMoves.o
+
+# target to build an object file
+src/engines/herodotus/movegen/PawnMoves.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/PawnMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/PawnMoves.cpp.o
+
+src/engines/herodotus/movegen/PawnMoves.i: src/engines/herodotus/movegen/PawnMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/PawnMoves.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/PawnMoves.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/PawnMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/PawnMoves.cpp.i
+
+src/engines/herodotus/movegen/PawnMoves.s: src/engines/herodotus/movegen/PawnMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/PawnMoves.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/PawnMoves.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/PawnMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/PawnMoves.cpp.s
+
+src/engines/herodotus/movegen/QueenMoves.o: src/engines/herodotus/movegen/QueenMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/QueenMoves.o
+
+# target to build an object file
+src/engines/herodotus/movegen/QueenMoves.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/QueenMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/QueenMoves.cpp.o
+
+src/engines/herodotus/movegen/QueenMoves.i: src/engines/herodotus/movegen/QueenMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/QueenMoves.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/QueenMoves.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/QueenMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/QueenMoves.cpp.i
+
+src/engines/herodotus/movegen/QueenMoves.s: src/engines/herodotus/movegen/QueenMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/QueenMoves.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/QueenMoves.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/QueenMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/QueenMoves.cpp.s
+
+src/engines/herodotus/movegen/RookMoves.o: src/engines/herodotus/movegen/RookMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/RookMoves.o
+
+# target to build an object file
+src/engines/herodotus/movegen/RookMoves.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/RookMoves.cpp.o
+.PHONY : src/engines/herodotus/movegen/RookMoves.cpp.o
+
+src/engines/herodotus/movegen/RookMoves.i: src/engines/herodotus/movegen/RookMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/RookMoves.i
+
+# target to preprocess a source file
+src/engines/herodotus/movegen/RookMoves.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/RookMoves.cpp.i
+.PHONY : src/engines/herodotus/movegen/RookMoves.cpp.i
+
+src/engines/herodotus/movegen/RookMoves.s: src/engines/herodotus/movegen/RookMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/RookMoves.s
+
+# target to generate assembly for a file
+src/engines/herodotus/movegen/RookMoves.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/RookMoves.cpp.s
+.PHONY : src/engines/herodotus/movegen/RookMoves.cpp.s
+
+src/engines/herodotus/utils/BitboardTables.o: src/engines/herodotus/utils/BitboardTables.cpp.o
+.PHONY : src/engines/herodotus/utils/BitboardTables.o
+
+# target to build an object file
+src/engines/herodotus/utils/BitboardTables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/utils/BitboardTables.cpp.o
+.PHONY : src/engines/herodotus/utils/BitboardTables.cpp.o
+
+src/engines/herodotus/utils/BitboardTables.i: src/engines/herodotus/utils/BitboardTables.cpp.i
+.PHONY : src/engines/herodotus/utils/BitboardTables.i
+
+# target to preprocess a source file
+src/engines/herodotus/utils/BitboardTables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/utils/BitboardTables.cpp.i
+.PHONY : src/engines/herodotus/utils/BitboardTables.cpp.i
+
+src/engines/herodotus/utils/BitboardTables.s: src/engines/herodotus/utils/BitboardTables.cpp.s
+.PHONY : src/engines/herodotus/utils/BitboardTables.s
+
+# target to generate assembly for a file
+src/engines/herodotus/utils/BitboardTables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/utils/BitboardTables.cpp.s
+.PHONY : src/engines/herodotus/utils/BitboardTables.cpp.s
+
+src/engines/herodotus/utils/MagicBitboards.o: src/engines/herodotus/utils/MagicBitboards.cpp.o
+.PHONY : src/engines/herodotus/utils/MagicBitboards.o
+
+# target to build an object file
+src/engines/herodotus/utils/MagicBitboards.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/utils/MagicBitboards.cpp.o
+.PHONY : src/engines/herodotus/utils/MagicBitboards.cpp.o
+
+src/engines/herodotus/utils/MagicBitboards.i: src/engines/herodotus/utils/MagicBitboards.cpp.i
+.PHONY : src/engines/herodotus/utils/MagicBitboards.i
+
+# target to preprocess a source file
+src/engines/herodotus/utils/MagicBitboards.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/utils/MagicBitboards.cpp.i
+.PHONY : src/engines/herodotus/utils/MagicBitboards.cpp.i
+
+src/engines/herodotus/utils/MagicBitboards.s: src/engines/herodotus/utils/MagicBitboards.cpp.s
+.PHONY : src/engines/herodotus/utils/MagicBitboards.s
+
+# target to generate assembly for a file
+src/engines/herodotus/utils/MagicBitboards.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/herodotus.dir/build.make CMakeFiles/herodotus.dir/src/engines/herodotus/utils/MagicBitboards.cpp.s
+.PHONY : src/engines/herodotus/utils/MagicBitboards.cpp.s
+
 src/frontend/BoardWidget.o: src/frontend/BoardWidget.cpp.o
 .PHONY : src/frontend/BoardWidget.o
 
@@ -1052,6 +1268,33 @@ help:
 	@echo "... src/engines/herodotus/main.o"
 	@echo "... src/engines/herodotus/main.i"
 	@echo "... src/engines/herodotus/main.s"
+	@echo "... src/engines/herodotus/movegen/BishopMoves.o"
+	@echo "... src/engines/herodotus/movegen/BishopMoves.i"
+	@echo "... src/engines/herodotus/movegen/BishopMoves.s"
+	@echo "... src/engines/herodotus/movegen/KingMoves.o"
+	@echo "... src/engines/herodotus/movegen/KingMoves.i"
+	@echo "... src/engines/herodotus/movegen/KingMoves.s"
+	@echo "... src/engines/herodotus/movegen/KnightMoves.o"
+	@echo "... src/engines/herodotus/movegen/KnightMoves.i"
+	@echo "... src/engines/herodotus/movegen/KnightMoves.s"
+	@echo "... src/engines/herodotus/movegen/MoveGen.o"
+	@echo "... src/engines/herodotus/movegen/MoveGen.i"
+	@echo "... src/engines/herodotus/movegen/MoveGen.s"
+	@echo "... src/engines/herodotus/movegen/PawnMoves.o"
+	@echo "... src/engines/herodotus/movegen/PawnMoves.i"
+	@echo "... src/engines/herodotus/movegen/PawnMoves.s"
+	@echo "... src/engines/herodotus/movegen/QueenMoves.o"
+	@echo "... src/engines/herodotus/movegen/QueenMoves.i"
+	@echo "... src/engines/herodotus/movegen/QueenMoves.s"
+	@echo "... src/engines/herodotus/movegen/RookMoves.o"
+	@echo "... src/engines/herodotus/movegen/RookMoves.i"
+	@echo "... src/engines/herodotus/movegen/RookMoves.s"
+	@echo "... src/engines/herodotus/utils/BitboardTables.o"
+	@echo "... src/engines/herodotus/utils/BitboardTables.i"
+	@echo "... src/engines/herodotus/utils/BitboardTables.s"
+	@echo "... src/engines/herodotus/utils/MagicBitboards.o"
+	@echo "... src/engines/herodotus/utils/MagicBitboards.i"
+	@echo "... src/engines/herodotus/utils/MagicBitboards.s"
 	@echo "... src/frontend/BoardWidget.o"
 	@echo "... src/frontend/BoardWidget.i"
 	@echo "... src/frontend/BoardWidget.s"

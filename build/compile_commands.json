@@ -156,6 +156,60 @@
   "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/main.cpp.o"
 },
 {
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/BishopMoves.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/BishopMoves.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/BishopMoves.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/BishopMoves.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KingMoves.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/KingMoves.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/KingMoves.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KingMoves.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KnightMoves.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/KnightMoves.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/KnightMoves.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/KnightMoves.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/MoveGen.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/MoveGen.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/MoveGen.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/MoveGen.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/PawnMoves.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/PawnMoves.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/PawnMoves.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/PawnMoves.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/QueenMoves.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/QueenMoves.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/QueenMoves.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/QueenMoves.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/RookMoves.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/RookMoves.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/movegen/RookMoves.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/movegen/RookMoves.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/utils/BitboardTables.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/utils/BitboardTables.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/utils/BitboardTables.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/utils/BitboardTables.cpp.o"
+},
+{
+  "directory": "/Users/aabhushan/Documents/Projects/Pithos/build",
+  "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/herodotus_autogen/include -I/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus -std=gnu++20 -arch arm64 -o CMakeFiles/herodotus.dir/src/engines/herodotus/utils/MagicBitboards.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/utils/MagicBitboards.cpp",
+  "file": "/Users/aabhushan/Documents/Projects/Pithos/src/engines/herodotus/utils/MagicBitboards.cpp",
+  "output": "CMakeFiles/herodotus.dir/src/engines/herodotus/utils/MagicBitboards.cpp.o"
+},
+{
   "directory": "/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/src",
   "command": "/usr/bin/c++  -I/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/src/catch2/.. -I/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-build/generated-includes -std=gnu++20 -arch arm64 -ffile-prefix-map=/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/= -o CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.o -c /Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/src/catch2/benchmark/catch_chronometer.cpp",
   "file": "/Users/aabhushan/Documents/Projects/Pithos/build/_deps/catch2-src/src/catch2/benchmark/catch_chronometer.cpp",
