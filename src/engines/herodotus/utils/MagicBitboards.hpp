@@ -174,6 +174,7 @@ extern std::array<std::vector<Bitboard>, 64> rookTable;
 void initMagicBitboards();
 
 // ───── Inline lookup helpers ─────
+// https://rhysre.net/fast-chess-move-generation-with-magic-bitboards.html
 
 inline Bitboard getBishopAttacks(int sq, Bitboard occupancy) {
   Bitboard occ = occupancy & bishopRelevant[sq];
