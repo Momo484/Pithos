@@ -6,6 +6,7 @@
 #include <vector>
 
 namespace MoveGen {
-void generateQueenMoves(Bitboard queenBB, Bitboard friendly, Bitboard occupancy,
-                        Color side, std::vector<Move> &out);
+void generateQueenMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
+                        Bitboard friendly, Bitboard enemy, Color side,
+                        std::vector<Move> &out);
 }

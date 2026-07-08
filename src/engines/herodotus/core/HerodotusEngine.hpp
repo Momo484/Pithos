@@ -135,12 +135,6 @@ public:
    *    rights available, no en passant)
    *
    * @post Engine is ready to play from the starting position
-   *
-   * @example
-   * ```cpp
-   * HerodotusEngine engine;
-   * engine.initialise();           // Now ready to use
-   * ```
    */
   void initialise();
 
@@ -154,18 +148,18 @@ public:
    *
    * The board is printed with rank 8 at the top and rank 1 at the bottom,
    * showing the board from white's perspective.
-   *
-   * @example
-   * ```
-   * r n b q k b n r
-   * p p p p p p p p
-   * . . . . . . . .
-   * . . . . . . . .
-   * . . . . . . . .
-   * . . . . . . . .
-   * P P P P P P P P
-   * R N B Q K B N R
-   * ```
    */
   void printBoardState();
+  
+  // TODO: Make legal move generation, essentially check against every move if it puts the king
+  // in check, also check for caslting. return a filtered list of legal moves. 
+  // 1. Implement check detection
+  // 2. Implement castling checking
+  
+  // TODO: Formulate away to advance the game state -> makeMove and undoMove
+  // 1. Use the ZobristHashing 
+  // 2. Keep track of game state 
+
+  // TODO: The hardest part: move pruncing and move decisions, done after the above two.
+  // This part represents the actual engine (apart from move generation ofc).
 };

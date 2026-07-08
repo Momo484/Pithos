@@ -1,5 +1,4 @@
 #include "HerodotusEngine.hpp"
-#include "utils/MagicBitboards.hpp"
 #include <iostream>
 #include <vector>
 
@@ -84,9 +83,6 @@ Bitboard HerodotusEngine::getAllPieces() {
 }
 
 void HerodotusEngine::initialise() {
-  // Build magic bitboard lookup tables (idempotent — safe to call repeatedly)
-  MagicBitboards::initMagicBitboards();
-
   // Clear the board to ensure clean state
   clearBoard();
 
@@ -178,3 +174,5 @@ void HerodotusEngine::printBoardState() {
     std::cout << std::endl;
   }
 }
+
+

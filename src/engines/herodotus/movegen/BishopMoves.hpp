@@ -6,7 +6,8 @@
 #include <vector>
 
 namespace MoveGen {
-void generateBishopMoves(Bitboard bishopBB, Bitboard friendly,
-                         Bitboard occupancy, Color side,
-                         std::vector<Move> &out);
+
+void generateBishopMoves(const PositionBitboards &pieces,
+                         const Mailbox &mailbox, Bitboard friendly,
+                         Bitboard enemy, Color side, std::vector<Move> &out); 
 }

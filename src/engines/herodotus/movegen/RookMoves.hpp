@@ -6,6 +6,7 @@
 #include <vector>
 
 namespace MoveGen {
-void generateRookMoves(Bitboard rookBB, Bitboard friendly, Bitboard occupancy,
-                       Color side, std::vector<Move> &out);
+void generateRookMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
+                       Bitboard friendly, Bitboard enemy, Color side,
+                       std::vector<Move> &out);
 }
