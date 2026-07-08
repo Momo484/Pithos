@@ -4,6 +4,7 @@
 #include "../types/GameState.hpp"
 #include "../types/Move.hpp"
 #include "../types/Types.hpp"
+#include <unordered_map>
 #include <vector>
 
 /**
@@ -31,7 +32,9 @@ class HerodotusEngine;
 
 namespace MoveGen {
 void generatePseudoLegalMoves(HerodotusEngine &engine, std::vector<Move> &out);
-}
+bool isKingChecked(HerodotusEngine &engine);
+std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine, const std::vector<Move> pseudoLegalMoves);
+} 
 
 /**
  * @class HerodotusEngine
@@ -76,8 +79,14 @@ private:
    */
   Mailbox mailbox;
 
-  friend void MoveGen::generatePseudoLegalMoves(HerodotusEngine &,
+  friend void MoveGen::generatePseudoLegalMoves(HerodotusEngine &engine,
                                                 std::vector<Move> &);
+  friend bool MoveGen::isKingChecked(HerodotusEngine &engine);
+  friend std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine, const std::vector<Move> pseudoLegalMoves);
+
+  uint64_t zobristHash = 0;
+  std::unordered_map<uint64_t, int> boardStateHashCount;
+
 
   // ===== Private Methods =====
 
@@ -122,6 +131,7 @@ private:
    * @post All pieces[i][j] == 0
    */
   void clearBoard();
+
 
 public:
   /**
