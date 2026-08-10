@@ -95,8 +95,6 @@ void HerodotusEngine::initialise() {
   gameState.halfMoveClock = 0;
   gameState.fullMoveNumber = 1;
   gameState.enPassant = std::nullopt;
-  gameState.whiteKing = {0, 4};  // e1
-  gameState.blackKing = {7, 4};  // e8
 
   // Build the mailbox from the bitboard arrays
   syncMailbox();
@@ -174,5 +172,6 @@ void HerodotusEngine::printBoardState() {
     std::cout << std::endl;
   }
 }
+
 
 

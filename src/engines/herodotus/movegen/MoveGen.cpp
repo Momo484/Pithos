@@ -6,8 +6,10 @@
 #include "movegen/PawnMoves.hpp"
 #include "movegen/QueenMoves.hpp"
 #include "movegen/RookMoves.hpp"
-#include "utils/MagicBitboards.hpp"
+#include "types/Types.hpp"
 #include "utils/BitboardTables.hpp"
+#include "utils/MagicBitboards.hpp"
+#include <cstdint>
 
 namespace MoveGen {
 
@@ -36,45 +38,47 @@ void generatePseudoLegalMoves(HerodotusEngine &engine, std::vector<Move> &out) {
                     engine.gameState, out);
 }
 
-bool isKingChecked(HerodotusEngine &engine) {
-  // This will be somwhat long because i have not thought ahead and improved modularised
-  // some of my move logic.
-  
-  Color side = engine.gameState.activeColor;
+bool isKingChecked(HerodotusEngine &engine, Color side) {
+  // This will be somwhat long because i have not thought ahead and improved
+  // modularised some of my move logic.
+
   Bitboard friendly =
       (side == WHITE) ? engine.getWhitePieces() : engine.getBlackPieces();
   Bitboard enemy =
       (side == WHITE) ? engine.getBlackPieces() : engine.getWhitePieces();
   Bitboard all = engine.getAllPieces();
-  Square kingSquare = (side == WHITE) ? engine.gameState.whiteKing : engine.gameState.blackKing;
-  Bitboard kingBB = kingSquare.squareToU64();
+  Bitboard kingBB = engine.pieces[side][Piece::KING];
   int kingIdx = __builtin_ctzll(kingBB);
 
   // Lets start with bishops/Queens
-  // we get diagonal threats by finding bishopattacks from king position, then removing friendlies
-  // we will have to prune using mailbox further, to ensure the atttacking pieces are of the right 
-  // type.
-  Bitboard diagThreats = MagicBitboards::getBishopAttacks(kingIdx, all) & ~friendly;
-  while(diagThreats) {
+  // we get diagonal threats by finding bishopattacks from king position, then
+  // removing friendlies we will have to prune using mailbox further, to ensure
+  // the atttacking pieces are of the right type.
+  Bitboard diagThreats =
+      MagicBitboards::getBishopAttacks(kingIdx, all) & ~friendly;
+  while (diagThreats) {
     int threatIdx = __builtin_ctzll(diagThreats);
-    if (engine.mailbox[threatIdx] == Piece::BISHOP || engine.mailbox[threatIdx] == Piece::QUEEN) {
+    if (engine.mailbox[threatIdx] == Piece::BISHOP ||
+        engine.mailbox[threatIdx] == Piece::QUEEN) {
       return true;
     }
     diagThreats &= diagThreats - 1;
   }
   // straight threats
-  Bitboard straightThreats = MagicBitboards::getRookAttacks(kingIdx, all) & ~friendly;
+  Bitboard straightThreats =
+      MagicBitboards::getRookAttacks(kingIdx, all) & ~friendly;
   while (straightThreats) {
     int threatIdx = __builtin_ctzll(diagThreats);
-    if (engine.mailbox[threatIdx] == Piece::ROOK || engine.mailbox[threatIdx] == Piece::QUEEN) {
+    if (engine.mailbox[threatIdx] == Piece::ROOK ||
+        engine.mailbox[threatIdx] == Piece::QUEEN) {
       return true;
     }
     straightThreats &= straightThreats - 1;
   }
 
-  //Knight Threats
+  // Knight Threats
   Bitboard knightThreats = BitboardTables::knightAttacks[kingIdx] & ~friendly;
-  while(knightThreats) {
+  while (knightThreats) {
     int threatIdx = __builtin_ctzll(knightThreats);
     if (engine.mailbox[threatIdx] == Piece::KNIGHT) {
       return true;
@@ -83,9 +87,9 @@ bool isKingChecked(HerodotusEngine &engine) {
     knightThreats &= knightThreats - 1;
   }
 
-  //Pawn Threats
-  // i just have to check the fields bitShifted 7 and 9, in front of me, or behind me
-  // depending on what colour i am
+  // Pawn Threats
+  //  i just have to check the fields bitShifted 7 and 9, in front of me, or
+  //  behind me depending on what colour i am
   //
   Bitboard pawnThreats = 0ULL;
   if (side == Color::WHITE) {
@@ -107,10 +111,50 @@ bool isKingChecked(HerodotusEngine &engine) {
   return false;
 }
 
-std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine, const std::vector<Move> pseudoLegalMoves) {
+std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine,
+                                     const std::vector<Move> pseudoLegalMoves) {
   std::vector<Move> legalMoves;
+  for (Move move : pseudoLegalMoves) {
+    if (validateMove(engine, move)) {
+      legalMoves.push_back(move);
+    }
+  }
 
   return legalMoves;
 }
 
+bool validateMove(HerodotusEngine &engine, Move move) {
+
+  if (move.isCastling) {
+    // i think it is ok, since we only would validate a move that is made in the
+    // right turn order, so checking engine for which colours turn should result
+    // correctly
+    if (isKingChecked(engine, move.color)) {
+      return false;
+    }
+    // determine if queenside or kingside
+    std::uint8_t dir = 0;
+    if (move.from.file > move.to.file) {
+      // kingside castle
+      dir = 1;
+    } else {
+      // queenside castle
+      dir = -1;
+    }
+    Square kingSquare = Square::fromIndex(__builtin_ctz(engine.pieces[move.color][Piece::KING]));
+    Square transitSquare = {static_cast<uint8_t>(kingSquare.file + dir), kingSquare.rank};
+    // transite square should be clear as per move generation logic
+    Move transitMove = {move.color, Piece::KING, kingSquare, transitSquare, std::nullopt, std::nullopt, false, false};
+    engine.makeMove(transitMove);
+    bool transitChecked = isKingChecked(engine, move.color);
+    engine.undoMove();
+    if (transitChecked) {
+      return false;
+    }
+  }
+  engine.makeMove(move);
+  bool legal = !isKingChecked(engine, move.color);
+  engine.undoMove();
+  return legal;
+}
 } // namespace MoveGen

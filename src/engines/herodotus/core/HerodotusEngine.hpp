@@ -32,9 +32,13 @@ class HerodotusEngine;
 
 namespace MoveGen {
 void generatePseudoLegalMoves(HerodotusEngine &engine, std::vector<Move> &out);
-bool isKingChecked(HerodotusEngine &engine);
-std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine, const std::vector<Move> pseudoLegalMoves);
-} 
+bool isKingChecked(HerodotusEngine &engine, Color side);
+std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine,
+                                     const std::vector<Move> pseudoLegalMoves);
+
+bool validateMove(HerodotusEngine &engine, Move move);
+
+} // namespace MoveGen
 
 /**
  * @class HerodotusEngine
@@ -81,12 +85,15 @@ private:
 
   friend void MoveGen::generatePseudoLegalMoves(HerodotusEngine &engine,
                                                 std::vector<Move> &);
-  friend bool MoveGen::isKingChecked(HerodotusEngine &engine);
-  friend std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine, const std::vector<Move> pseudoLegalMoves);
+  friend bool MoveGen::isKingChecked(HerodotusEngine &engine, Color side);
+  friend std::vector<Move>
+  pseudoToLegalMoves(HerodotusEngine &engine,
+                     const std::vector<Move> pseudoLegalMoves);
+
+  friend bool MoveGen::validateMove(HerodotusEngine &engine, Move move);
 
   uint64_t zobristHash = 0;
   std::unordered_map<uint64_t, int> boardStateHashCount;
-
 
   // ===== Private Methods =====
 
@@ -132,7 +139,6 @@ private:
    */
   void clearBoard();
 
-
 public:
   /**
    * @brief Initializes the engine to the default starting chess position.
@@ -160,16 +166,20 @@ public:
    * showing the board from white's perspective.
    */
   void printBoardState();
-  
-  // TODO: Make legal move generation, essentially check against every move if it puts the king
-  // in check, also check for caslting. return a filtered list of legal moves. 
-  // 1. Implement check detection
-  // 2. Implement castling checking
-  
-  // TODO: Formulate away to advance the game state -> makeMove and undoMove
-  // 1. Use the ZobristHashing 
-  // 2. Keep track of game state 
+  // TODO: Make legal move generation, essentially check against every move if
+  // it puts the king in check, also check for caslting. return a filtered list
+  // of legal moves.
+  // 1. implement pseudoToLegalMoves
 
-  // TODO: The hardest part: move pruncing and move decisions, done after the above two.
-  // This part represents the actual engine (apart from move generation ofc).
+  // TODO: Formulate away to advance the game state -> makeMove and undoMove
+  // 1. Use the ZobristHashing
+  // 2. Keep track of game state
+
+  // TODO: The hardest part: move pruncing and move decisions, done after the
+  // above two. This part represents the actual engine (apart from move
+  // generation ofc).
+  //
+  void makeMove(Move move);
+
+  void undoMove(void);
 };

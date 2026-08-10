@@ -110,20 +110,4 @@ struct GameState {
    * ```
    */
   std::optional<Square> enPassant = std::nullopt;
-
-  /**
-   * @brief Position of the white king.
-   *
-   * Cached for quick access during move validation (checking, castling).
-   * Must be kept in sync with the white king bitboard.
-   */
-  Square whiteKing = {0, 4}; // Default to e1
-
-  /**
-   * @brief Position of the black king.
-   *
-   * Cached for quick access during move validation (checking, castling).
-   * Must be kept in sync with the black king bitboard.
-   */
-  Square blackKing = {7, 4}; // Default to e8
 };
