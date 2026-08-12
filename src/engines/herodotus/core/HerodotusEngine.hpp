@@ -5,6 +5,7 @@
 #include "../types/Move.hpp"
 #include "../types/Types.hpp"
 #include "../types/BoardMemento.hpp"
+#include <stack>
 #include <unordered_map>
 #include <vector>
 
@@ -76,7 +77,7 @@ private:
   /// Current game state (whose turn, castling rights, move counters, etc.)
   GameState gameState;
 
-  std::vector<BoardMemento> history;
+  std::stack<BoardMemento> history;
 
   /**
    * @brief Mailbox array for O(1) piece lookup by square index.

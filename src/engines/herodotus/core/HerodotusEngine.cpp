@@ -1,6 +1,7 @@
 #include "HerodotusEngine.hpp"
 #include "hash/ZobristHash.hpp"
 #include "types/GameState.hpp"
+#include <cassert>
 #include <iostream>
 #include <optional>
 #include <vector>
@@ -116,9 +117,9 @@ void HerodotusEngine::initialiseHash() {
       Bitboard bb = pieces[color][pieceType];
       while (bb) {
         int sq = __builtin_ctzll(bb);
-        zobristHash ^= ZobristHash::getPieceHash(
-            static_cast<Piece>(pieceType), static_cast<Color>(color),
-            Square::fromIndex(sq));
+        zobristHash ^= ZobristHash::getPieceHash(static_cast<Piece>(pieceType),
+                                                 static_cast<Color>(color),
+                                                 Square::fromIndex(sq));
         bb &= bb - 1;
       }
     }
@@ -208,7 +209,7 @@ void HerodotusEngine::printBoardState() {
 }
 
 void HerodotusEngine::makeMove(Move move) {
-  history.push_back({move, gameState});
+  history.push({move, gameState});
   Square from = move.from;
   Square to = move.to;
   auto sqIdx = [](Square s) { return s.rank * 8 + s.file; };
@@ -359,11 +360,11 @@ void HerodotusEngine::makeMove(Move move) {
   auto revokeCastlingRight = [&](Square sq, Piece p, Color c) {
     if (p == Piece::KING) {
       if (c == Color::WHITE) {
-        gameState.castlingRights &=
-            ~(gameState.WHITE_KINGSIDE_CASTLE | gameState.WHITE_QUEENSIDE_CASTLE);
+        gameState.castlingRights &= ~(gameState.WHITE_KINGSIDE_CASTLE |
+                                      gameState.WHITE_QUEENSIDE_CASTLE);
       } else {
-        gameState.castlingRights &=
-            ~(gameState.BLACK_KINGSIDE_CASTLE | gameState.BLACK_QUEENSIDE_CASTLE);
+        gameState.castlingRights &= ~(gameState.BLACK_KINGSIDE_CASTLE |
+                                      gameState.BLACK_QUEENSIDE_CASTLE);
       }
     } else if (p == Piece::ROOK) {
       switch (sqIdx(sq)) {
@@ -400,5 +401,127 @@ void HerodotusEngine::makeMove(Move move) {
 }
 
 void HerodotusEngine::undoMove(void) {
+  assert(!history.empty() && "undoMove called with empty history");
+  BoardMemento memento = std::move(history.top());
+  history.pop();
+  auto sqIdx = [](Square s) { return s.rank * 8 + s.file; };
+  boardStateHashCount[zobristHash]--;
 
+  const Move &move = memento.move;
+
+  // removing current state from zobristhash
+  if (!move.promotion.has_value()) {
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.to);
+  }
+  zobristHash ^= ZobristHash::getCastlingHash(
+      gameState.castlingRights & gameState.WHITE_KINGSIDE_CASTLE,
+      gameState.castlingRights & gameState.WHITE_QUEENSIDE_CASTLE,
+      gameState.castlingRights & gameState.BLACK_KINGSIDE_CASTLE,
+      gameState.castlingRights & gameState.BLACK_QUEENSIDE_CASTLE);
+
+  if (gameState.enPassant.has_value()) {
+    zobristHash ^= ZobristHash::getEnPassantHash(*gameState.enPassant);
+  }
+  zobristHash ^= ZobristHash::getToMoveHash(Color::WHITE);
+
+  gameState = memento.state;
+
+  // re-add the en passant hash for the restored (pre-move) position
+  if (gameState.enPassant.has_value()) {
+    zobristHash ^= ZobristHash::getEnPassantHash(*gameState.enPassant);
+  }
+
+  if (move.isCastling) {
+    // move the king back
+    pieces[move.color][Piece::KING] = 0;
+    pieces[move.color][Piece::KING] = move.from.squareToU64();
+
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(move.from)] = Piece::KING;
+
+    Bitboard rank = move.color == Color::WHITE ? RANK_1 : RANK_8;
+    std::uint8_t rankNum = move.color == Color::WHITE ? 0 : 7;
+    int dir = move.to.file > move.from.file ? 1 : -1;
+
+    if (dir == 1) {
+      // kingside
+      pieces[move.color][Piece::ROOK] &= ~(rank & FILE_F);
+      pieces[move.color][Piece::ROOK] |= (rank & FILE_H);
+      mailbox[rankNum * 8 + 5] = Piece::NUM_PIECES;
+      mailbox[rankNum * 8 + 7] = Piece::ROOK;
+      zobristHash ^=
+          ZobristHash::getPieceHash(Piece::ROOK, move.color, {rankNum, 5});
+      zobristHash ^=
+          ZobristHash::getPieceHash(Piece::ROOK, move.color, {rankNum, 7});
+    } else {
+      // queenside
+      pieces[move.color][Piece::ROOK] &= ~(rank & FILE_D);
+      pieces[move.color][Piece::ROOK] |= (rank & FILE_A);
+      mailbox[rankNum * 8 + 3] = Piece::NUM_PIECES;
+      mailbox[rankNum * 8 + 0] = Piece::ROOK;
+      zobristHash ^=
+          ZobristHash::getPieceHash(Piece::ROOK, move.color, {rankNum, 3});
+      zobristHash ^=
+          ZobristHash::getPieceHash(Piece::ROOK, move.color, {rankNum, 0});
+    }
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
+  } else if (move.isEnPassant) {
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(move.from)] = Piece::PAWN;
+
+    Square capturedPawn = {move.to.rank, move.from.file};
+    Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+    pieces[other][Piece::PAWN] |= capturedPawn.squareToU64();
+    mailbox[sqIdx(capturedPawn)] = Piece::PAWN;
+
+    zobristHash ^= ZobristHash::getPieceHash(Piece::PAWN, other, capturedPawn);
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
+
+  } else if (move.isPawnDoublePush) {
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    mailbox[sqIdx(move.from)] = Piece::PAWN;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    // the zobrist hashing for from to to has been done already
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
+  } else if (move.promotion.has_value()) {
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    pieces[move.color][*move.promotion] &= ~move.to.squareToU64();
+    mailbox[sqIdx(move.from)] = Piece::PAWN;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    zobristHash ^=
+        ZobristHash::getPieceHash(*move.promotion, move.color, move.to);
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
+    if (move.captured.has_value()) {
+      Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+      pieces[other][*move.captured] |= move.to.squareToU64();
+      zobristHash ^= ZobristHash::getPieceHash(*move.captured, other, move.to);
+    }
+  } else if (move.captured.has_value()) {
+    // capture
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    mailbox[sqIdx(move.from)] = move.piece;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
+
+    // captured
+    Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+    pieces[other][*move.captured] |= move.to.squareToU64();
+    zobristHash ^= ZobristHash::getPieceHash(*move.captured, other, move.to);
+  } else {
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    mailbox[sqIdx(move.from)] = move.piece;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
+  }
+
+  zobristHash ^= ZobristHash::getCastlingHash(
+      gameState.castlingRights & gameState.WHITE_KINGSIDE_CASTLE,
+      gameState.castlingRights & gameState.WHITE_QUEENSIDE_CASTLE,
+      gameState.castlingRights & gameState.BLACK_KINGSIDE_CASTLE,
+      gameState.castlingRights & gameState.BLACK_QUEENSIDE_CASTLE);
 }
