@@ -65,10 +65,16 @@ void ZobristHash::initialise() {
   initialised = true;
 }
 
-uint64_t ZobristHash::getPieceHash(char symbol, Square sq) {
-  int pieceIdx = ZobristHash::getPieceIndex(symbol);
-  if (pieceIdx < 0)
+uint64_t ZobristHash::getPieceHash(Piece piece, Color pieceColor, Square sq) {
+  int pieceIdx = piece;
+  if (pieceIdx > 5) {
     return 0;
+  }
+
+  if (pieceColor == Color::BLACK) {
+    // black pieces occupy indices 6-11 (lowercase symbols)
+    pieceIdx += 6;
+  }
 
   int squareIdx = sq.rank * 8 + sq.file;
   if (squareIdx < 0 || squareIdx >= NUM_SQUARES)
@@ -100,8 +106,8 @@ uint64_t ZobristHash::getEnPassantHash(Square epTarget) {
   return enPassantFiles[epTarget.file];
 }
 
-uint64_t ZobristHash::getToMoveHash(bool isWhite) {
+uint64_t ZobristHash::getToMoveHash(Color color) {
   // Convention: return the hash when it's white's turn, 0 for black's turn
   // Toggling move is done by XORing twice (once to clear, once to set)
-  return isWhite ? whiteToMove : 0;
+  return color == Color::WHITE ? whiteToMove : 0;
 }

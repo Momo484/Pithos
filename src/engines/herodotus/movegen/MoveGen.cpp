@@ -68,7 +68,7 @@ bool isKingChecked(HerodotusEngine &engine, Color side) {
   Bitboard straightThreats =
       MagicBitboards::getRookAttacks(kingIdx, all) & ~friendly;
   while (straightThreats) {
-    int threatIdx = __builtin_ctzll(diagThreats);
+    int threatIdx = __builtin_ctzll(straightThreats);
     if (engine.mailbox[threatIdx] == Piece::ROOK ||
         engine.mailbox[threatIdx] == Piece::QUEEN) {
       return true;
@@ -133,16 +133,16 @@ bool validateMove(HerodotusEngine &engine, Move move) {
       return false;
     }
     // determine if queenside or kingside
-    std::uint8_t dir = 0;
-    if (move.from.file > move.to.file) {
-      // kingside castle
+    int dir = 0;
+    if (move.to.file > move.from.file) {
+      // kingside castle (king moves to a higher file)
       dir = 1;
     } else {
-      // queenside castle
+      // queenside castle (king moves to a lower file)
       dir = -1;
     }
     Square kingSquare = Square::fromIndex(__builtin_ctz(engine.pieces[move.color][Piece::KING]));
-    Square transitSquare = {static_cast<uint8_t>(kingSquare.file + dir), kingSquare.rank};
+    Square transitSquare = {kingSquare.rank, static_cast<uint8_t>(kingSquare.file + dir)};
     // transite square should be clear as per move generation logic
     Move transitMove = {move.color, Piece::KING, kingSquare, transitSquare, std::nullopt, std::nullopt, false, false};
     engine.makeMove(transitMove);

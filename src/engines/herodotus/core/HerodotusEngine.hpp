@@ -4,6 +4,7 @@
 #include "../types/GameState.hpp"
 #include "../types/Move.hpp"
 #include "../types/Types.hpp"
+#include "../types/BoardMemento.hpp"
 #include <unordered_map>
 #include <vector>
 
@@ -75,6 +76,8 @@ private:
   /// Current game state (whose turn, castling rights, move counters, etc.)
   GameState gameState;
 
+  std::vector<BoardMemento> history;
+
   /**
    * @brief Mailbox array for O(1) piece lookup by square index.
    *
@@ -110,6 +113,15 @@ private:
    * @post mailbox[sq] == pieces[color][piece] is consistent for all squares.
    */
   void syncMailbox();
+
+  /**
+   * @brief Computes the initial Zobrist hash for the current position.
+   *
+   * XORs the hash for every piece, plus the castling rights and side-to-move
+   * indicators. Must be called after the board and gameState are set up
+   * (i.e. at the end of initialise()).
+   */
+  void initialiseHash();
 
   /**
    * @brief Sets up the default starting position for a chess game.
@@ -166,11 +178,6 @@ public:
    * showing the board from white's perspective.
    */
   void printBoardState();
-  // TODO: Make legal move generation, essentially check against every move if
-  // it puts the king in check, also check for caslting. return a filtered list
-  // of legal moves.
-  // 1. implement pseudoToLegalMoves
-
   // TODO: Formulate away to advance the game state -> makeMove and undoMove
   // 1. Use the ZobristHashing
   // 2. Keep track of game state

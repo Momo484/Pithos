@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../types/Square.hpp"
+#include "types/Types.hpp"
 #include <array>
 #include <cstdint>
 
@@ -156,8 +157,7 @@ public:
    * Returns the precomputed random value associated with placing the given
    * piece on the given square. Used for incremental hash updates when pieces move.
    *
-   * @param symbol Chess piece symbol (uppercase for white, lowercase for black)
-   *               Valid symbols: P, N, B, R, Q, K (or lowercase variants)
+   * @param piece The piece
    * @param sq The square where the piece is located
    *
    * @return The 64-bit hash value for the piece-square combination,
@@ -173,7 +173,7 @@ public:
    * uint64_t hash = ZobristHash::getPieceHash('Q', Square{3, 3});
    * ```
    */
-  static uint64_t getPieceHash(char symbol, Square sq);
+  static uint64_t getPieceHash(Piece piece, Color pieceColor, Square sq);
 
   /**
    * @brief Retrieves the hash for a given castling rights configuration.
@@ -245,5 +245,5 @@ public:
    * }
    * ```
    */
-  static uint64_t getToMoveHash(bool isWhite);
+  static uint64_t getToMoveHash(Color color);
 };
