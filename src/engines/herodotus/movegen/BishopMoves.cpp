@@ -13,6 +13,7 @@ void generateBishopMoves(const PositionBitboards &pieces,
   while (bishopBB) {
     int index = __builtin_ctzll(bishopBB);
     Bitboard attacks = MagicBitboards::getBishopAttacks(index, occupancy);
+    attacks &= ~friendly;
     Bitboard captures = attacks & enemy;
     Bitboard moves = attacks & ~enemy;
     Square from = Square::fromIndex(index);

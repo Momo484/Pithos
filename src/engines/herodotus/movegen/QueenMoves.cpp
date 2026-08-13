@@ -14,6 +14,7 @@ void generateQueenMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
   while (queenBB) {
     int index = __builtin_ctzll(queenBB);
     Bitboard attacks = MagicBitboards::getQueenAttacks(index, occupancy);
+    attacks &= ~friendly;
     Bitboard captures = attacks & enemy;
     Bitboard moves = attacks & ~enemy;
     Square from = Square::fromIndex(index);

@@ -1,5 +1,6 @@
 #include "movegen/KingMoves.hpp"
 #include "types/Bitboard.hpp"
+#include "types/Square.hpp"
 #include "utils/BitboardTables.hpp"
 
 namespace MoveGen {
@@ -13,8 +14,7 @@ void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
   int fromSq = __builtin_ctzll(kingBB);
   Square from = Square::fromIndex(fromSq);
 
-
-  Bitboard kingMoves = BitboardTables::kingAttacks[fromSq]; 
+  Bitboard kingMoves = BitboardTables::kingAttacks[fromSq];
   Bitboard friendlyShared = kingMoves & friendly;
   kingMoves ^= friendlyShared;
 
@@ -53,18 +53,30 @@ void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
       Bitboard between =
           BitboardTables::betweenSquares(RANK_1 & FILE_E, RANK_1 & FILE_H);
       if ((between & all) == 0) {
-        out.push_back({side, Piece::KING, from,
-                       Square::fromIndex(RANK_1 & FILE_G), std::nullopt,
-                       std::nullopt, false, true, false});
+        out.push_back({side,
+                       Piece::KING,
+                       from,
+                       {0, 6},
+                       std::nullopt,
+                       std::nullopt,
+                       false,
+                       true,
+                       false});
       }
     }
     if (state.castlingRights & GameState::WHITE_QUEENSIDE_CASTLE) {
       Bitboard between =
           BitboardTables::betweenSquares(RANK_1 & FILE_E, RANK_1 & FILE_A);
       if ((between & all) == 0) {
-        out.push_back({side, Piece::KING, from,
-                       Square::fromIndex(RANK_1 & FILE_C), std::nullopt,
-                       std::nullopt, false, true, false});
+        out.push_back({side,
+                       Piece::KING,
+                       from,
+                       {0, 2},
+                       std::nullopt,
+                       std::nullopt,
+                       false,
+                       true,
+                       false});
       }
     }
   } else {
@@ -72,18 +84,30 @@ void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
       Bitboard between =
           BitboardTables::betweenSquares(RANK_8 & FILE_E, RANK_8 & FILE_H);
       if ((between & all) == 0) {
-        out.push_back({side, Piece::KING, from,
-                       Square::fromIndex(RANK_8 & FILE_G), std::nullopt,
-                       std::nullopt, false, true, false});
+        out.push_back({side,
+                       Piece::KING,
+                       from,
+                       {7, 6},
+                       std::nullopt,
+                       std::nullopt,
+                       false,
+                       true,
+                       false});
       }
     }
     if (state.castlingRights & GameState::BLACK_QUEENSIDE_CASTLE) {
       Bitboard between =
           BitboardTables::betweenSquares(RANK_8 & FILE_E, RANK_8 & FILE_A);
       if ((between & all) == 0) {
-        out.push_back({side, Piece::KING, from,
-                       Square::fromIndex(RANK_8 & FILE_C), std::nullopt,
-                       std::nullopt, false, true, false});
+        out.push_back({side,
+                       Piece::KING,
+                       from,
+                       {7, 2},
+                       std::nullopt,
+                       std::nullopt,
+                       false,
+                       true,
+                       false});
       }
     }
   }

@@ -6,6 +6,7 @@
 #include "../types/Types.hpp"
 #include "../types/BoardMemento.hpp"
 #include <stack>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -190,4 +191,36 @@ public:
   void makeMove(Move move);
 
   void undoMove(void);
+
+  std::vector<Move> generateAllLegalMoves();
+
+  /**
+   * @brief Loads a position from a FEN string.
+   *
+   * Parses the six standard FEN fields (piece placement, active color, castling
+   * rights, en passant target, halfmove clock, fullmove number) and rebuilds
+   * the bitboards, mailbox, game state, and Zobrist hash accordingly.
+   *
+   * @param fen A Forsyth-Edwards Notation string describing a chess position.
+   */
+  void loadFEN(const std::string &fen);
+
+  // ===== Public Accessors =====
+
+  /// @brief Returns the current game state (whose turn, castling, en passant).
+  const GameState &getGameState() const { return gameState; }
+
+  /// @brief Returns the current Zobrist hash of the position.
+  uint64_t getZobristHash() const { return zobristHash; }
+
+  /// @brief Returns the mailbox (piece type per square index).
+  const Mailbox &getMailbox() const { return mailbox; }
+
+  /// @brief Returns the bitboard for a given piece type and color.
+  Bitboard getPieceBitboard(Color color, Piece piece) const {
+    return pieces[color][piece];
+  }
+
+  /// @brief Returns the number of moves currently pushed on the history stack.
+  size_t getHistorySize() const { return history.size(); }
 };

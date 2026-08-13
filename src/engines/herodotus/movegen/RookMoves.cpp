@@ -14,6 +14,7 @@ void generateRookMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
   while (rookBB) {
     int index = __builtin_ctzll(rookBB);
     Bitboard attacks = MagicBitboards::getRookAttacks(index, occupancy);
+    attacks &= ~friendly;
     Bitboard captures = attacks & enemy;
     Bitboard moves = attacks & ~enemy;
     Square from = Square::fromIndex(index);

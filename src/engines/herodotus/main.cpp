@@ -8,6 +8,8 @@
  */
 
 #include "core/HerodotusEngine.hpp"
+#include <cstddef>
+#include <iostream>
 
 /**
  * @brief Main entry point for the Herodotus engine.
@@ -26,6 +28,11 @@ int main() {
 
   // Display the current board state
   engine.printBoardState();
+  const std::vector<Move> moves = engine.generateAllLegalMoves();
+  std::cout << moves.size() << std::endl;
+  for (Move move : moves) {
+    std::cout << move.piece << std::endl;
+  }
 
   return 0;
 }
