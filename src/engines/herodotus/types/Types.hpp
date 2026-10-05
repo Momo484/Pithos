@@ -1,16 +1,16 @@
 #pragma once
 
-#include <array>
 #include "Bitboard.hpp"
 #include "Square.hpp"
+#include <array>
 
 /**
  * @file Types.hpp
  * @brief Core type definitions and enumerations for the Herodotus chess engine.
  *
- * This file contains all fundamental enumeration types used throughout the engine,
- * providing a centralized location for type definitions to avoid scattering
- * these definitions across multiple headers.
+ * This file contains all fundamental enumeration types used throughout the
+ * engine, providing a centralized location for type definitions to avoid
+ * scattering these definitions across multiple headers.
  */
 
 /**
@@ -49,5 +49,6 @@ using PieceBitboards = std::array<Bitboard, Piece::NUM_PIECES>;
 /// @brief Array of all bitboards for both colors (2 × 6).
 using PositionBitboards = std::array<PieceBitboards, Color::NUM_COLORS>;
 
-/// @brief Mailbox array mapping square index → piece type (or NUM_PIECES if empty).
+/// @brief Mailbox array mapping square index → piece type (or NUM_PIECES if
+/// empty).
 using Mailbox = std::array<Piece, Square::NUM_SQUARES>;
