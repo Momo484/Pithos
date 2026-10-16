@@ -1,3 +1,7 @@
+---
+module: Herodotus
+---
+
 # Getting Started
 
 ## Overview

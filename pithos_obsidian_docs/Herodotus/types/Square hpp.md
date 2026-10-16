@@ -1,15 +1,32 @@
-## Overview 
-This file holds the square representation and corresponding utilities for chess board positions. A square represents a single location on the 8x8 chess board represented by rank (rows) and file (columns).
-***
-### Data Structure 
-The Struct Square data structure holds two variable fields both uint8_t, one for rank and one for file. Furthermore, the struct holds methods;
-- To determine if the square is valid.
-- To determine if one is equivalent to another one.
-- To determine if one is not equivalent to another one.
-- To convert the square to its bit board representation. 
-- To convert from index in bit board to square.
-There is also a hashing function for the square defined. Furthermore there is a static const associated with the Square struct for the number of square on the board. 
-### Choice of uint8_t
-I chose uint8_t for the sake of saving memory. I don't know if it actually did anything, I don't know how memory is padded in c++.
-### Choice of struct over class for Square 
-I chose struct initially as I had not plans for built in methods (I didn't know you could do them in a struct), but when i realised i needed them I didn't see reason to change. The privacy of a variable is not of concern by design and inheritance does not seem likely. In essence a square is a passive data structure that doesn't inherently have behaviour, it has further data that can be extracted from it, but in of it self, it does not do anything. 
+---
+module: Herodotus
+section: types
+source: src/engines/herodotus/types/Square.hpp
+---
+
+# Square.hpp
+
+## Overview
+This file holds the square representation and its utilities. A square is a single location on the 8×8 board identified by rank (row) and file (column), both 0-indexed (rank 0 = rank 1, file 0 = a-file).
+
+## Structure
+`struct Square` holds two `uint8_t` fields:
+- `rank` — row of the square (0–7)
+- `file` — column of the square (0–7)
+
+and the following methods:
+- `isValid()` — checks both coordinates are within [0, 7].
+- `operator==` / `operator!=` — coordinate-wise comparison.
+- `squareToU64()` — converts the square to its bitboard representation (a single bit set); returns 0 if the square is invalid.
+- `fromIndex(int)` — converts a linear bit index [0, 63] back to a square.
+- `fromIndex(Bitboard)` — convenience overload that takes the square of the lowest set bit (via `__builtin_ctzll`).
+
+There is also `SquareHash`, a hash function so squares can be used in unordered containers, and a static `NUM_SQUARES = 64`.
+
+## Design notes
+
+### Choice of `uint8_t`
+I chose `uint8_t` for the sake of saving memory, though I wasn't sure at the time whether it actually did anything given how C++ pads memory. It does: two `uint8_t` members give `Square` a size of 2 bytes (no padding, since `uint8_t` has alignment 1), whereas two `int`s would make it 8 bytes — and squares get stored in bulk.
+
+### Choice of struct over class
+I chose a struct initially because I had no plans for built-in methods (I didn't know you could do them in a struct), but when I realised I needed them I saw no reason to change. The privacy of a variable is not a concern by design and inheritance does not seem likely. In essence a square is a passive data structure: it has further data that can be extracted from it, but in and of itself it does not do anything.
