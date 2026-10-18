@@ -45,7 +45,7 @@ enum RayDirection {
 constexpr Bitboard rayCast(Square start, RayDirection dir) {
   Bitboard result = 0ULL;
   Bitboard curr = start.squareToU64();
-  
+
   Bitboard wrapMask = 0ULL;
   if (dir == EAST || dir == NORTH_EAST || dir == SOUTH_EAST) {
     wrapMask = FILE_A;
@@ -93,4 +93,28 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateRookRelevant() {
 // This is the actual array used throughout the code, as a result of the
 // generator above.
 constexpr auto rookRelevant = generateRookRelevant();
+
+constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
+  std::array<Bitboard, Square::NUM_SQUARES> bishopRelevant{};
+
+  // unlike with rooks, the ring mask does not kill relevant squares, so this is
+  // a simple solution to the edge-square cases.
+  Bitboard ringMask = FILE_A | FILE_H | RANK_1 | RANK_8;
+
+  for (int i = 0; i < Square::NUM_SQUARES; i++) {
+    Square start = Square::fromIndex(i);
+
+    Bitboard rays = rayCast(start, NORTH_EAST) | rayCast(start, NORTH_WEST) |
+                    rayCast(start, SOUTH_EAST) | rayCast(start, SOUTH_WEST);
+
+    bishopRelevant[i] = rays & ~ringMask;
+  }
+
+  return bishopRelevant;
+}
+
+// This is the actual array used throughout the code, as a result of the
+// generator above.
+constexpr auto bishopRelevant = generateBishopRelevant();
+
 } // namespace MagicBitboards
