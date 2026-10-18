@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Herodotus/utils/BitboardTables hpp.md",
+                "file": "Herodotus/utils/MagicBitboards hpp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "BitboardTables hpp"
+              "title": "MagicBitboards hpp"
             }
           }
         ]
@@ -190,8 +190,11 @@
   },
   "active": "3350cd787dfb96b3",
   "lastOpenFiles": [
-    "Herodotus/utils/BitboardTables cpp.md",
+    "Pasted image 20261018204236.png",
+    "Pasted image 20261018204230.png",
+    "Herodotus/Getting Started.md",
     "Herodotus/utils/BitboardTables hpp.md",
+    "Herodotus/utils/BitboardTables cpp.md",
     "Herodotus/utils/MagicBitboards cpp.md",
     "Herodotus/utils/MagicBitboards hpp.md",
     "Herodotus/types/GameState hpp.md",
@@ -214,8 +217,6 @@
     "Herodotus/movegen/KingMoves cpp.md",
     "Herodotus/movegen/QueenMoves hpp.md",
     "Herodotus/movegen/RookMoves hpp.md",
-    "Herodotus/movegen/KnightMoves cpp.md",
-    "Herodotus/movegen/PawnMoves hpp.md",
     "Herodotus/utils",
     "Herodotus/types",
     "Herodotus/movegen",

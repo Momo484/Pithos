@@ -3,6 +3,7 @@
 #include "../herodotus/utils/MagicBitboards.hpp"
 
 #include <array>
+#include <initializer_list>
 
 namespace {
 
@@ -49,6 +50,14 @@ Bitboard queenAttacksRef(int sq, Bitboard blockers) {
 const Bitboard START_POSITION = RANK_1 | RANK_2 | RANK_7 | RANK_8;
 const Bitboard CENTER_DENSE = 0x00FF00FF00FF00FFULL; // checkerboard-ish
 const Bitboard BACK_RANKS = RANK_1 | RANK_8;
+
+// Build a bitboard from a list of square indices (rank * 8 + file).
+Bitboard squares(std::initializer_list<int> idx) {
+  Bitboard bb = 0ULL;
+  for (int i : idx)
+    bb |= 1ULL << i;
+  return bb;
+}
 
 } // namespace
 
@@ -107,4 +116,69 @@ TEST_CASE("MagicBitboards: relevant occupancy masks have canonical size",
     REQUIRE(std::__popcount(MagicBitboards::rookRelevant[sq]) ==
             canonicalRook[rank][file]);
   }
+}
+
+TEST_CASE("MagicBitboards: rayCast stops at board edges", "[magic][raycast]") {
+  using namespace MagicBitboards;
+
+  // ── a1 (corner: only north, east and the NE diagonal survive) ──
+  const Square a1{0, 0};
+  REQUIRE(rayCast(a1, NORTH) == squares({8, 16, 24, 32, 40, 48, 56}));   // a2..a8
+  REQUIRE(rayCast(a1, EAST) == squares({1, 2, 3, 4, 5, 6, 7}));          // b1..h1
+  REQUIRE(rayCast(a1, NORTH_EAST) ==
+          squares({9, 18, 27, 36, 45, 54, 63}));                        // b2..h8
+  REQUIRE(rayCast(a1, WEST) == EMPTY_BOARD);
+  REQUIRE(rayCast(a1, SOUTH) == EMPTY_BOARD);
+  REQUIRE(rayCast(a1, NORTH_WEST) == EMPTY_BOARD);                      // would wrap to h1
+  REQUIRE(rayCast(a1, SOUTH_EAST) == EMPTY_BOARD);
+  REQUIRE(rayCast(a1, SOUTH_WEST) == EMPTY_BOARD);
+
+  // ── h1 ──
+  const Square h1{0, 7};
+  REQUIRE(rayCast(h1, WEST) == squares({6, 5, 4, 3, 2, 1, 0}));          // g1..a1
+  REQUIRE(rayCast(h1, NORTH) ==
+          squares({15, 23, 31, 39, 47, 55, 63}));                       // h2..h8
+  REQUIRE(rayCast(h1, NORTH_WEST) ==
+          squares({14, 21, 28, 35, 42, 49, 56}));                       // g2..a8
+  REQUIRE(rayCast(h1, EAST) == EMPTY_BOARD);                            // would wrap to a2
+  REQUIRE(rayCast(h1, NORTH_EAST) == EMPTY_BOARD);                      // would wrap to a3
+  REQUIRE(rayCast(h1, SOUTH) == EMPTY_BOARD);
+  REQUIRE(rayCast(h1, SOUTH_EAST) == EMPTY_BOARD);
+  REQUIRE(rayCast(h1, SOUTH_WEST) == EMPTY_BOARD);
+
+  // ── a8 ──
+  const Square a8{7, 0};
+  REQUIRE(rayCast(a8, SOUTH) == squares({48, 40, 32, 24, 16, 8, 0}));    // a7..a1
+  REQUIRE(rayCast(a8, EAST) ==
+          squares({57, 58, 59, 60, 61, 62, 63}));                       // b8..h8
+  REQUIRE(rayCast(a8, SOUTH_EAST) ==
+          squares({49, 42, 35, 28, 21, 14, 7}));                        // b7..h1
+  REQUIRE(rayCast(a8, NORTH) == EMPTY_BOARD);
+  REQUIRE(rayCast(a8, WEST) == EMPTY_BOARD);                            // would wrap to h7
+  REQUIRE(rayCast(a8, NORTH_WEST) == EMPTY_BOARD);                      // would wrap to h8
+  REQUIRE(rayCast(a8, NORTH_EAST) == EMPTY_BOARD);
+
+  // ── h8 ──
+  const Square h8{7, 7};
+  REQUIRE(rayCast(h8, SOUTH) == squares({55, 47, 39, 31, 23, 15, 7}));    // h7..h1
+  REQUIRE(rayCast(h8, WEST) ==
+          squares({62, 61, 60, 59, 58, 57, 56}));                       // g8..a8
+  REQUIRE(rayCast(h8, SOUTH_WEST) ==
+          squares({54, 45, 36, 27, 18, 9, 0}));                         // g7..a1
+  REQUIRE(rayCast(h8, NORTH) == EMPTY_BOARD);
+  REQUIRE(rayCast(h8, EAST) == EMPTY_BOARD);
+  REQUIRE(rayCast(h8, NORTH_WEST) == EMPTY_BOARD);
+  REQUIRE(rayCast(h8, NORTH_EAST) == EMPTY_BOARD);
+  REQUIRE(rayCast(h8, SOUTH_EAST) == EMPTY_BOARD);
+
+  // ── e4 (interior square: all eight directions are full-length rays) ──
+  const Square e4{3, 4};
+  REQUIRE(rayCast(e4, NORTH) == squares({36, 44, 52, 60}));             // e5..e8
+  REQUIRE(rayCast(e4, SOUTH) == squares({20, 12, 4}));                  // e3..e1
+  REQUIRE(rayCast(e4, EAST) == squares({29, 30, 31}));                  // f4..h4
+  REQUIRE(rayCast(e4, WEST) == squares({27, 26, 25, 24}));              // d4..a4
+  REQUIRE(rayCast(e4, NORTH_EAST) == squares({37, 46, 55}));            // f5,g6,h7
+  REQUIRE(rayCast(e4, NORTH_WEST) == squares({35, 42, 49, 56}));        // d5,c6,b7,a8
+  REQUIRE(rayCast(e4, SOUTH_EAST) == squares({21, 14, 7}));             // f3,g2,h1
+  REQUIRE(rayCast(e4, SOUTH_WEST) == squares({19, 10, 1}));             // d3,c2,b1
 }
