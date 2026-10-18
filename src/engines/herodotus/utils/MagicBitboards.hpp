@@ -40,21 +40,57 @@ enum RayDirection {
   SOUTH_WEST = -9
 };
 
-// this is a prototype for the general ray cast function that will be
-// implemented in the cpp file.
-Bitboard rayCast(Square start, RayDirection dir);
+// this function simply casts a ray from the start square in the direction
+// specified by the parameters filling the bitboard with ones in that direction
+constexpr Bitboard rayCast(Square start, RayDirection dir) {
+  Bitboard result = 0ULL;
+  Bitboard curr = start.squareToU64();
+  
+  Bitboard wrapMask = 0ULL;
+  if (dir == EAST || dir == NORTH_EAST || dir == SOUTH_EAST) {
+    wrapMask = FILE_A;
+  } else if (dir == WEST || dir == NORTH_WEST || dir == SOUTH_WEST) {
+    wrapMask = FILE_H;
+  }
 
-// This for each square, generates the relevent blocker squares for a rook.
-constexpr std::array<std::array<Bitboard, Square::NUM_SQUARES>,
-                     Square::NUM_SQUARES>
-generateRookRelevant() {
-  std::array<std::array<Bitboard, Square::NUM_SQUARES>, Square::NUM_SQUARES>
-      rookRelevent = {};
+  int d = static_cast<int>(dir);
+  int absDir = d < 0 ? -d : d;
+  while (curr != 0ULL) {
+    result |= curr;
+    curr = (d > 0) ? (curr << absDir) : (curr >> absDir);
+    curr &= ~wrapMask;
+  }
+  // removing the starting square
+  result &= ~start.squareToU64();
+  return result;
+}
 
-  return rookRelevent;
+// For each square, the relevant blocker squares for a rook: the four rays
+// radiating from the square, with the terminal (board-edge) square of each ray
+// removed. A blocker on a terminal square cannot change the attack set, so it
+// is excluded; this is what lets the occupancy patterns be compressed.
+constexpr std::array<Bitboard, Square::NUM_SQUARES> generateRookRelevant() {
+  std::array<Bitboard, Square::NUM_SQUARES> rookRelevant{};
+
+  for (int i = 0; i < Square::NUM_SQUARES; i++) {
+    Square start = Square::fromIndex(i);
+
+    Bitboard rays = rayCast(start, NORTH) | rayCast(start, SOUTH) |
+                    rayCast(start, EAST) | rayCast(start, WEST);
+
+    // The board-edge square each ray ends on (excluded from the mask).
+    Bitboard endpoints = Square{7, start.file}.squareToU64() |
+                         Square{0, start.file}.squareToU64() |
+                         Square{start.rank, 7}.squareToU64() |
+                         Square{start.rank, 0}.squareToU64();
+
+    rookRelevant[i] = rays & ~endpoints;
+  }
+
+  return rookRelevant;
 }
 
 // This is the actual array used throughout the code, as a result of the
 // generator above.
-constexpr auto rookRelevent = generateRookRelevant();
+constexpr auto rookRelevant = generateRookRelevant();
 } // namespace MagicBitboards

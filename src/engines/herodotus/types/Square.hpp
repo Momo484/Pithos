@@ -10,18 +10,20 @@ struct Square {
   std::uint8_t rank;
   std::uint8_t file;
 
-  bool isValid() const {
+  constexpr bool isValid() const {
     return rank >= 0 && rank < 8 && file >= 0 && file < 8;
   }
 
-  bool operator==(const Square& other) const {
+  constexpr bool operator==(const Square& other) const {
     return (this->rank == other.rank && this->file == other.file);
   }
 
-  bool operator!=(const Square& other) const { return !(*this == other); }
+  constexpr bool operator!=(const Square& other) const {
+    return !(*this == other);
+  }
 
   // Bitboard with only this square's bit set (0 if the square is invalid).
-  Bitboard squareToU64() const {
+  constexpr Bitboard squareToU64() const {
     if (!isValid()) {
       return 0;
     }
@@ -30,13 +32,13 @@ struct Square {
   }
 
   // Square at a linear bit index [0, 63].
-  static Square fromIndex(int index) {
+  static constexpr Square fromIndex(int index) {
     return {static_cast<std::uint8_t>(index >> 3),
             static_cast<std::uint8_t>(index & 7)};
   }
 
   // Square of the lowest set bit (undefined for an empty bitboard).
-  static Square fromIndex(Bitboard bitboard) {
+  static constexpr Square fromIndex(Bitboard bitboard) {
     return Square::fromIndex(__builtin_ctzll(bitboard));
   }
 
