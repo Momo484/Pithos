@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Herodotus/types/Bitboard hpp.md",
+                "file": "Herodotus/utils/BitboardTables hpp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bitboard hpp"
+              "title": "BitboardTables hpp"
             }
           }
         ]
@@ -188,8 +188,19 @@
       "bases:Create new base": false
     }
   },
-  "active": "2c4766d8e4309b5b",
+  "active": "3350cd787dfb96b3",
   "lastOpenFiles": [
+    "Herodotus/utils/BitboardTables cpp.md",
+    "Herodotus/utils/BitboardTables hpp.md",
+    "Herodotus/utils/MagicBitboards cpp.md",
+    "Herodotus/utils/MagicBitboards hpp.md",
+    "Herodotus/types/GameState hpp.md",
+    "Herodotus/types/Bitboard hpp.md",
+    "Herodotus/Landing Page.md",
+    "Herodotus/main cpp.md",
+    "Herodotus/types/Types hpp.md",
+    "Herodotus/types/Square hpp.md",
+    "Herodotus/types/Move hpp.md",
     "Herodotus/types/BoardMemento hpp.md",
     "Herodotus/movegen/RookMoves cpp.md",
     "Herodotus/movegen/QueenMoves cpp.md",
@@ -198,11 +209,6 @@
     "Herodotus/movegen/KingMoves hpp.md",
     "Herodotus/movegen/BishopMoves cpp.md",
     "Herodotus/movegen/BishopMoves hpp.md",
-    "Herodotus/Landing Page.md",
-    "Herodotus/utils/MagicBitboards cpp.md",
-    "Herodotus/utils/MagicBitboards hpp.md",
-    "Herodotus/utils/BitboardTables cpp.md",
-    "Herodotus/utils/BitboardTables hpp.md",
     "Herodotus/hash/ZobristHash cpp.md",
     "Herodotus/hash/ZobristHash hpp.md",
     "Herodotus/movegen/KingMoves cpp.md",
@@ -210,12 +216,6 @@
     "Herodotus/movegen/RookMoves hpp.md",
     "Herodotus/movegen/KnightMoves cpp.md",
     "Herodotus/movegen/PawnMoves hpp.md",
-    "Herodotus/movegen/MoveGen cpp.md",
-    "Herodotus/movegen/MoveGen hpp.md",
-    "Herodotus/core/HerodotusEngine cpp.md",
-    "Herodotus/core/HerodotusEngine hpp.md",
-    "Herodotus/main cpp.md",
-    "Herodotus/MagicBitboards cpp.md",
     "Herodotus/utils",
     "Herodotus/types",
     "Herodotus/movegen",
