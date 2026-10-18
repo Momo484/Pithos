@@ -7,47 +7,6 @@
 
 namespace MagicBitboards {
 
-// BishopAttacks
-constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopAttacks() {
-  std::array<Bitboard, Square::NUM_SQUARES> table{};
-  auto genDiagAttack = [](int shift, Bitboard mask, bool north,
-                          Bitboard startPos) {
-    Bitboard attacks = 0ULL;
-    Bitboard currPos = startPos;
-    while (currPos) {
-      if (north) {
-        currPos = (currPos << shift) & ~mask;
-      } else {
-        currPos = (currPos >> shift) & ~mask;
-      }
-      attacks |= currPos;
-    }
-    return attacks;
-  };
-
-  for (int i = 0; i < Square::NUM_SQUARES; i++) {
-    Bitboard attacks = 0ULL;
-    Bitboard startPos = 1ULL << i;
-    // We are going to include the starting square in the mask and remove at the
-    // end
-
-    // north east
-    attacks |= genDiagAttack(9, FILE_A, true, startPos);
-    // north west
-    attacks |= genDiagAttack(7, FILE_H, true, startPos);
-    // south east
-    attacks |= genDiagAttack(7, FILE_A, false, startPos);
-    // south west
-    attacks |= genDiagAttack(9, FILE_H, false, startPos);
-
-    table[i] = attacks;
-  }
-
-  return table;
-}
-
-inline constexpr auto bishopAttacks = generateBishopAttacks();
-
 constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
   std::array<Bitboard, Square::NUM_SQUARES> table{};
   for (int i = 0; i < Square::NUM_SQUARES; i++) {
@@ -69,45 +28,6 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
 }
 
 inline constexpr auto bishopRelevant = generateBishopRelevant();
-constexpr std::array<Bitboard, Square::NUM_SQUARES> generateRookAttacks() {
-  std::array<Bitboard, Square::NUM_SQUARES> table{};
-  auto genStraightAttack = [](int shift, Bitboard mask, bool left,
-                              Bitboard startPos) {
-    Bitboard attacks = 0ULL;
-    Bitboard currPos = startPos;
-    while (currPos) {
-      if (left) {
-        currPos = (currPos << shift) & ~mask;
-      } else {
-        currPos = (currPos >> shift) & ~mask;
-      }
-      attacks |= currPos;
-    }
-    return attacks;
-  };
-
-  for (int i = 0; i < Square::NUM_SQUARES; i++) {
-    Bitboard attacks = 0ULL;
-    Bitboard startPos = 1ULL << i;
-    // We are going to include the starting square in the mask and remove at the
-    // end
-
-    // east
-    attacks |= genStraightAttack(1, FILE_A, true, startPos);
-    // west
-    attacks |= genStraightAttack(1, FILE_H, false, startPos);
-    // south
-    attacks |= genStraightAttack(8, 0ULL, false, startPos);
-    // north
-    attacks |= genStraightAttack(8, 0ULL, true, startPos);
-
-    table[i] = attacks;
-  }
-
-  return table;
-}
-
-inline constexpr auto rookAttacks = generateRookAttacks();
 
 constexpr std::array<Bitboard, Square::NUM_SQUARES> generateRookRelevant() {
   std::array<Bitboard, Square::NUM_SQUARES> table{};
