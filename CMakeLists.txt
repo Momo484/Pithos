@@ -63,6 +63,10 @@ file(GLOB_RECURSE HERODOTUS_CORE_SOURCES "src/engines/herodotus/*.cpp")
 # Adjust this path if your main.cpp is named or located differently.
 list(REMOVE_ITEM HERODOTUS_CORE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/engines/herodotus/main.cpp")
 
+# The magic generator is a standalone tool with its own main(); keep it out of
+# the library for the same reason as main.cpp.
+list(REMOVE_ITEM HERODOTUS_CORE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/engines/herodotus/utils/generate_magics.cpp")
+
 # 3. Create the library
 add_library(HerodotusCore ${HERODOTUS_CORE_SOURCES})
 target_include_directories(HerodotusCore PUBLIC 
@@ -83,3 +87,15 @@ add_executable(herodotus_test ${HERODOTUS_TEST_SOURCES})
 
 # Now we link HerodotusCore so the tests have access to the engine implementation!
 target_link_libraries(herodotus_test PRIVATE HerodotusCore Catch2::Catch2WithMain)
+
+
+# --- 10. Magic number generator (standalone tool) ---
+# Self-contained: compiles MagicBitboards.cpp directly so it builds even while
+# other parts of the engine are mid-refactor.
+add_executable(generate_magics
+    src/engines/herodotus/utils/generate_magics.cpp
+    src/engines/herodotus/utils/MagicBitboards.cpp
+)
+target_include_directories(generate_magics PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engines/herodotus
+)
