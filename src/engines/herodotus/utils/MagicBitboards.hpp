@@ -42,7 +42,12 @@ enum RayDirection {
 
 // this function simply casts a ray from the start square in the direction
 // specified by the parameters filling the bitboard with ones in that direction
-constexpr Bitboard rayCast(Square start, RayDirection dir) {
+// Update: this has been modified to take blockers as a parameter, in which case
+// this will ray case in the direction until it meets a blocker, note that it
+// will include the square with the blocker, but not move beyond it (as it may
+// be a viable square for an attack). when called with blockers == 0ULL, acts as
+// no blockers
+constexpr Bitboard rayCast(Square start, RayDirection dir, Bitboard blockers) {
   Bitboard result = 0ULL;
   Bitboard curr = start.squareToU64();
 
@@ -55,7 +60,9 @@ constexpr Bitboard rayCast(Square start, RayDirection dir) {
 
   int d = static_cast<int>(dir);
   int absDir = d < 0 ? -d : d;
-  while (curr != 0ULL) {
+  // update; result & blockers will check if a blocker has been hit,
+  // in which case the ray stops proceeding.
+  while (curr != 0ULL && (result & blockers) == 0ULL) {
     result |= curr;
     curr = (d > 0) ? (curr << absDir) : (curr >> absDir);
     curr &= ~wrapMask;
@@ -75,8 +82,8 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateRookRelevant() {
   for (int i = 0; i < Square::NUM_SQUARES; i++) {
     Square start = Square::fromIndex(i);
 
-    Bitboard rays = rayCast(start, NORTH) | rayCast(start, SOUTH) |
-                    rayCast(start, EAST) | rayCast(start, WEST);
+    Bitboard rays = rayCast(start, NORTH, 0ULL) | rayCast(start, SOUTH, 0ULL) |
+                    rayCast(start, EAST, 0ULL) | rayCast(start, WEST, 0ULL);
 
     // The board-edge square each ray ends on (excluded from the mask).
     Bitboard endpoints = Square{7, start.file}.squareToU64() |
@@ -104,8 +111,9 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
   for (int i = 0; i < Square::NUM_SQUARES; i++) {
     Square start = Square::fromIndex(i);
 
-    Bitboard rays = rayCast(start, NORTH_EAST) | rayCast(start, NORTH_WEST) |
-                    rayCast(start, SOUTH_EAST) | rayCast(start, SOUTH_WEST);
+    Bitboard rays =
+        rayCast(start, NORTH_EAST, 0ULL) | rayCast(start, NORTH_WEST, 0ULL) |
+        rayCast(start, SOUTH_EAST, 0ULL) | rayCast(start, SOUTH_WEST, 0ULL);
 
     bishopRelevant[i] = rays & ~ringMask;
   }
