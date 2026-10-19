@@ -7,7 +7,7 @@ status: stub
 # MagicBitboards hpp
 
 ## Overview
-
+This header file contains the function prototypes, hardcoded magic values (generated once and saved), and constexpr functions and tables used for the creations of magic bitboard attack tables used throughout the rest of the move generation code.
 ## Structure
 
 ## Design notes
@@ -42,3 +42,7 @@ When i finish 3. I'll run them on main (or a seperate executable for cleaner cod
 So far i have 
 - Finished the generate relevant masks functions and their assigned their corresponding arrays. In doing so i have made a direction enum and rayCast function which required changes many of the Square functions to constexpr.
 - Finished the naive move generation functions
+- Created constexpr shifts, for quick lookup of right shift amounts at each square to find the correct index in to the attack tables.
+- finished making getter for bishop and rook attacks
+- finished making initMagicBitboards.
+Completely finished.

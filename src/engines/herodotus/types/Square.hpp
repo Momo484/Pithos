@@ -1,8 +1,8 @@
 #pragma once
 
+#include "Bitboard.hpp"
 #include <cstdint>
 #include <functional>
-#include "Bitboard.hpp"
 
 // A square on the 8x8 board: rank (row, 0-7 = ranks 1-8) and file (column,
 // 0-7 = files a-h).
@@ -14,11 +14,11 @@ struct Square {
     return rank >= 0 && rank < 8 && file >= 0 && file < 8;
   }
 
-  constexpr bool operator==(const Square& other) const {
+  constexpr bool operator==(const Square &other) const {
     return (this->rank == other.rank && this->file == other.file);
   }
 
-  constexpr bool operator!=(const Square& other) const {
+  constexpr bool operator!=(const Square &other) const {
     return !(*this == other);
   }
 
@@ -29,6 +29,13 @@ struct Square {
     }
     int index = (rank << 3) | file;
     return 1ULL << index;
+  }
+
+  constexpr int squareToIndex() const {
+    if (!isValid()) {
+      return 0;
+    }
+    return (rank << 3) | file;
   }
 
   // Square at a linear bit index [0, 63].
@@ -47,7 +54,7 @@ struct Square {
 
 // Hash functor so Square can be used in unordered containers.
 struct SquareHash {
-  std::size_t operator()(const Square& s) const {
+  std::size_t operator()(const Square &s) const {
     std::size_t h1 = std::hash<int>{}(s.rank);
     std::size_t h2 = std::hash<int>{}(s.file);
     return h1 ^ (h2 + 0x9e3778b9 + (h1 << 6) + (h1 >> 2));

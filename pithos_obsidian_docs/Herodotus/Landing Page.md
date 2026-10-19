@@ -26,6 +26,7 @@ Precomputed lookup tables and magic bitboard generation used by move generation.
 [[BitboardTables cpp]]
 [[MagicBitboards hpp]]
 [[MagicBitboards cpp]]
+[[MagicBitboards (AI refactor)]]
 
 ## Move generation
 Pseudo-legal and legal move generation, split per piece type.
