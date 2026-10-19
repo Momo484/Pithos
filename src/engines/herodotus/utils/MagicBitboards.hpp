@@ -4,7 +4,6 @@
 #include "types/Square.hpp"
 #include <array>
 #include <cstddef>
-#include <vector>
 
 /*
  * for an example of how they are currently being used in code see
@@ -124,5 +123,10 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
 // This is the actual array used throughout the code, as a result of the
 // generator above.
 constexpr auto bishopRelevant = generateBishopRelevant();
+
+// Here follows prototypes for naive move generation for both bishops and 
+// rooks. 
+Bitboard generateRookAttacks(Square start, Bitboard blockers);
+Bitboard generateBishopAttacks(Square start, Bitboard blockers);
 
 } // namespace MagicBitboards

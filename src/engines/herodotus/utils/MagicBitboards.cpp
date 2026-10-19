@@ -17,4 +17,19 @@
 // construction (magics, attack tables) will live here.
 
 namespace MagicBitboards {
+
+Bitboard generateRookAttacks(Square start, Bitboard blockers) {
+  return rayCast(start, NORTH, blockers) | rayCast(start, SOUTH, blockers) |
+         rayCast(start, EAST, blockers) | rayCast(start, WEST, blockers);
+  // returned is a rayCast in each direction, stopped but including the blocker
+  // it is simply what is generated, it is quite slow.
+}
+
+Bitboard generateBishopAttacks(Square start, Bitboard blockers) {
+  return rayCast(start, NORTH_EAST, blockers) |
+         rayCast(start, NORTH_WEST, blockers) |
+         rayCast(start, SOUTH_EAST, blockers) |
+         rayCast(start, SOUTH_WEST, blockers);
+}
+
 } // namespace MagicBitboards

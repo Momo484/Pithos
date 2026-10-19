@@ -24,7 +24,7 @@ By this logic our implementation plan is to
 1. Generate Relevant Masks
 	1. For all 64 squares calculate the blocker mask for rooks and bishops (excluding the outer edges of board)
 2. Implement the core math functions 
-	1. the indexing function (occupancy * magic) >> (64 - bits), bits = 10?
+	1. the indexing function (occupancy * magic) >> (64 - bits), bits = 10? (this makes sense to make after finding the magic numbers instead).
 	2. An on the fly attack generator to teach the tables what the correct attacks are .
 3. Find magic numbers 
 	1. Create an array of all possible blocker configurations using relevant masks? -> carry-ripler
@@ -38,3 +38,7 @@ By this logic our implementation plan is to
 	4. store the pre-calculated attack bitboard onto the array \_attacks\[square]\[magic_index] = brute_force_attack.
 
 When i finish 3. I'll run them on main (or a seperate executable for cleaner code), then paste them in as hardcoded tables. 
+
+So far i have 
+- Finished the generate relevant masks functions and their assigned their corresponding arrays. In doing so i have made a direction enum and rayCast function which required changes many of the Square functions to constexpr.
+- Finished the naive move generation functions
