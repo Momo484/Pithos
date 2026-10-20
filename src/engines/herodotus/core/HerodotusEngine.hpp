@@ -180,14 +180,7 @@ public:
    * showing the board from white's perspective.
    */
   void printBoardState();
-  // TODO: Formulate away to advance the game state -> makeMove and undoMove
-  // 1. Use the ZobristHashing
-  // 2. Keep track of game state
 
-  // TODO: The hardest part: move pruncing and move decisions, done after the
-  // above two. This part represents the actual engine (apart from move
-  // generation ofc).
-  //
   void makeMove(Move move);
 
   void undoMove(void);
