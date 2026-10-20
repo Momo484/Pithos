@@ -29,3 +29,8 @@ void generateBishopMoves(
 **Purpose:** Iterates through all bishops of the specified color and generates all legal moves by using magic bitboard hashing to compute diagonal attacks, then filtering out friendly pieces and capturing enemy pieces.
 
 See [[BishopMoves cpp]] for implementation details.
+
+## Design notes
+
+- The mailbox is in the signature for captures — `mailbox[captureIdx]` gives the captured piece type in O(1) rather than scanning the enemy bitboards. Everything else is passed as plain bitboards, so this file has no dependency on the engine class.
+- As a slider, the bishop has no fixed attack table — what it can reach depends on the blockers in front of it. Attacks go through the magic bitboard tables in [[MagicBitboards hpp]] instead, indexed by a hash of the occupancy.

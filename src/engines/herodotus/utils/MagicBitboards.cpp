@@ -25,6 +25,8 @@ Bitboard generateRookAttacks(Square start, Bitboard blockers) {
 }
 
 Bitboard generateBishopAttacks(Square start, Bitboard blockers) {
+  // Slides each diagonal ray to the edge, stopping on (and including) a
+  // blocker.
   return rayCast(start, NORTH_EAST, blockers) |
          rayCast(start, NORTH_WEST, blockers) |
          rayCast(start, SOUTH_EAST, blockers) |
@@ -111,8 +113,11 @@ uint64_t findBishopMagic(Square square) {
                    generateBishopAttacks, gen);
 }
 
+// Builds both attack tables: for every square, walk every subset of the
+// relevant mask (carry-rippler) and store the naive attack at the index the
+// magic number maps it to.
 void initMagicBitboards() {
-  // generating rook attack table
+  // Fill the rook attack table.
   for (int sq = 0; sq < 64; sq++) {
     uint64_t magic = ROOK_MAGICS[sq];
     Bitboard relevant = rookRelevant[sq];
@@ -124,7 +129,7 @@ void initMagicBitboards() {
       occ = (occ - relevant) & relevant;
     } while (occ != 0);
   }
-  // generating bishop attack table.
+  // Fill the bishop attack table.
   for (int sq = 0; sq < 64; sq++) {
     uint64_t magic = BISHOP_MAGICS[sq];
     Bitboard relevant = bishopRelevant[sq];
@@ -139,18 +144,22 @@ void initMagicBitboards() {
   }
 }
 
+// Index straight into the rook table with ((occupancy & relevant) * magic)
+// >> shift.
 Bitboard getRookAttacks(int index, Bitboard occupancy) {
   return rookAttacks[index]
                     [((occupancy & rookRelevant[index]) * ROOK_MAGICS[index]) >>
                      rookShifts[index]];
 }
 
+// Same again for the bishop table.
 Bitboard getBishopAttacks(int index, Bitboard occupancy) {
   return bishopAttacks[index][((occupancy & bishopRelevant[index]) *
                                BISHOP_MAGICS[index]) >>
                               bishopShifts[index]];
 }
 
+// Rook and bishop attacks OR'd together — a queen's moves are their union.
 Bitboard getQueenAttacks(int index, Bitboard occupancy) {
   return getRookAttacks(index, occupancy) | getBishopAttacks(index, occupancy);
 }

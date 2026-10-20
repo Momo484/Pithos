@@ -29,3 +29,8 @@ void generateKnightMoves(
 **Purpose:** Iterates through all knights of the specified color and generates all legal moves (non-captures and captures) by consulting precomputed knight attack tables.
 
 See [[KnightMoves cpp]] for implementation details.
+
+## Design notes
+
+- The mailbox is in the signature for captures — `mailbox[captureIdx]` gives the captured piece type in O(1) rather than scanning the enemy bitboards. Everything else is passed as plain bitboards, so this file has no dependency on the engine class.
+- Attacks come from the constexpr knight attack table in [[BitboardTables hpp]], generated at compile time, so there is zero runtime cost to working out where a knight can move.

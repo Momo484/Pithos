@@ -4,13 +4,16 @@
 
 namespace MoveGen {
 
+// Generates every pseudo-legal knight move for `side`. For each knight: look
+// up its attack table, drop friendly squares, then emit the captures (with the
+// piece from `mailbox`) and quiet moves as separate lists.
 void generateKnightMoves(const PositionBitboards &pieces,
                          const Mailbox &mailbox, Bitboard friendly,
                          Bitboard enemy, Color side, std::vector<Move> &out) {
   Bitboard knightBB = pieces[side][Piece::KNIGHT];
   while (knightBB) {
     int index = __builtin_ctzll(knightBB);
-    // We generate all possible attacks for this knight
+    // Every square this knight can attack, straight from the precomputed table.
     Bitboard attacks = BitboardTables::knightAttacks[index];
     attacks &= ~friendly;
     Bitboard captures = attacks & enemy;

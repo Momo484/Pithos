@@ -36,3 +36,9 @@ void generatePawnMoves(
 - En passant captures when applicable
 
 See [[PawnMoves cpp]] for implementation details.
+
+## Design notes
+
+- The mailbox is in the signature for captures — `mailbox[to]` gives the captured piece type in O(1) rather than scanning the enemy bitboards. Everything else is passed as plain bitboards, so this file has no dependency on the engine class.
+- Pawns are the one piece with no attack table. Their movement is simple enough (and direction-dependent on colour) that raw shifts with file masks do the job, so nothing is precomputed here.
+- The `all` parameter exists purely for the empty-square checks on single and double pushes — the other piece generators don't need it since their attack tables already account for blockers.

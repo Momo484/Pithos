@@ -5,29 +5,27 @@
 #include <array>
 #include <cstddef>
 
-/*
- * for an example of how they are currently being used in code see
- *
- * bitboard attacks = magicbitboards::getqueenattacks(index, occupancy);
- * from queenMoves.cpp
- *
- * it calls a function that given and index (which is the queen location)
- * and occupancy which is (friendly | enemy, notice how it is not neccesarily
- * "relevent"), We filter out attacks on friendly later in the process seen here
- *
- * Bitboard captures = attacks & enemy;
- * Bitboard moves = attacks & ~enemy;
- * from queenMoves.cpp
- *
- * is returns all the possible attack squares the queen can engage. the target
- * piece is retrieved from the mailbox. the returned bitboard of attacks should
- * be as quick as indexing into an array, skipping the time taken to slide a ray
- * from each direction from the queens position for speed.
- */
+// Magic bitboards: precomputed attack lookup for the sliding pieces (rooks,
+// bishops, queens). For an example of how they are used, see QueenMoves.cpp:
+//
+//   Bitboard attacks = MagicBitboards::getQueenAttacks(index, occupancy);
+//
+// `index` is the queen's square and `occupancy` is friendly | enemy — note
+// that it is not necessarily "relevant" (only the blockers inside the piece's
+// relevant mask can change the result). Attacks on friendlies are filtered
+// out later:
+//
+//   Bitboard captures = attacks & enemy;
+//   Bitboard moves = attacks & ~enemy;
+//
+// This returns every square the queen can engage; the target piece itself is
+// retrieved from the mailbox. The lookup should be as quick as indexing into
+// an array, skipping the time taken to slide a ray in each direction from the
+// queen's position.
 
 namespace MagicBitboards {
 
-// left shift is positive, right shift is negative
+// Left shift is positive, right shift is negative.
 enum RayDirection {
   NORTH = 8,
   SOUTH = -8,
@@ -39,13 +37,11 @@ enum RayDirection {
   SOUTH_WEST = -9
 };
 
-// this function simply casts a ray from the start square in the direction
-// specified by the parameters filling the bitboard with ones in that direction
-// Update: this has been modified to take blockers as a parameter, in which case
-// this will ray case in the direction until it meets a blocker, note that it
-// will include the square with the blocker, but not move beyond it (as it may
-// be a viable square for an attack). when called with blockers == 0ULL, acts as
-// no blockers
+// Casts a ray from the start square in the direction specified, filling the
+// bitboard with ones in that direction. Modified to take blockers as a
+// parameter: the ray stops when it meets a blocker, including the blocker's
+// square (it is a viable attack target) but not moving beyond it. Called with
+// blockers == 0ULL, it acts as no blockers.
 constexpr Bitboard rayCast(Square start, RayDirection dir, Bitboard blockers) {
   Bitboard result = 0ULL;
   Bitboard curr = start.squareToU64();
@@ -59,14 +55,14 @@ constexpr Bitboard rayCast(Square start, RayDirection dir, Bitboard blockers) {
 
   int d = static_cast<int>(dir);
   int absDir = d < 0 ? -d : d;
-  // update; result & blockers will check if a blocker has been hit,
-  // in which case the ray stops proceeding.
+  // result & blockers is non-zero once a blocker has been hit, at which point
+  // the ray stops proceeding.
   while (curr != 0ULL && (result & blockers) == 0ULL) {
     result |= curr;
     curr = (d > 0) ? (curr << absDir) : (curr >> absDir);
     curr &= ~wrapMask;
   }
-  // removing the starting square
+  // Remove the starting square.
   result &= ~start.squareToU64();
   return result;
 }
@@ -100,6 +96,7 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateRookRelevant() {
 // generator above.
 constexpr auto rookRelevant = generateRookRelevant();
 
+// The bishop counterpart: diagonal rays with the board ring removed.
 constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
   std::array<Bitboard, Square::NUM_SQUARES> bishopRelevant{};
 
@@ -124,10 +121,9 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateBishopRelevant() {
 // generator above.
 constexpr auto bishopRelevant = generateBishopRelevant();
 
-// the following are the generators and arrays that hold the shift required
-// at each square to calculate the final index into the attack tables
-// they will be used later when evaluating (((occupancy & relevant[i]) *
-// magic[i]) >> shift[i])
+// The generators and arrays below hold the shift required at each square to
+// calculate the final index into the attack tables. They are used later when
+// evaluating (((occupancy & relevant[i]) * magic[i]) >> shift[i]).
 constexpr std::array<int, Square::NUM_SQUARES> generateRookShifts() {
   std::array<int, Square::NUM_SQUARES> shifts{};
   for (int i = 0; i < 64; i++) {
@@ -152,9 +148,14 @@ constexpr std::size_t ROOK_TABLE_SIZE = 1 << 12; // 12 = max rook relevant bits
 constexpr std::size_t BISHOP_TABLE_SIZE = 1
                                           << 9; // 9  = max bishop relevant bits
 
+// Fills the rook and bishop attack tables. Must run once at startup, before
+// any of the getters below are called.
 void initMagicBitboards();
+// Rook attacks for `index` given the full `occupancy` (hash -> table lookup).
 Bitboard getRookAttacks(int index, Bitboard occupancy);
+// Bishop attacks for `index` given the full `occupancy` (hash -> table lookup).
 Bitboard getBishopAttacks(int index, Bitboard occupancy);
+// Rook and bishop attacks OR'd together — a queen's moves are their union.
 Bitboard getQueenAttacks(int index, Bitboard occupancy);
 
 
@@ -163,13 +164,13 @@ Bitboard getQueenAttacks(int index, Bitboard occupancy);
 Bitboard generateRookAttacks(Square start, Bitboard blockers);
 Bitboard generateBishopAttacks(Square start, Bitboard blockers);
 
-// these function find a suitable magic number for each square, seperate logic
-// for bishop and rooks.
+// These functions find a suitable magic number for each square; separate
+// logic for bishops and rooks.
 uint64_t findRookMagic(Square square);
 uint64_t findBishopMagic(Square square);
 
-// magic numbers for speed!
-// cross-check: all magics verified against the naive slider
+// Magic numbers for speed! Cross-check: all magics verified against the
+// naive slider.
 constexpr std::array<Bitboard, Square::NUM_SQUARES> ROOK_MAGICS = {
     0x0080102040008000ULL,     0x3040084010002000ULL,     0x0d00200041011008ULL,     0x0100081000042102ULL,
     0x1001001008402080ULL,     0x4100040002080100ULL,     0x820008042100c200ULL,     0x0200008844010022ULL,

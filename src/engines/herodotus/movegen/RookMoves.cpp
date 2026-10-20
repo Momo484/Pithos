@@ -5,11 +5,15 @@
 
 namespace MoveGen {
 
+// Generates every pseudo-legal rook move for `side`. Same shape as
+// generateBishopMoves, just against the rook attack tables (ranks and files)
+// instead of the diagonals.
 void generateRookMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
                        Bitboard friendly, Bitboard enemy, Color side,
                        std::vector<Move> &out) {
 
   Bitboard rookBB = pieces[side][Piece::ROOK];
+  // Sliders need every blocker, not just the enemies.
   Bitboard occupancy = friendly | enemy;
   while (rookBB) {
     int index = __builtin_ctzll(rookBB);

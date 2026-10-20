@@ -29,3 +29,8 @@ void generateQueenMoves(
 **Purpose:** Iterates through all queens of the specified color and generates all legal moves by combining diagonal attacks (like bishops) and straight-line attacks along ranks and files (like rooks), then filtering out friendly pieces and capturing enemy pieces.
 
 See [[QueenMoves cpp]] for implementation details.
+
+## Design notes
+
+- The mailbox is in the signature for captures — `mailbox[captureIdx]` gives the captured piece type in O(1) rather than scanning the enemy bitboards. Everything else is passed as plain bitboards, so this file has no dependency on the engine class.
+- The queen has no attack table of her own. She reuses the magic bitboard tables from [[MagicBitboards hpp]] by OR'ing the rook and bishop results together, which is exactly what her movement is.

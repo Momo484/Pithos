@@ -5,11 +5,15 @@
 #include <array>
 #include <cstdlib>
 
+// Compile-time lookup tables used by move generation: squares between two
+// aligned squares, and the attack sets for knights and kings. Everything here
+// is constexpr, so the tables exist with no runtime initialisation cost.
+
 namespace BitboardTables {
 
-/// Generates a 64x64 lookup table where Between[sq1][sq2] has bits set
-/// for all squares strictly between two aligned squares on a rank, file,
-/// or diagonal. Returns 0 if sq1 and sq2 are not aligned.
+// Generates a 64x64 lookup table where Between[sq1][sq2] has bits set
+// for all squares strictly between two aligned squares on a rank, file,
+// or diagonal. Returns 0 if sq1 and sq2 are not aligned.
 constexpr std::array<std::array<Bitboard, Square::NUM_SQUARES>,
                      Square::NUM_SQUARES>
 generateBetween() {
@@ -48,8 +52,11 @@ generateBetween() {
 
 inline constexpr auto Between = generateBetween();
 
-/// Convenience wrapper: accepts bitboard masks (single-bit) and returns squares
-/// strictly between them. Extracts the square index via ctzll internally.
+// The generated table in use throughout the code, as a result of the generator
+// above.
+
+// Convenience wrapper: accepts bitboard masks (single-bit) and returns squares
+// strictly between them. Extracts the square index via ctzll internally.
 inline Bitboard betweenSquares(Bitboard sq1, Bitboard sq2) {
   return Between[__builtin_ctzll(sq1)][__builtin_ctzll(sq2)];
 }
@@ -70,6 +77,7 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateKnightAttacks() {
   return table;
 }
 
+// The generated table in use throughout move generation.
 inline constexpr auto knightAttacks = generateKnightAttacks();
 
 // Precomputed king attack table [square_index -> attacked squares bitmask].
@@ -108,6 +116,7 @@ constexpr std::array<Bitboard, Square::NUM_SQUARES> generateKingAttacks() {
   return table;
 }
 
+// The generated table in use throughout move generation.
 inline constexpr auto kingAttacks = generateKingAttacks();
 
 } // namespace BitboardTables

@@ -29,3 +29,8 @@ void generateRookMoves(
 **Purpose:** Iterates through all rooks of the specified color and generates all legal moves by using magic bitboard hashing to compute attacks along ranks and files, then filtering out friendly pieces and capturing enemy pieces.
 
 See [[RookMoves cpp]] for implementation details.
+
+## Design notes
+
+- The mailbox is in the signature for captures — `mailbox[captureIdx]` gives the captured piece type in O(1) rather than scanning the enemy bitboards. Everything else is passed as plain bitboards, so this file has no dependency on the engine class.
+- As a slider, the rook has no fixed attack table — what it can reach depends on the blockers in front of it. Attacks go through the magic bitboard tables in [[MagicBitboards hpp]] instead, indexed by a hash of the occupancy.

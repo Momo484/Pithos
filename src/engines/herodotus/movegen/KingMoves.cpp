@@ -4,6 +4,10 @@
 #include "utils/BitboardTables.hpp"
 
 namespace MoveGen {
+
+// Generates every pseudo-legal king move for `side`: one-square moves and
+// captures from the king attack table, then castling when the rights are set
+// and the path is empty. The engine's validation decides legality.
 void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
                        Bitboard friendly, Bitboard enemy, Bitboard all,
                        Color side, const GameState &state,
@@ -21,7 +25,7 @@ void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
   Bitboard openMoves = kingMoves & ~enemy;
   Bitboard captureMoves = kingMoves & enemy;
 
-  // Lets first deal with openMoves
+  // Let's deal with the quiet moves first.
   while (openMoves) {
     int toSq = __builtin_ctzll(openMoves);
     Square to = Square::fromIndex(toSq);
@@ -31,7 +35,7 @@ void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
     openMoves &= openMoves - 1;
   }
 
-  // Now capture moves
+  // Now the capture moves.
   while (captureMoves) {
     int toSq = __builtin_ctzll(captureMoves);
     Square to = Square::fromIndex(toSq);
@@ -42,12 +46,11 @@ void generateKingMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
     captureMoves &= captureMoves - 1;
   }
 
-  // Now we have to deal with castling. we have to check if the spaces between
-  // king and rook is empty, for each respective side, and also if they have
-  // castling rights. The engine will be responsible for legalising it, and
-  // ensuring that the king doesnt move into or through check.
-  // initially we are going to create it seperatly for white and black, but we
-  // might be able to combine it later
+  // Now castling: check that the squares between king and rook are empty for
+  // each respective side, and that the castling rights are still set. The
+  // engine will be responsible for legalising it, and ensuring that the king
+  // doesn't move into or through check. Written separately for white and black
+  // for now; the two could be combined later.
   if (isWhite) {
     if (state.castlingRights & GameState::WHITE_KINGSIDE_CASTLE) {
       Bitboard between =

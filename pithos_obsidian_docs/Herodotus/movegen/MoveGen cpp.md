@@ -16,7 +16,7 @@ This file contains the function implementations for generating pseudo-legal move
 ### `generatePseudoLegalMoves`
 
 ```cpp
-void generatePseudoLegalMoves(Engine &engine, std::vector<Move> &out)
+void generatePseudoLegalMoves(HerodotusEngine &engine, std::vector<Move> &out)
 ```
 
 Given the engine and an output vector, this function will generate all pseudo-legal moves from the engine's current position. It does so by calling the respective `generate` functions for each piece type and passing in the required parameters.
@@ -24,7 +24,7 @@ Given the engine and an output vector, this function will generate all pseudo-le
 ### `isKingChecked`
 
 ```cpp
-bool isKingChecked(Engine &engine, Color color)
+bool isKingChecked(HerodotusEngine &engine, Color side)
 ```
 
 Given the engine and a color to check, this function determines if the king is currently checked. It does so by grabbing bishop and rook attacks from its positive masked when non-friendly pieces (magic bitboards) and knight attacks. From there, it checks that each attack/threat is of the correct type using the mailbox. Finally, it checks if there are any pawn threats with some hardcoded bitmasks. This returns a bool.
@@ -32,7 +32,7 @@ Given the engine and a color to check, this function determines if the king is c
 ### `pseudoToLegalMoves`
 
 ```cpp
-std::vector<Move> pseudoToLegalMoves(Engine &engine, std::vector<Move> &pseudoMoves)
+std::vector<Move> pseudoToLegalMoves(HerodotusEngine &engine, const std::vector<Move> pseudoLegalMoves)
 ```
 
 This function returns an array of legal moves. It does so by first accepting an array of pseudo-legal moves and checking each one with the `validateMove` function that follows.
@@ -40,7 +40,7 @@ This function returns an array of legal moves. It does so by first accepting an 
 ### `validateMove`
 
 ```cpp
-bool validateMove(Engine &engine, const Move &move)
+bool validateMove(HerodotusEngine &engine, Move move)
 ```
 
 Given the engine and a move, this function checks if the move is valid. It does so currently by treating castling moves and others separately. Essentially, this function simulates the move, checks if the king was checked, then undoes the move, returning the result. At its current state, a move is legal when it doesn't result in the friendly king being checked.

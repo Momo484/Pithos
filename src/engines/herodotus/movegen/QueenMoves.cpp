@@ -5,11 +5,15 @@
 
 namespace MoveGen {
 
+// Generates every pseudo-legal queen move for `side`. Same shape as
+// generateRookMoves/generateBishopMoves, using getQueenAttacks which OR's the
+// two slider tables together — a queen's moves are exactly their union.
 void generateQueenMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
                         Bitboard friendly, Bitboard enemy, Color side,
                         std::vector<Move> &out) {
 
   Bitboard queenBB = pieces[side][Piece::QUEEN];
+  // Sliders need every blocker, not just the enemies.
   Bitboard occupancy = friendly | enemy;
   while (queenBB) {
     int index = __builtin_ctzll(queenBB);

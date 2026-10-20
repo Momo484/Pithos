@@ -5,10 +5,15 @@
 
 namespace MoveGen {
 
+// Generates every pseudo-legal bishop move for `side`. For each bishop: ask
+// the magic bitboard tables for its diagonal attacks against the full
+// occupancy, drop friendly squares, then emit captures (with the piece from
+// `mailbox`) and quiet moves as separate lists.
 void generateBishopMoves(const PositionBitboards &pieces,
                          const Mailbox &mailbox, Bitboard friendly,
                          Bitboard enemy, Color side, std::vector<Move> &out) {
   Bitboard bishopBB = pieces[side][Piece::BISHOP];
+  // Sliders need every blocker, not just the enemies.
   Bitboard occupancy = friendly | enemy;
   while (bishopBB) {
     int index = __builtin_ctzll(bishopBB);

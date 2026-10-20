@@ -34,3 +34,8 @@ void generateKingMoves(
 - Castling moves (both kingside and queenside) when castling rights are available and paths are clear
 
 See [[KingMoves cpp]] for implementation details.
+
+## Design notes
+
+- The mailbox is in the signature for captures — `mailbox[toSq]` gives the captured piece type in O(1) rather than scanning the enemy bitboards. The `all` parameter exists for checking that the squares between king and rook are empty when generating castling.
+- Normal king moves come from the constexpr king attack table in [[BitboardTables hpp]], generated at compile time like the knight's. Castling, however, is generated pseudo-legally here — rights and empty path only — with check and transit-square safety left to the engine's validation in [[MoveGen cpp]].

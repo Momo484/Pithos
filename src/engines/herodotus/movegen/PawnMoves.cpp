@@ -4,6 +4,9 @@
 
 namespace MoveGen {
 
+// Generates every pseudo-legal pawn move for `side`: pushes, captures,
+// promotions and en passant. The logic is written out twice, once per colour,
+// since pawn direction depends on which colour is moving.
 void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
                        Bitboard friendly, Bitboard enemy, Bitboard all,
                        Color side, const GameState &state,
@@ -12,8 +15,9 @@ void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
   bool isWhite = side == Color::WHITE;
   Bitboard empty = ~all;
 
-  // Use full lambda function the automatically determine what piece was on a
-  // certain square and add it to moves, used during capture.
+  // Shared lambda for anything landing on a square: reads the captured piece
+  // off the mailbox and pushes the move, expanding to all four promotions when
+  // the destination is on the promotion rank.
   int promoRank = isWhite ? 7 : 0;
   auto pushCapture = [&](int toSq, Square from, Square to) {
     Piece captured = mailbox[toSq];
@@ -40,7 +44,7 @@ void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
     // Promotions (reached rank 8)
     Bitboard promotions = singlePushes & RANK_8;
     while (promotions) {
-      // Cout our trailing zeroes to find the index of the first piece
+      // Count trailing zeroes to find the index of the next set bit.
       int toSq = __builtin_ctzll(promotions);
       Square to = Square::fromIndex(toSq);
       Square from = {static_cast<std::uint8_t>(to.rank - 1), to.file};
@@ -52,13 +56,13 @@ void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
                      false, false, false});
       out.push_back({side, Piece::PAWN, from, to, std::nullopt, Piece::QUEEN,
                      false, false, false});
-      // This flips the lowest set bit to zero and all the bits below it 1, then
-      // & keeps only the bits set in both neat trick
+      // Clears the lowest set bit (and everything below it); & with the
+      // original keeps only the bits above it. Neat trick.
       promotions &= promotions - 1;
     }
 
     // Non-promotion single pushes
-    // The notRANK_8 allows us to ignore promotions.
+    // Masking off the promotion rank lets us ignore promotions here.
     Bitboard nonPromo = singlePushes & ~RANK_8;
     while (nonPromo) {
       int toSq = __builtin_ctzll(nonPromo);
@@ -107,17 +111,16 @@ void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
 
     if (state.enPassant.has_value()) {
       Bitboard epBB = state.enPassant->squareToU64();
-      // Here we check for pawns that are one rank below the en passant square
-      // and either to the left of to the right.
-      // The file nots, are there to prevent wrap around issues.
+      // Pawns one rank below the en passant square, either side of it. The
+      // file masks prevent wrap around.
       Bitboard attackers =
           ((epBB >> 9) & ~FILE_H | (epBB >> 7) & ~FILE_A) & pawnBB;
       while (attackers) {
         int fromSq = __builtin_ctzll(attackers);
         Square from = Square::fromIndex(fromSq);
         Square to = *state.enPassant;
-        // I believe in make move we can derive where the captured piece was, so
-        // no need to enscribe it here.
+        // I believe make move can derive where the captured pawn was, so no
+        // need to record it here.
         Move enPassantMove = {side, Piece::PAWN, from,
                               to,   Piece::PAWN, std::nullopt,
                               true, false,       false};
@@ -194,8 +197,8 @@ void generatePawnMoves(const PositionBitboards &pieces, const Mailbox &mailbox,
 
     if (state.enPassant.has_value()) {
       Bitboard epBB = state.enPassant->squareToU64();
-      // Here we check for pawns that are one rank below the en passant square
-      // and either to the left of to the right.
+      // Pawns one rank above the en passant square (black captures downwards),
+      // either side of it. The file masks prevent wrap around.
       Bitboard attackers =
           ((epBB << 9) & ~FILE_A | (epBB << 7) & ~FILE_H) & pawnBB;
       while (attackers) {
