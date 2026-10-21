@@ -1,6 +1,7 @@
 #include "ZobristHash.hpp"
 #include <cctype>
 #include <random>
+#include <unordered_set>
 
 /**
  * @file ZobristHash.cpp
@@ -9,7 +10,9 @@
 
 // Static member definitions
 bool ZobristHash::initialised = false;
-std::array<std::array<uint64_t, ZobristHash::NUM_PIECES>, ZobristHash::NUM_SQUARES> ZobristHash::pieceSquareTable;
+std::array<std::array<uint64_t, ZobristHash::NUM_PIECES>,
+           ZobristHash::NUM_SQUARES>
+    ZobristHash::pieceSquareTable;
 uint64_t ZobristHash::whiteToMove;
 std::array<uint64_t, 16> ZobristHash::castlingRights;
 std::array<uint64_t, 8> ZobristHash::enPassantFiles;
@@ -37,29 +40,49 @@ void ZobristHash::initialise() {
   if (initialised)
     return;
 
-  // Use a fixed seed for reproducible, deterministic hash generation across runs
+  // Use a fixed seed for reproducible, deterministic hash generation across
+  // runs
   std::mt19937_64 rng(0xDEADBEEF);
   std::uniform_int_distribution<uint64_t> dist;
+  std::unordered_set<uint64_t> usedHashes;
 
   // Generate unique random numbers for each piece on each square
   // This creates NUM_SQUARES * NUM_PIECES (64 * 12 = 768) unique hash values
-  for (auto& row : pieceSquareTable) {
-    for (auto& val : row) {
-      val = dist(rng);
+  uint64_t hash = dist(rng);
+  for (auto &row : pieceSquareTable) {
+    for (auto &val : row) {
+      while (usedHashes.count(hash)) {
+        hash = dist(rng);
+      }
+      val = hash;
+      usedHashes.insert(hash);
     }
   }
 
   // Generate random values for move turn indicator
-  whiteToMove = dist(rng);
+  while (usedHashes.count(hash)) {
+    hash = dist(rng);
+  }
+  whiteToMove = hash;
+  usedHashes.insert(hash);
 
   // Generate random values for all 16 castling rights configurations
-  for (auto& val : castlingRights) {
-    val = dist(rng);
+  for (auto &val : castlingRights) {
+    while (usedHashes.count(hash)) {
+      hash = dist(rng);
+    }
+    val = hash;
+    usedHashes.insert(hash);
   }
 
   // Generate random values for each en passant file
-  for (auto& val : enPassantFiles) {
+  for (auto &val : enPassantFiles) {
+    while (usedHashes.count(hash)) {
+      hash = dist(rng);
+    }
     val = dist(rng);
+
+    usedHashes.insert(hash);
   }
 
   initialised = true;
