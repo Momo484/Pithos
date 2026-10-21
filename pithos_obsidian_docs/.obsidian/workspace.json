@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Herodotus/hash/ZobristHash cpp.md",
+                "file": "Herodotus/Getting Started.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ZobristHash cpp"
+              "title": "Getting Started"
             }
           }
         ]
@@ -190,10 +190,10 @@
   },
   "active": "3350cd787dfb96b3",
   "lastOpenFiles": [
+    "Herodotus/hash/ZobristHash cpp.md",
     "Herodotus/hash/ZobristHash hpp.md",
     "Herodotus/Landing Page.md",
     "Herodotus/Getting Started.md",
-    "Herodotus/hash/ZobristHash cpp.md",
     "Herodotus/movegen/BishopMoves cpp.md",
     "Herodotus/movegen/BishopMoves hpp.md",
     "Herodotus/utils/MagicBitboards hpp.md",
