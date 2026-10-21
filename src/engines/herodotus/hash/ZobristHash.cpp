@@ -3,12 +3,10 @@
 #include <random>
 #include <unordered_set>
 
-/**
- * @file ZobristHash.cpp
- * @brief Implementation of Zobrist hash generation for chess positions.
- */
+// Fills the Zobrist tables declared in ZobristHash.hpp and serves their
+// values through the getters.
 
-// Static member definitions
+// Static member definitions.
 bool ZobristHash::initialised = false;
 std::array<std::array<uint64_t, ZobristHash::NUM_PIECES>,
            ZobristHash::NUM_SQUARES>
@@ -41,13 +39,12 @@ void ZobristHash::initialise() {
     return;
 
   // Use a fixed seed for reproducible, deterministic hash generation across
-  // runs
+  // runs.
   std::mt19937_64 rng(0xDEADBEEF);
   std::uniform_int_distribution<uint64_t> dist;
   std::unordered_set<uint64_t> usedHashes;
 
-  // Generate unique random numbers for each piece on each square
-  // This creates NUM_SQUARES * NUM_PIECES (64 * 12 = 768) unique hash values
+  // Unique random values for every piece on every square (64 x 12 = 768).
   uint64_t hash = dist(rng);
   for (auto &row : pieceSquareTable) {
     for (auto &val : row) {
@@ -59,14 +56,14 @@ void ZobristHash::initialise() {
     }
   }
 
-  // Generate random values for move turn indicator
+  // Unique value for the side-to-move indicator.
   while (usedHashes.count(hash)) {
     hash = dist(rng);
   }
   whiteToMove = hash;
   usedHashes.insert(hash);
 
-  // Generate random values for all 16 castling rights configurations
+  // Unique values for all 16 castling rights configurations.
   for (auto &val : castlingRights) {
     while (usedHashes.count(hash)) {
       hash = dist(rng);
@@ -75,12 +72,12 @@ void ZobristHash::initialise() {
     usedHashes.insert(hash);
   }
 
-  // Generate random values for each en passant file
+  // Unique values for each en passant file.
   for (auto &val : enPassantFiles) {
     while (usedHashes.count(hash)) {
       hash = dist(rng);
     }
-    val = dist(rng);
+    val = hash;
 
     usedHashes.insert(hash);
   }
@@ -95,7 +92,7 @@ uint64_t ZobristHash::getPieceHash(Piece piece, Color pieceColor, Square sq) {
   }
 
   if (pieceColor == Color::BLACK) {
-    // black pieces occupy indices 6-11 (lowercase symbols)
+    // Black pieces occupy indices 6-11.
     pieceIdx += 6;
   }
 
@@ -108,7 +105,7 @@ uint64_t ZobristHash::getPieceHash(Piece piece, Color pieceColor, Square sq) {
 
 uint64_t ZobristHash::getCastlingHash(bool whiteKingSide, bool whiteQueenSide,
                                       bool blackKingSide, bool blackQueenSide) {
-  // Encode castling rights as a 4-bit index
+  // Encode the castling rights as a 4-bit index.
   int idx = 0;
   if (whiteKingSide)
     idx |= 0x1;
@@ -130,7 +127,7 @@ uint64_t ZobristHash::getEnPassantHash(Square epTarget) {
 }
 
 uint64_t ZobristHash::getToMoveHash(Color color) {
-  // Convention: return the hash when it's white's turn, 0 for black's turn
-  // Toggling move is done by XORing twice (once to clear, once to set)
+  // Convention: the hash when it's white's turn, 0 for black's turn. Toggling
+  // is done by XORing twice (once to clear, once to set).
   return color == Color::WHITE ? whiteToMove : 0;
 }
