@@ -151,20 +151,23 @@ bool validateMove(HerodotusEngine &engine, Move move) {
       // queenside castle (king moves to a lower file)
       dir = -1;
     }
-    Square kingSquare = Square::fromIndex(__builtin_ctzll(engine.pieces[move.color][Piece::KING]));
-    Square transitSquare = {kingSquare.rank, static_cast<uint8_t>(kingSquare.file + dir)};
+    Square kingSquare = Square::fromIndex(
+        __builtin_ctzll(engine.pieces[move.color][Piece::KING]));
+    Square transitSquare = {kingSquare.rank,
+                            static_cast<uint8_t>(kingSquare.file + dir)};
     // The transit square should be clear as per move generation logic.
-    Move transitMove = {move.color, Piece::KING, kingSquare, transitSquare, std::nullopt, std::nullopt, false, false};
-    engine.makeMove(transitMove);
+    Move transitMove = {move.color,   Piece::KING,  kingSquare, transitSquare,
+                        std::nullopt, std::nullopt, false,      false};
+    engine.makeMoveFast(transitMove);
     bool transitChecked = isKingChecked(engine, move.color);
-    engine.undoMove();
+    engine.undoMoveFast(transitMove);
     if (transitChecked) {
       return false;
     }
   }
-  engine.makeMove(move);
+  engine.makeMoveFast(move);
   bool legal = !isKingChecked(engine, move.color);
-  engine.undoMove();
+  engine.undoMoveFast(move);
   return legal;
 }
 } // namespace MoveGen

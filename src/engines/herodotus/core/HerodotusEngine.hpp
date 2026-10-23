@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../types/Bitboard.hpp"
+#include "../types/BoardMemento.hpp"
 #include "../types/GameState.hpp"
 #include "../types/Move.hpp"
 #include "../types/Types.hpp"
-#include "../types/BoardMemento.hpp"
 #include <stack>
 #include <string>
 #include <unordered_map>
@@ -92,6 +92,8 @@ public:
   // for empty squares, rank 8 at the top.
   void printBoardState();
 
+  // === MOVES
+
   // Applies `move` to the bitboards, mailbox, game state and hash, pushing a
   // memento so undoMove() can restore the position.
   void makeMove(Move move);
@@ -99,6 +101,14 @@ public:
   // Restores the position from the most recent memento, including bitboards,
   // mailbox, game state and hash.
   void undoMove(void);
+
+  // These two functions are meant to be played one after the other and serves
+  // as lean variations of the two functiosn above without the extreme 
+  // bookeeping that isn't neccesary when the move is immediately unmade.
+  void makeMoveFast(Move move);
+  void undoMoveFast(Move move);
+
+  // === END OF MOVES
 
   // Generates all legal moves for the side to move.
   std::vector<Move> generateAllLegalMoves();
