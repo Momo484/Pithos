@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -flto=thin CMakeFiles/herodotus.dir/herodotus_autogen/mocs_compilation.cpp.o CMakeFiles/herodotus.dir/src/engines/herodotus/main.cpp.o -o herodotus  libHerodotusCore.a libPithosCore.a
