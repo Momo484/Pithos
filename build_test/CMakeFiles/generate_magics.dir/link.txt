@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -flto=thin CMakeFiles/generate_magics.dir/generate_magics_autogen/mocs_compilation.cpp.o CMakeFiles/generate_magics.dir/src/engines/herodotus/utils/generate_magics.cpp.o CMakeFiles/generate_magics.dir/src/engines/herodotus/utils/MagicBitboards.cpp.o -o generate_magics
