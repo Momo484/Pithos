@@ -10,18 +10,12 @@
 #include <string>
 #include <vector>
 
-/**
- * @file HerodotusEngine.cpp
- * @brief Implementation of the Herodotus chess engine core functionality.
- *
- * This file contains the implementation of position setup, board clearing,
- * piece occupancy queries, and board printing functionality.
- */
+// Implementation of the engine: position setup, FEN loading, board printing,
+// and move make/undo with incremental mailbox and hash updates.
 
+// Writes the standard starting position into the piece bitboards.
 void HerodotusEngine::setupStartingPosition() {
-  // Initialize the board with pieces in their starting positions
-  // White pieces on ranks 1-2 (indices 0-1), black pieces on ranks 7-8 (indices
-  // 6-7)
+  // White starts on ranks 1-2 (board indices 0-1), black on ranks 7-8 (6-7).
 
   // White pawns: all 8 pawns on rank 2 (bits 8-15)
   pieces[Color::WHITE][Piece::PAWN] = 0x000000000000FF00ULL;
@@ -60,6 +54,7 @@ void HerodotusEngine::setupStartingPosition() {
   pieces[Color::BLACK][Piece::KING] = 0x1000000000000000ULL;
 }
 
+// Clears every piece bitboard.
 void HerodotusEngine::clearBoard() {
   for (auto &colorArray : pieces) {
     for (auto &bb : colorArray) {
@@ -69,7 +64,7 @@ void HerodotusEngine::clearBoard() {
 }
 
 Bitboard HerodotusEngine::getWhitePieces() {
-  // Union all white piece bitboards to get occupancy
+  // Union all white piece bitboards to get occupancy.
   return pieces[Color::WHITE][Piece::PAWN] |
          pieces[Color::WHITE][Piece::BISHOP] |
          pieces[Color::WHITE][Piece::KING] |
@@ -78,7 +73,7 @@ Bitboard HerodotusEngine::getWhitePieces() {
 }
 
 Bitboard HerodotusEngine::getBlackPieces() {
-  // Union all black piece bitboards to get occupancy
+  // Union all black piece bitboards to get occupancy.
   return pieces[Color::BLACK][Piece::PAWN] |
          pieces[Color::BLACK][Piece::BISHOP] |
          pieces[Color::BLACK][Piece::KING] |
@@ -87,34 +82,38 @@ Bitboard HerodotusEngine::getBlackPieces() {
 }
 
 Bitboard HerodotusEngine::getAllPieces() {
-  // Union both white and black pieces to get total occupancy
+  // Union both colours to get total occupancy.
   return getWhitePieces() | getBlackPieces();
 }
 
+// Sets up the starting position and a fresh game state, then builds the
+// mailbox, hash and magic bitboard tables.
 void HerodotusEngine::initialise() {
-  // Clear the board to ensure clean state
+  // Clear the board to ensure a clean state.
   clearBoard();
 
-  // Set up starting position
+  // Set up the starting position.
   setupStartingPosition();
 
-  // Initialize game state to starting values
+  // Reset the game state.
   gameState.activeColor = Color::WHITE;
   gameState.castlingRights = 0x0F; // All castling rights available
   gameState.halfMoveClock = 0;
   gameState.fullMoveNumber = 1;
   gameState.enPassant = std::nullopt;
 
-  // Build the mailbox from the bitboard arrays
+  // Build the mailbox from the bitboards.
   syncMailbox();
 
-  // Compute the Zobrist hash for the current position
+  // Compute the Zobrist hash.
   initialiseHash();
 
-  // initialise magic bitboard
+  // Build the magic bitboard attack tables.
   MagicBitboards::initMagicBitboards();
 }
 
+// Rebuilds the engine from a six-field FEN string. The parser is lenient: a
+// missing side to move or move counters fall back to white to move and move 1.
 void HerodotusEngine::loadFEN(const std::string &fen) {
   clearBoard();
 
@@ -172,7 +171,7 @@ void HerodotusEngine::loadFEN(const std::string &fen) {
     }
   }
 
-  // 2. Active color.
+  // 2. Active colour.
   if (colorField == "b") {
     gameState.activeColor = Color::BLACK;
   }
@@ -204,9 +203,8 @@ void HerodotusEngine::loadFEN(const std::string &fen) {
     int epFile = epField[0] - 'a';
     int epRank = epField[1] - '1';
     if (epFile >= 0 && epFile < 8 && epRank >= 0 && epRank < 8) {
-      gameState.enPassant =
-          Square{static_cast<std::uint8_t>(epRank),
-                 static_cast<std::uint8_t>(epFile)};
+      gameState.enPassant = Square{static_cast<std::uint8_t>(epRank),
+                                   static_cast<std::uint8_t>(epFile)};
     }
   }
 
@@ -219,6 +217,8 @@ void HerodotusEngine::loadFEN(const std::string &fen) {
   MagicBitboards::initMagicBitboards();
 }
 
+// Computes the position hash from scratch: XOR every piece, then the castling
+// rights and side to move. Also clears the repetition count map.
 void HerodotusEngine::initialiseHash() {
   zobristHash = 0;
   ZobristHash::initialise();
@@ -246,6 +246,7 @@ void HerodotusEngine::initialiseHash() {
   boardStateHashCount.clear();
 }
 
+// Rebuilds the mailbox from the bitboards, setting empty squares to NUM_PIECES.
 void HerodotusEngine::syncMailbox() {
   for (auto &entry : mailbox) {
     entry = Piece::NUM_PIECES;
@@ -262,16 +263,18 @@ void HerodotusEngine::syncMailbox() {
   }
 }
 
+// Prints the board as ASCII: uppercase for white, lowercase for black, '.' for
+// empty squares, rank 8 at the top.
 void HerodotusEngine::printBoardState() {
-  // Create a 2D grid to represent the board for printing
+  // Grid for printing: board[0] is rank 8.
   std::vector<std::vector<char>> board(8, std::vector<char>(8, '.'));
 
-  // Iterate through each side (white, black) and piece type
+  // Iterate through each colour and piece type.
   for (int side = 0; side < Color::NUM_COLORS; side++) {
     bool isWhite = (side == Color::WHITE) ? true : false;
 
     for (int piece = 0; piece < Piece::NUM_PIECES; piece++) {
-      // Determine the character representation for this piece
+      // Character for this piece (the king is the default).
       char pieceChar = 'k'; // Default to king, overridden below
       if (piece == Piece::PAWN) {
         pieceChar = 'p';
@@ -285,32 +288,29 @@ void HerodotusEngine::printBoardState() {
         pieceChar = 'q';
       }
 
-      // Convert to uppercase for white pieces
+      // Convert to uppercase for white pieces.
       if (isWhite) {
         pieceChar = std::toupper(pieceChar);
       }
 
-      // Place each piece of this type on the board
+      // Place each piece of this type on the board.
       Bitboard bb = pieces[side][piece];
       while (bb != 0) {
-        // Find the position of the next set bit
+        // Find the position of the next set bit.
         int offset = std::__countr_zero(bb);
 
-        // Remove that bit from the bitboard
         bb ^= (1ULL << offset);
 
-        // Convert bit offset to (rank, file) coordinates
+        // Convert bit offset to (rank, file) coordinates.
         int currRank = offset / 8;
         int currFile = offset % 8;
 
-        // Place the piece on the board grid
-        // Note: board[7-currRank] to flip vertically so rank 8 appears at top
+        // board[7 - currRank] flips vertically so rank 8 appears at the top.
         board[7 - currRank][currFile] = pieceChar;
       }
     }
   }
 
-  // Print the board
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
       std::cout << board[i][j] << " ";
@@ -319,6 +319,8 @@ void HerodotusEngine::printBoardState() {
   }
 }
 
+// Applies `move` to the bitboards, mailbox, game state and hash, then pushes a
+// memento so undoMove() can restore the position.
 void HerodotusEngine::makeMove(Move move) {
   history.push({move, gameState});
   Square from = move.from;
@@ -326,7 +328,7 @@ void HerodotusEngine::makeMove(Move move) {
   auto sqIdx = [](Square s) { return s.rank * 8 + s.file; };
   Piece movingPiece = mailbox[sqIdx(from)];
 
-  // removing current state from zobrist hash
+  // Remove the current state from the hash.
   zobristHash ^= ZobristHash::getPieceHash(movingPiece, move.color, from);
   zobristHash ^= ZobristHash::getCastlingHash(
       gameState.castlingRights & gameState.WHITE_KINGSIDE_CASTLE,
@@ -337,41 +339,34 @@ void HerodotusEngine::makeMove(Move move) {
   if (gameState.enPassant.has_value()) {
     zobristHash ^= ZobristHash::getEnPassantHash(*gameState.enPassant);
   }
-  // every move toggles the side to move: XOR in whiteToMove on each move
+  // Every move toggles the side to move.
   zobristHash ^= ZobristHash::getToMoveHash(Color::WHITE);
+
+  // Clear the en passant target; a double push may set a new one below.
   gameState.enPassant = std::nullopt;
 
-  // the halfmove clock resets after any pawn move or capture
+  // The halfmove clock resets after any pawn move or capture.
   if (move.piece == Piece::PAWN || move.captured.has_value()) {
     gameState.halfMoveClock = 0;
   }
 
   if (move.color == Color::BLACK) {
-    // we advance the full move number after black's move
+    // The full move number advances after black's move.
     gameState.fullMoveNumber++;
   }
 
-  // we are going to add the movingpiece to the their new position in the hash
-
-  // we no longer bookkeep king position, instead we implictly find it with
-  // the king bitboard.
-
   if (move.isCastling) {
-    // castling
-    // We need to:
-    // remove from square for king (from move)
+    // Castling: the king moves two squares and the rook hops over it.
     int dir = move.to.file > move.from.file ? 1 : -1;
-    // removed the king
     pieces[move.color][Piece::KING] = 0;
-    // get to square for king (from move)
     pieces[move.color][Piece::KING] = move.to.squareToU64();
     mailbox[sqIdx(from)] = Piece::NUM_PIECES;
     mailbox[sqIdx(to)] = Piece::KING;
-    // remove from square for moving rook (derive) and add to correct
+    // Derive the rook's from and to squares on this side's back rank.
     Bitboard rank = move.color == Color::WHITE ? RANK_1 : RANK_8;
     std::uint8_t rankNum = move.color == Color::WHITE ? 0 : 7;
     if (dir == 1) {
-      // kingside
+      // Kingside.
       pieces[move.color][Piece::ROOK] &= ~(rank & FILE_H);
       pieces[move.color][Piece::ROOK] |= (rank & FILE_F);
       mailbox[rankNum * 8 + 7] = Piece::NUM_PIECES;
@@ -382,7 +377,7 @@ void HerodotusEngine::makeMove(Move move) {
           ZobristHash::getPieceHash(Piece::ROOK, move.color, {rankNum, 5});
 
     } else {
-      // queenside
+      // Queenside.
       pieces[move.color][Piece::ROOK] &= ~(rank & FILE_A);
       pieces[move.color][Piece::ROOK] |= (rank & FILE_D);
       mailbox[rankNum * 8 + 0] = Piece::NUM_PIECES;
@@ -394,36 +389,27 @@ void HerodotusEngine::makeMove(Move move) {
     }
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, to);
   } else if (move.isEnPassant) {
-    // en passant
-
-    // moving the pawn
+    // En passant: move our pawn, then remove the captured pawn, which sits on
+    // the same rank as `from` and the same file as `to`.
     pieces[move.color][move.piece] &= ~move.from.squareToU64();
     pieces[move.color][move.piece] |= move.to.squareToU64();
     mailbox[sqIdx(from)] = Piece::NUM_PIECES;
     mailbox[sqIdx(to)] = Piece::PAWN;
-
-    // removing removed pawn
-    // same rank as from, same file as to
     Square capturedPawn = {move.from.rank, move.to.file};
     Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
     pieces[other][Piece::PAWN] &= ~capturedPawn.squareToU64();
     mailbox[sqIdx(capturedPawn)] = Piece::NUM_PIECES;
 
-    // updating zobrist hash accoringly
+    // Update the hash for both pawns.
     zobristHash ^= ZobristHash::getPieceHash(Piece::PAWN, other, capturedPawn);
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, to);
-    // a pawn moved
-
-    // en passant square is automatically removed after any move kinda thing,
-    // earlier unless this turn was a doble move.
-
   } else if (move.isPawnDoublePush) {
-    // pawn double push (new enPassant square)
+    // Double push: move the pawn and record the en passant target behind it.
     pieces[move.color][move.piece] &= ~move.from.squareToU64();
     pieces[move.color][move.piece] |= move.to.squareToU64();
     mailbox[sqIdx(from)] = Piece::NUM_PIECES;
     mailbox[sqIdx(to)] = Piece::PAWN;
-    // the zobrist hashing for from to to has been done already
+    // The pawn's old square was already XORed out of the hash above.
     int dir = move.color == Color::WHITE ? 1 : -1;
     Square newEnPassant = {static_cast<std::uint8_t>(move.from.rank + dir),
                            move.from.file};
@@ -431,8 +417,7 @@ void HerodotusEngine::makeMove(Move move) {
     zobristHash ^= ZobristHash::getEnPassantHash(newEnPassant);
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, to);
   } else if (move.promotion.has_value()) {
-    // promotion, check if capture happened too (conflicts with captured
-    // scenario so placed before in condition chain)
+    // Promotion (checked before captures, since a promotion can also capture).
     pieces[move.color][move.piece] &= ~move.from.squareToU64();
     pieces[move.color][*move.promotion] |= move.to.squareToU64();
     mailbox[sqIdx(from)] = Piece::NUM_PIECES;
@@ -445,7 +430,7 @@ void HerodotusEngine::makeMove(Move move) {
       zobristHash ^= ZobristHash::getPieceHash(*move.captured, other, move.to);
     }
   } else if (move.captured.has_value()) {
-    // capture
+    // Capture: move our piece first, then clear the captured piece.
     pieces[move.color][move.piece] &= ~move.from.squareToU64();
     pieces[move.color][move.piece] |= move.to.squareToU64();
     mailbox[sqIdx(from)] = Piece::NUM_PIECES;
@@ -453,12 +438,12 @@ void HerodotusEngine::makeMove(Move move) {
     mailbox[sqIdx(to)] = move.piece;
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, to);
 
-    // captured
+    // Remove the captured piece and its hash.
     Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
     pieces[other][*move.captured] &= ~move.to.squareToU64();
     zobristHash ^= ZobristHash::getPieceHash(*move.captured, other, move.to);
   } else {
-    // normal move
+    // Quiet move: only our piece moves.
     pieces[move.color][move.piece] &= ~move.from.squareToU64();
     pieces[move.color][move.piece] |= move.to.squareToU64();
     mailbox[sqIdx(from)] = Piece::NUM_PIECES;
@@ -466,8 +451,8 @@ void HerodotusEngine::makeMove(Move move) {
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, to);
   }
 
-  // castling rights are lost when the king or a corner rook moves, or when a
-  // corner rook is captured
+  // Castling rights are lost when the king or a corner rook moves, or when a
+  // corner rook is captured.
   auto revokeCastlingRight = [&](Square sq, Piece p, Color c) {
     if (p == Piece::KING) {
       if (c == Color::WHITE) {
@@ -513,6 +498,8 @@ void HerodotusEngine::makeMove(Move move) {
   boardStateHashCount[zobristHash]++;
 }
 
+// Restores the position from the most recent memento, undoing the hash, game
+// state, bitboard and mailbox changes made by makeMove().
 void HerodotusEngine::undoMove(void) {
   assert(!history.empty() && "undoMove called with empty history");
   BoardMemento memento = std::move(history.top());
@@ -522,7 +509,7 @@ void HerodotusEngine::undoMove(void) {
 
   const Move &move = memento.move;
 
-  // removing current state from zobristhash
+  // Remove the current state from the hash.
   if (!move.promotion.has_value()) {
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.to);
   }
@@ -539,13 +526,13 @@ void HerodotusEngine::undoMove(void) {
 
   gameState = memento.state;
 
-  // re-add the en passant hash for the restored (pre-move) position
+  // Re-add the en passant hash for the restored (pre-move) position.
   if (gameState.enPassant.has_value()) {
     zobristHash ^= ZobristHash::getEnPassantHash(*gameState.enPassant);
   }
 
   if (move.isCastling) {
-    // move the king back
+    // Castling: move the king back, then the rook.
     pieces[move.color][Piece::KING] = 0;
     pieces[move.color][Piece::KING] = move.from.squareToU64();
 
@@ -557,7 +544,7 @@ void HerodotusEngine::undoMove(void) {
     int dir = move.to.file > move.from.file ? 1 : -1;
 
     if (dir == 1) {
-      // kingside
+      // Kingside.
       pieces[move.color][Piece::ROOK] &= ~(rank & FILE_F);
       pieces[move.color][Piece::ROOK] |= (rank & FILE_H);
       mailbox[rankNum * 8 + 5] = Piece::NUM_PIECES;
@@ -567,7 +554,7 @@ void HerodotusEngine::undoMove(void) {
       zobristHash ^=
           ZobristHash::getPieceHash(Piece::ROOK, move.color, {rankNum, 7});
     } else {
-      // queenside
+      // Queenside.
       pieces[move.color][Piece::ROOK] &= ~(rank & FILE_D);
       pieces[move.color][Piece::ROOK] |= (rank & FILE_A);
       mailbox[rankNum * 8 + 3] = Piece::NUM_PIECES;
@@ -579,6 +566,7 @@ void HerodotusEngine::undoMove(void) {
     }
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
   } else if (move.isEnPassant) {
+    // En passant: put our pawn back and restore the captured pawn.
     pieces[move.color][move.piece] &= ~move.to.squareToU64();
     pieces[move.color][move.piece] |= move.from.squareToU64();
     mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
@@ -593,13 +581,15 @@ void HerodotusEngine::undoMove(void) {
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
 
   } else if (move.isPawnDoublePush) {
+    // Double push: put the pawn back; the en passant target came from the
+    // memento.
     pieces[move.color][move.piece] &= ~move.to.squareToU64();
     pieces[move.color][move.piece] |= move.from.squareToU64();
     mailbox[sqIdx(move.from)] = Piece::PAWN;
     mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
-    // the zobrist hashing for from to to has been done already
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
   } else if (move.promotion.has_value()) {
+    // Promotion: restore the pawn and remove the promoted piece.
     pieces[move.color][move.piece] |= move.from.squareToU64();
     pieces[move.color][*move.promotion] &= ~move.to.squareToU64();
     mailbox[sqIdx(move.from)] = Piece::PAWN;
@@ -614,18 +604,19 @@ void HerodotusEngine::undoMove(void) {
       zobristHash ^= ZobristHash::getPieceHash(*move.captured, other, move.to);
     }
   } else if (move.captured.has_value()) {
-    // capture
+    // Capture: put our piece back, then restore the captured piece.
     pieces[move.color][move.piece] |= move.from.squareToU64();
     pieces[move.color][move.piece] &= ~move.to.squareToU64();
     mailbox[sqIdx(move.from)] = move.piece;
     mailbox[sqIdx(move.to)] = *move.captured;
     zobristHash ^= ZobristHash::getPieceHash(move.piece, move.color, move.from);
 
-    // captured
+    // Restore the captured piece and its hash.
     Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
     pieces[other][*move.captured] |= move.to.squareToU64();
     zobristHash ^= ZobristHash::getPieceHash(*move.captured, other, move.to);
   } else {
+    // Quiet move: put our piece back.
     pieces[move.color][move.piece] |= move.from.squareToU64();
     pieces[move.color][move.piece] &= ~move.to.squareToU64();
     mailbox[sqIdx(move.from)] = move.piece;
@@ -640,6 +631,162 @@ void HerodotusEngine::undoMove(void) {
       gameState.castlingRights & gameState.BLACK_QUEENSIDE_CASTLE);
 }
 
+void HerodotusEngine::makeMoveFast(Move move) {
+  // Getting info
+  Square from = move.from;
+  Square to = move.to;
+  auto sqIdx = [](Square s) { return s.rank * 8 + s.file; };
+  Piece movingPiece = mailbox[sqIdx(from)];
+  if (move.isCastling) {
+    // Castling: the king moves two squares and the rook hops over it.
+    int dir = move.to.file > move.from.file ? 1 : -1;
+    pieces[move.color][Piece::KING] = 0;
+    pieces[move.color][Piece::KING] = move.to.squareToU64();
+    mailbox[sqIdx(from)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = Piece::KING;
+    // Derive the rook's from and to squares on this side's back rank.
+    Bitboard rank = move.color == Color::WHITE ? RANK_1 : RANK_8;
+    std::uint8_t rankNum = move.color == Color::WHITE ? 0 : 7;
+    if (dir == 1) {
+      // Kingside.
+      pieces[move.color][Piece::ROOK] &= ~(rank & FILE_H);
+      pieces[move.color][Piece::ROOK] |= (rank & FILE_F);
+      mailbox[rankNum * 8 + 7] = Piece::NUM_PIECES;
+      mailbox[rankNum * 8 + 5] = Piece::ROOK;
+    } else {
+      // Queenside.
+      pieces[move.color][Piece::ROOK] &= ~(rank & FILE_A);
+      pieces[move.color][Piece::ROOK] |= (rank & FILE_D);
+      mailbox[rankNum * 8 + 0] = Piece::NUM_PIECES;
+      mailbox[rankNum * 8 + 3] = Piece::ROOK;
+    }
+  } else if (move.isEnPassant) {
+    // En passant: move our pawn, then remove the captured pawn, which sits on
+    // the same rank as `from` and the same file as `to`.
+    pieces[move.color][move.piece] &= ~move.from.squareToU64();
+    pieces[move.color][move.piece] |= move.to.squareToU64();
+    mailbox[sqIdx(from)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = Piece::PAWN;
+    Square capturedPawn = {move.from.rank, move.to.file};
+    Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+    pieces[other][Piece::PAWN] &= ~capturedPawn.squareToU64();
+    mailbox[sqIdx(capturedPawn)] = Piece::NUM_PIECES;
+  } else if (move.isPawnDoublePush) {
+    // Double push: move the pawn and record the en passant target behind it.
+    pieces[move.color][move.piece] &= ~move.from.squareToU64();
+    pieces[move.color][move.piece] |= move.to.squareToU64();
+    mailbox[sqIdx(from)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = Piece::PAWN;
+  } else if (move.promotion.has_value()) {
+    // Promotion (checked before captures, since a promotion can also capture).
+    pieces[move.color][move.piece] &= ~move.from.squareToU64();
+    pieces[move.color][*move.promotion] |= move.to.squareToU64();
+    mailbox[sqIdx(from)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = *move.promotion;
+    if (move.captured.has_value()) {
+      Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+      pieces[other][*move.captured] &= ~move.to.squareToU64();
+    }
+  } else if (move.captured.has_value()) {
+    // Capture: move our piece first, then clear the captured piece.
+    pieces[move.color][move.piece] &= ~move.from.squareToU64();
+    pieces[move.color][move.piece] |= move.to.squareToU64();
+    mailbox[sqIdx(from)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = move.piece;
+    // Remove the captured piece and its hash.
+    Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+    pieces[other][*move.captured] &= ~move.to.squareToU64();
+  } else {
+    // Quiet move: only our piece moves.
+    pieces[move.color][move.piece] &= ~move.from.squareToU64();
+    pieces[move.color][move.piece] |= move.to.squareToU64();
+    mailbox[sqIdx(from)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(to)] = move.piece;
+  }
+  // done, that should be it, to make a move, we shall test if we can remove
+  // mailbox operations next
+}
+
+void HerodotusEngine::undoMoveFast(Move move) {
+  auto sqIdx = [](Square s) { return s.rank * 8 + s.file; };
+  if (move.isCastling) {
+    // Castling: move the king back, then the rook.
+    pieces[move.color][Piece::KING] = 0;
+    pieces[move.color][Piece::KING] = move.from.squareToU64();
+
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(move.from)] = Piece::KING;
+
+    Bitboard rank = move.color == Color::WHITE ? RANK_1 : RANK_8;
+    std::uint8_t rankNum = move.color == Color::WHITE ? 0 : 7;
+    int dir = move.to.file > move.from.file ? 1 : -1;
+
+    if (dir == 1) {
+      // Kingside.
+      pieces[move.color][Piece::ROOK] &= ~(rank & FILE_F);
+      pieces[move.color][Piece::ROOK] |= (rank & FILE_H);
+      mailbox[rankNum * 8 + 5] = Piece::NUM_PIECES;
+      mailbox[rankNum * 8 + 7] = Piece::ROOK;
+    } else {
+      // Queenside.
+      pieces[move.color][Piece::ROOK] &= ~(rank & FILE_D);
+      pieces[move.color][Piece::ROOK] |= (rank & FILE_A);
+      mailbox[rankNum * 8 + 3] = Piece::NUM_PIECES;
+      mailbox[rankNum * 8 + 0] = Piece::ROOK;
+    }
+  } else if (move.isEnPassant) {
+    // En passant: put our pawn back and restore the captured pawn.
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    mailbox[sqIdx(move.from)] = Piece::PAWN;
+
+    Square capturedPawn = {move.from.rank, move.to.file};
+    Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+    pieces[other][Piece::PAWN] |= capturedPawn.squareToU64();
+    mailbox[sqIdx(capturedPawn)] = Piece::PAWN;
+  } else if (move.isPawnDoublePush) {
+    // Double push: put the pawn back; the en passant target came from the
+    // memento.
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    mailbox[sqIdx(move.from)] = Piece::PAWN;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+  } else if (move.promotion.has_value()) {
+    // Promotion: restore the pawn and remove the promoted piece.
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    pieces[move.color][*move.promotion] &= ~move.to.squareToU64();
+    mailbox[sqIdx(move.from)] = Piece::PAWN;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+    if (move.captured.has_value()) {
+      Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+      pieces[other][*move.captured] |= move.to.squareToU64();
+      mailbox[sqIdx(move.to)] = *move.captured;
+    }
+  } else if (move.captured.has_value()) {
+    // Capture: put our piece back, then restore the captured piece.
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    mailbox[sqIdx(move.from)] = move.piece;
+    mailbox[sqIdx(move.to)] = *move.captured;
+
+    // Restore the captured piece and its hash.
+    Color other = move.color == Color::WHITE ? Color::BLACK : Color::WHITE;
+    pieces[other][*move.captured] |= move.to.squareToU64();
+  } else {
+    // Quiet move: put our piece back.
+    pieces[move.color][move.piece] |= move.from.squareToU64();
+    pieces[move.color][move.piece] &= ~move.to.squareToU64();
+    mailbox[sqIdx(move.from)] = move.piece;
+    mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
+  }
+  // we good.
+}
+
+// Generates pseudo-legal moves, then filters out the ones that leave the king
+// in check.
 std::vector<Move> HerodotusEngine::generateAllLegalMoves() {
   std::vector<Move> pseudoLegal;
   MoveGen::generatePseudoLegalMoves(*this, pseudoLegal);

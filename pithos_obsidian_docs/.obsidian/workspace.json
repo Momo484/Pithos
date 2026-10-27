@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Herodotus/core/HerodotusEngine cpp.md",
+                "file": "Herodotus/Getting Started.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HerodotusEngine cpp"
+              "title": "Getting Started"
             }
           }
         ]
@@ -190,8 +190,10 @@
   },
   "active": "3350cd787dfb96b3",
   "lastOpenFiles": [
-    "Herodotus/core/HerodotusEngine hpp.md",
+    "Herodotus/Landing Page.md",
+    "Herodotus/main cpp.md",
     "Herodotus/core/HerodotusEngine cpp.md",
+    "Herodotus/core/HerodotusEngine hpp.md",
     "Herodotus/utils/MagicBitboards hpp.md",
     "Herodotus/utils/MagicBitboards cpp.md",
     "Herodotus/utils/MagicBitboards (AI refactor).md",
@@ -200,7 +202,6 @@
     "Herodotus/Getting Started.md",
     "Herodotus/hash/ZobristHash cpp.md",
     "Herodotus/hash/ZobristHash hpp.md",
-    "Herodotus/Landing Page.md",
     "Herodotus/movegen/BishopMoves cpp.md",
     "Herodotus/movegen/BishopMoves hpp.md",
     "Herodotus/movegen/KnightMoves hpp.md",
@@ -215,7 +216,6 @@
     "Herodotus/movegen/KingMoves cpp.md",
     "Herodotus/movegen/RookMoves hpp.md",
     "Herodotus/movegen/MoveGen hpp.md",
-    "Herodotus/types/BoardMemento hpp.md",
     "Pasted image 20261018204236.png",
     "Pasted image 20261018204230.png",
     "Herodotus/utils",
