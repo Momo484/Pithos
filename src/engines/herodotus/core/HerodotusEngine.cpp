@@ -782,7 +782,6 @@ void HerodotusEngine::undoMoveFast(Move move) {
     mailbox[sqIdx(move.from)] = move.piece;
     mailbox[sqIdx(move.to)] = Piece::NUM_PIECES;
   }
-  // we good.
 }
 
 // Generates pseudo-legal moves, then filters out the ones that leave the king

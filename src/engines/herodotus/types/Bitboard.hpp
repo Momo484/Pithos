@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstdint>
 
 // Bitboard: 64 bits, one per square (bit index = rank * 8 + file).
@@ -21,6 +22,9 @@ constexpr Bitboard RANK_6 = 0x0000FF0000000000ULL;
 constexpr Bitboard RANK_7 = 0x00FF000000000000ULL;
 constexpr Bitboard RANK_8 = 0xFF00000000000000ULL;
 
+constexpr std::array<Bitboard, 8> ranks = {RANK_1, RANK_2, RANK_3, RANK_4,
+                                           RANK_5, RANK_6, RANK_7, RANK_8};
+
 // File masks: one column each.
 constexpr Bitboard FILE_A = 0x0101010101010101ULL;
 constexpr Bitboard FILE_B = 0x0202020202020202ULL;
@@ -30,3 +34,6 @@ constexpr Bitboard FILE_E = 0x1010101010101010ULL;
 constexpr Bitboard FILE_F = 0x2020202020202020ULL;
 constexpr Bitboard FILE_G = 0x4040404040404040ULL;
 constexpr Bitboard FILE_H = 0x8080808080808080ULL;
+
+constexpr std::array<Bitboard, 8> files = {FILE_A, FILE_B, FILE_C, FILE_D,
+                                           FILE_E, FILE_F, FILE_G, FILE_H};

@@ -27,6 +27,13 @@ bool validateMove(HerodotusEngine &engine, Move move);
 
 } // namespace MoveGen
 
+namespace BoardEvaluation {
+double evaluateCurrentPosition(HerodotusEngine &engine);
+int countDoubledPawns(HerodotusEngine &engine, Color color);
+int countIsolatedPawns(HerodotusEngine &engine, Color color);
+int countBlockedPawns(HerodotusEngine &engine, Color color);
+} // namespace BoardEvaluation
+
 class HerodotusEngine {
 private:
   // ===== Data Members =====
@@ -44,6 +51,7 @@ private:
   // in sync with the bitboards by syncMailbox().
   Mailbox mailbox;
 
+  // === MOVE GEN FRIENDS ===
   // Move generation needs direct access to the bitboards, mailbox and game
   // state, so the free functions in MoveGen are friends.
   friend void MoveGen::generatePseudoLegalMoves(HerodotusEngine &engine,
@@ -54,6 +62,21 @@ private:
                      const std::vector<Move> pseudoLegalMoves);
 
   friend bool MoveGen::validateMove(HerodotusEngine &engine, Move move);
+
+  // === BOARD EVALUATION FRIENDS ===
+  // Evaluates the current board position, in the negamax format.
+  // There might be the need to specify current turn, but currently it takes it
+  // from board state.
+  friend double
+  BoardEvaluation::evaluateCurrentPosition(HerodotusEngine &engine);
+  friend int BoardEvaluation::countDoubledPawns(HerodotusEngine &engine,
+                                                Color color);
+  friend int BoardEvaluation::countIsolatedPawns(HerodotusEngine &engine,
+                                                 Color color);
+  friend int BoardEvaluation::countBlockedPawns(HerodotusEngine &engine,
+                                                Color color);
+
+  // === END FRIENDS ===
 
   // Position hash, updated incrementally on every make/undo move.
   uint64_t zobristHash = 0;
@@ -103,7 +126,7 @@ public:
   void undoMove(void);
 
   // These two functions are meant to be played one after the other and serves
-  // as lean variations of the two functiosn above without the extreme 
+  // as lean variations of the two functiosn above without the extreme
   // bookeeping that isn't neccesary when the move is immediately unmade.
   void makeMoveFast(Move move);
   void undoMoveFast(Move move);
